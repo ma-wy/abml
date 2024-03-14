@@ -34,8 +34,9 @@ xxx
 
 
 
-
-__test communication:__  
+----------------------------------------
+## notes  
+* test communication between franka and pc:  
 `$ communication_test 192.168.1.110`  
 `$ rosrun libfranka communication_test 192.168.1.110`    
 `$ ping 192.168.1.110`  
@@ -52,7 +53,7 @@ __test communication:__
 run  
 `$ rospack find franka_control`  
 output  
-`/home/abml/catkin_cl/src/franka_ros/franka_control`  
+>/home/abml/catkin_cl/src/franka_ros/franka_control  
  
 
 * $(dirname) in the launch file returns the absolute path of this launch file.  
@@ -66,7 +67,7 @@ Opend a terminal, run
 `$ python3`   
 `$ help("moveit_commander")`  
 output:  
-/opt/ros/noetic/lib/python3/dist-packages/moveit_commander/\__init\__.py  
+>/opt/ros/noetic/lib/python3/dist-packages/moveit_commander/\_\_init\_\_.py  
 
 
 
