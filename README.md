@@ -1,5 +1,5 @@
 ## basic usage of git  
-__* create a new repository__  
+* __create a new repository__  
 
 
 
