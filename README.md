@@ -6,9 +6,9 @@ roslaunch zoe_ws franka_control_in_franka_ros.launch robot_ip:=192.168.1.110
 
 franka\_gripper\_node.cpp: publish topic: /franka_gripper/joint_states  
 run:  
-`$ rostopic echo /franka_gripper/joint_states`
-output:
-```  
+`$ rostopic echo /franka_gripper/joint_states`  
+output:  
+```ex
 header: 
   seq: 9558
   stamp: 
@@ -21,7 +21,6 @@ name:
 position: [-1.8386666852165945e-05, -1.8386666852165945e-05]
 velocity: [0.0, 0.0]
 effort: [0.0, 0.0]
-
 ```
 
 
