@@ -66,7 +66,7 @@ Opend a terminal, run
 `$ python3`   
 `$ help("moveit_commander")`  
 output:  
-/opt/ros/noetic/lib/python3/dist-packages/moveit_commander/\__init\__.py  
+/opt/ros/noetic/lib/python3/dist-packages/moveit_commander/\_\_init\_\_.py  
 
 
 
