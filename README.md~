@@ -18,9 +18,9 @@ new (2 launch):
 1-5 (__node__) name="joint\_state\_publisher" pkg="joint\_state\_publisher" type="joint\_state\_publisher"   
 
 2 (launch: 1 node) $(find panda\_moveit\_config)/launch/ros\_controllers.launch  
->arg name="transmission" default="position" passed to 1-2  
+arg name="transmission" default="position" passed to 1-2  
 2-1 (node) pkg="controller\_manager" type="spawner" respawn="false"  (repeat node 1-3)
-* try to remove this launch  
+> try to remove this launch  
 
 
 ## node info  
@@ -145,12 +145,12 @@ node 1-5 joint\_state\_publisher -> /joint\_states [sensor_msgs/JointState] -> n
 node 1-3 state\_controller\_spawner: services noly  
 > What's the function of this node? Try to remove it?  
 
-* packages are under /opt/ros/noetic/share/  
-For example: 
+* packages are under /opt/ros/noetic/share/   
+For example:  
 run:   
 `$ rospack find robot_state_publisher`  
 output:  
-> /opt/ros/noetic/share/robot\_state\_publisher
+> /opt/ros/noetic/share/robot\_state\_publisher  
 Definitions of messages are also under this path.  
 For example:  
 /opt/ros/noetic/share/robot\_state\_publisher/sensor_msgs/JointState.msg  
@@ -163,7 +163,7 @@ float64[] velocity
 float64[] effort
 ```
 
-* Show message description
+* Show message description  
 `$ rosmsg info /msg_name`  
 For example:  
 `$ rosmsg info sensor_msgs/JointState`  
@@ -247,7 +247,11 @@ effort: [0.13057643175125122, -25.901573181152344, -9.191649436950684, 16.066020
 ```
 
 ## communication  
-node 1-1-1 franka\_gripper + node 1-2 franka\_control -> node 1-5 joint\_state\_publisher -> node 1-4 robot\_state\_publisher -> topic /tf [tf2_msgs/TFMessage] + /tf\_static [tf2_msgs/TFMessage]  
+node 1-1-1 franka\_gripper + node 1-2 franka\_control  
+-> node 1-5 joint\_state\_publisher  
+-> node 1-4 robot\_state\_publisher  
+-> topic /tf [tf2_msgs/TFMessage] + /tf\_static [tf2_msgs/TFMessage]  
+Final output:  
 `$ rostopic echo /tf`  
 ```
 transforms: 

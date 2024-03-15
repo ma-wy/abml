@@ -18,9 +18,9 @@ new (2 launch):
 1-5 (__node__) name="joint\_state\_publisher" pkg="joint\_state\_publisher" type="joint\_state\_publisher"   
 
 2 (launch: 1 node) $(find panda\_moveit\_config)/launch/ros\_controllers.launch  
->arg name="transmission" default="position" passed to 1-2  
+arg name="transmission" default="position" passed to 1-2  
 2-1 (node) pkg="controller\_manager" type="spawner" respawn="false"  (repeat node 1-3)
-* try to remove this launch  
+> try to remove this launch  
 
 
 ## node info  
@@ -247,7 +247,12 @@ effort: [0.13057643175125122, -25.901573181152344, -9.191649436950684, 16.066020
 ```
 
 ## communication  
-node 1-1-1 franka\_gripper + node 1-2 franka\_control -> node 1-5 joint\_state\_publisher -> node 1-4 robot\_state\_publisher -> topic /tf [tf2_msgs/TFMessage] + /tf\_static [tf2_msgs/TFMessage]  
+### Flow  
+node 1-1-1 franka\_gripper + node 1-2 franka\_control  
+-> node 1-5 joint\_state\_publisher  
+-> node 1-4 robot\_state\_publisher  
+-> topic /tf [tf2_msgs/TFMessage] + /tf\_static [tf2_msgs/TFMessage]  
+### Final output:  
 `$ rostopic echo /tf`  
 ```
 transforms: 
