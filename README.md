@@ -7,8 +7,8 @@ new:
 `$ roslaunch zoe_ws franka_control.launch robot_ip:=192.168.1.110`  
 > panda\_moveit\_config franka_control.launch
 >> include 2 launch files   
->>>1-1. (old) $(find franka\_control)/launch/franka_control.launch  
->>>1. (new) $(dirname)/franka\_control\_in\_franka_ros.launch  
+>1-1. (old) $(find franka\_control)/launch/franka_control.launch  
+>1-1. (new) $(dirname)/franka\_control\_in\_franka_ros.launch  
 >>>> include: launch files:  
 >>>>1. $(find franka\_gripper)/launch/franka_gripper.launch  
 >>>> include: nodes:  
