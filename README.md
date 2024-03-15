@@ -108,10 +108,8 @@ Services:
 3. 1-3 name="state\_controller\_spawner" pkg="controller_manager" type="spawner" respawn="false"  
 ```  
 Publications: X
-
 Subscriptions: X
-
-Services: 
+Services: X
  * /node_name/get_loggers, set_logger_level  
 ```
 
@@ -120,11 +118,9 @@ Services:
 Publications:    
  * /tf [tf2_msgs/TFMessage]  
  * /tf_static [tf2_msgs/TFMessage] 
-
 Subscriptions:   
  * /joint_states [sensor_msgs/JointState]  (from node 1-5 joint_state_publisher)
-
-Services: 
+Services: X
  * /node_name/get_loggers, set_logger_level
 ```
 
@@ -132,12 +128,10 @@ Services:
 ```
 Publications:  
  * /joint_states [sensor_msgs/JointState] (to node 1-4 robot_state_publisher) 
- 
 Subscriptions:  
- * /franka\_gripper/joint\_states [sensor_msgs/JointState] (from node 1-1-1 franka_gripper)
- * /franka\_state\_controller/joint\_states [sensor_msgs/JointState] (from node 1-2 franka_control) 
-
-Services:   
+ * /franka_gripper/joint_states [sensor_msgs/JointState] (from node 1-1-1 franka_gripper)
+ * /franka_state_controller/joint_states [sensor_msgs/JointState] (from node 1-2 franka_control) 
+Services: X  
  * /node_name/get_loggers, set_logger_level 
 ```
 
@@ -149,13 +143,14 @@ node 1-2 franka\_control -> /franka\_state\_controller/joint\_states [sensor_msg
 node 1-5 joint\_state\_publisher -> /joint\_states [sensor_msgs/JointState] -> node 1-4 robot\_state\_publisher  
 
 node 1-3 state\_controller\_spawner: services noly  
+> What's the function of this node? Try to remove it?  
 
-* packages are under /opt/ros/noetic/share/  
-For example: 
+* packages are under /opt/ros/noetic/share/   
+For example:  
 run:   
 `$ rospack find robot_state_publisher`  
 output:  
-> /opt/ros/noetic/share/robot\_state\_publisher
+> /opt/ros/noetic/share/robot\_state\_publisher  
 Definitions of messages are also under this path.  
 For example:  
 /opt/ros/noetic/share/robot\_state\_publisher/sensor_msgs/JointState.msg  
@@ -168,7 +163,7 @@ float64[] velocity
 float64[] effort
 ```
 
-* Show message description
+* Show message description  
 `$ rosmsg info /msg_name`  
 For example:  
 `$ rosmsg info sensor_msgs/JointState`  
