@@ -9,60 +9,155 @@ new (2 launch):
 `$ roslaunch zoe_ws franka_control.launch robot_ip:=192.168.1.110`  
   
 1 (old) $(find franka\_control)/launch/franka_control.launch  
-1 (new, launch: 1 launch, 4 nodes) $(dirname)/franka\_control\_in\_franka_ros.launch  
+1 (new, launch: 1 launch, 4 nodes) $(dirname)/franka\_control\_in\_franka\_ros.launch  
 1-1 (launch: 1 node) $(find franka\_gripper)/launch/franka_gripper.launch (1 node)   
-1-1-1 (__node__) name="franka\_gripper" pkg="franka\_gripper" type="franka\_gripper_node"  
-1-2 (__node__) name="franka\_control" pkg="franka\_control" type="franka\_control_node"  
+1-1-1 (__node__) name="franka\_gripper" pkg="franka\_gripper" type="franka\_gripper\_node"  
+1-2 (__node__) name="franka\_control" pkg="franka\_control" type="franka\_control\_node"  
 1-3 (__node__) name="state\_controller\_spawner" pkg="controller_manager" type="spawner" respawn="false"  
-1-4 (__node__) name="robot\_state\_publisher" pkg="robot\_state\_publisher" type="robot\_state_publisher"  
-1-5 (__node__) name="joint\_state\_publisher" pkg="joint\_state\_publisher" type="joint\_state_publisher"   
+1-4 (__node__) name="robot\_state\_publisher" pkg="robot\_state\_publisher" type="robot\_state\_publisher"  
+1-5 (__node__) name="joint\_state\_publisher" pkg="joint\_state\_publisher" type="joint\_state\_publisher"   
 
-2 (launch: 1 node) $(find panda\_moveit\_config)/launch/ros_controllers.launch  
+2 (launch: 1 node) $(find panda\_moveit\_config)/launch/ros\_controllers.launch  
 >arg name="transmission" default="position" passed to 1-2  
-2-1 (node) pkg="controller_manager" type="spawner" respawn="false"  (repeat node 1-3)
+2-1 (node) pkg="controller\_manager" type="spawner" respawn="false"  (repeat node 1-3)
 * try to remove this launch  
 
 
 ## node info  
 1. 1-1-1 gripper   
 `$ roslaunch franka_gripper franka_gripper.launch robot_ip:=192.168.1.110`  
-franka\_gripper\_node.cpp: publish the topic /franka_gripper/joint_states  
-topics:   
+franka\_gripper\_node.cpp: publish the topic /franka\_gripper/joint\_states   
 ```
-/franka_gripper/grasp/cancel
-/franka_gripper/grasp/feedback  
-/franka_gripper/grasp/goal  
-/franka_gripper/grasp/result  
-/franka_gripper/grasp/status  
+Node [/franka_gripper]
+Publications: 
+ * /franka\_gripper/joint\_states [sensor_msgs/JointState] (to node 1-5 joint_state_publisher)
+ 
+ * /franka_gripper/grasp/feedback [franka_gripper/GraspActionFeedback]
+ * /franka_gripper/grasp/result [franka_gripper/GraspActionResult]
+ * /franka_gripper/grasp/status [actionlib_msgs/GoalStatusArray]
+ 
+ * /franka_gripper/gripper_action/feedback [control_msgs/GripperCommandActionFeedback]
+ * /franka_gripper/gripper_action/result [control_msgs/GripperCommandActionResult]
+ * /franka_gripper/gripper_action/status [actionlib_msgs/GoalStatusArray]
+ 
+ * /franka_gripper/homing/feedback [franka_gripper/HomingActionFeedback]
+ * /franka_gripper/homing/result [franka_gripper/HomingActionResult]
+ * /franka_gripper/homing/status [actionlib_msgs/GoalStatusArray]
 
-/franka\_gripper/gripper_action/cancel  
-/franka\_gripper/gripper_action/feedback  
-/franka\_gripper/gripper_action/goal  
-/franka\_gripper/gripper_action/result  
-/franka\_gripper/gripper_action/status  
+ * /franka_gripper/move/feedback [franka_gripper/MoveActionFeedback]
+ * /franka_gripper/move/result [franka_gripper/MoveActionResult]
+ * /franka_gripper/move/status [actionlib_msgs/GoalStatusArray]
+ 
+ * /franka_gripper/stop/feedback [franka_gripper/StopActionFeedback]
+ * /franka_gripper/stop/result [franka_gripper/StopActionResult]
+ * /franka_gripper/stop/status [actionlib_msgs/GoalStatusArray]
 
-/franka_gripper/homing/cancel  
-/franka_gripper/homing/feedback  
-/franka_gripper/homing/goal  
-/franka_gripper/homing/result  
-/franka_gripper/homing/status  
+Subscriptions: 
+ * /franka_gripper/grasp/cancel [unknown type]
+ * /franka_gripper/grasp/goal [unknown type]
+ * /franka_gripper/gripper_action/cancel [unknown type]
+ * /franka_gripper/gripper_action/goal [unknown type]
+ * /franka_gripper/homing/cancel [unknown type]
+ * /franka_gripper/homing/goal [unknown type]
+ * /franka_gripper/move/cancel [unknown type]
+ * /franka_gripper/move/goal [unknown type]
+ * /franka_gripper/stop/cancel [unknown type]
+ * /franka_gripper/stop/goal [unknown type]
 
-/franka_gripper/move/cancel  
-/franka_gripper/move/feedback  
-/franka_gripper/move/goal  
-/franka_gripper/move/result  
-/franka_gripper/move/status  
-
-/franka_gripper/stop/cancel  
-/franka_gripper/stop/feedback  
-/franka_gripper/stop/goal  
-/franka_gripper/stop/result  
-/franka_gripper/stop/status  
-
-/franka\_gripper/joint_states  
+Services: 
+ * /node_name/get_loggers, set_logger_level  
 ```
+ 
+2. 1-2 name="franka\_control" pkg="franka\_control" type="franka\_control_node"   
+```
+Node [/franka_control]  
+Publications:   
+ * /franka_control/error_recovery/feedback [franka_msgs/ErrorRecoveryActionFeedback]  
+ * /franka_control/error_recovery/result [franka_msgs/ErrorRecoveryActionResult]  
+ * /franka_control/error_recovery/status [actionlib_msgs/GoalStatusArray]  
+ 
+ * /franka_state_controller/F_ext [geometry_msgs/WrenchStamped]  
+ * /franka_state_controller/franka_states [franka_msgs/FrankaState]  
+ * /franka\_state\_controller/joint\_states [sensor_msgs/JointState] (to node 1-5 joint_state_publisher) 
+ * /franka_state_controller/joint_states_desired [sensor_msgs/JointState]  
+ 
+ * /tf [tf2_msgs/TFMessage]  
+
+Subscriptions:   
+ * /franka_control/error_recovery/cancel [unknown type]  
+ * /franka_control/error_recovery/goal [unknown type]  
+
+Services: 
+ * /node_name/get_loggers, set_logger_level   
+ 
+ * /controller_manager/list_controller_types  
+ * /controller_manager/list_controllers  
+ * /controller_manager/load_controller  
+ * /controller_manager/reload_controller_libraries  
+ * /controller_manager/switch_controller  
+ * /controller_manager/unload_controller  
+ * /franka_control/connect  
+ * /franka_control/disconnect   
+ * /franka_control/set_EE_frame  
+ * /franka_control/set_K_frame   
+ * /franka_control/set_cartesian_impedance  
+ * /franka_control/set_force_torque_collision_behavior  
+ * /franka_control/set_full_collision_behavior  
+ * /franka_control/set_joint_impedance  
+ * /franka_control/set_load  
+```
+
+3. 1-3 name="state\_controller\_spawner" pkg="controller_manager" type="spawner" respawn="false"  
+```  
+Publications: X
+
+Subscriptions: X
+
+Services: 
+ * /node_name/get_loggers, set_logger_level  
+```
+
+4. 1-4 name="robot\_state\_publisher" pkg="robot\_state\_publisher" type="robot\_state_publisher"  
+```
+Node [/robot_state_publisher]  
+Publications:    
+ * /tf [tf2_msgs/TFMessage]  
+ * /tf_static [tf2_msgs/TFMessage] 
+
+Subscriptions:   
+ * /joint\_states [sensor_msgs/JointState]  (from node 1-5 joint_state_publisher)
+
+Services: 
+ * /node_name/get_loggers, set_logger_level
+```
+
+5. 1-5 name="joint\_state\_publisher" pkg="joint\_state\_publisher" type="joint\_state_publisher"   
+```
+Node [/joint_state_publisher]  
+Publications:  
+ * /joint\_states [sensor_msgs/JointState] (to node 1-4 robot_state_publisher) 
+ 
+Subscriptions:  
+ * /franka\_gripper/joint\_states [sensor_msgs/JointState] (from node 1-1-1 franka_gripper)
+ * /franka\_state\_controller/joint\_states [sensor_msgs/JointState] (from node 1-2 franka_control) 
+
+Services:   
+ * /node_name/get_loggers, set_logger_level 
+```
+
+## important topic  
+node 1-1-1 franka\_gripper -> /franka\_gripper/joint\_states [sensor_msgs/JointState] -> node 1-5 joint\_state\_publisher  
+
+node 1-2 franka\_control -> /franka\_state\_controller/joint\_states [sensor_msgs/JointState] -> node 1-5 joint\_state\_publisher  
+
+node 1-5 joint\_state\_publisher -> /joint\_states [sensor_msgs/JointState] -> node 1-4 robot\_state\_publisher  
+
+node 1-3 state\_controller\_spawner: services noly  
+---------------
+1. /franka\_gripper/joint\_states [sensor_msgs/JointState]   
+from node 1-1-1 franka\_gripper to node 1-5 joint\_state\_publisher  
 run:  
-`$ rostopic echo /franka_gripper/joint_states`  
+`$ rostopic echo /franka\_gripper/joint\_states`  
 output:  
 ```
 header: 
@@ -78,150 +173,54 @@ position: [-1.8386666852165945e-05, -1.8386666852165945e-05]
 velocity: [0.0, 0.0]  
 effort: [0.0, 0.0]  
 ```
-This topic publishes the states of the two fingers of the gripper.  
+This topic publishes the states of the two fingers of the gripper.   
  
-2. 1-2 name="franka\_control" pkg="franka\_control" type="franka\_control_node"   
+2.  /franka\_state\_controller/joint\_states [sensor_msgs/JointState] 
+from node 1-2 franka\_control to node 1-5 joint\_state_publisher
 ```
-Node [/franka_control]  
-Publications:   
- * /franka_control/error_recovery/feedback [franka_msgs/ErrorRecoveryActionFeedback]  
- * /franka_control/error_recovery/result [franka_msgs/ErrorRecoveryActionResult]  
- * /franka_control/error_recovery/status [actionlib_msgs/GoalStatusArray]  
- * /franka_state_controller/F_ext [geometry_msgs/WrenchStamped]  
- * /franka_state_controller/franka_states [franka_msgs/FrankaState]  
- * /franka_state_controller/joint_states [sensor_msgs/JointState]  
- * /franka_state_controller/joint_states_desired [sensor_msgs/JointState]  
- * /tf [tf2_msgs/TFMessage]  
-  
- * /rosout [rosgraph_msgs/Log]  
-
-
-Subscriptions:   
- * /franka_control/error_recovery/cancel [unknown type]  
- * /franka_control/error_recovery/goal [unknown type]  
-
-Services:   
- * /controller_manager/list_controller_types  
- * /controller_manager/list_controllers  
- * /controller_manager/load_controller  
- * /controller_manager/reload_controller_libraries  
- * /controller_manager/switch_controller  
- * /controller_manager/unload_controller  
- * /franka_control/connect  
- * /franka_control/disconnect  
- * /franka_control/get_loggers  
- * /franka_control/set_EE_frame  
- * /franka_control/set_K_frame   
- * /franka_control/set_cartesian_impedance  
- * /franka_control/set_force_torque_collision_behavior  
- * /franka_control/set_full_collision_behavior  
- * /franka_control/set_joint_impedance  
- * /franka_control/set_load  
- * /franka_control/set_logger_level  
-
-
-contacting node http://abml:38503/ ...  
-Pid: 85052  
-Connections:  
- * topic: /rosout  
-    * to: /rosout  
-    * direction: outbound (46445 - 127.0.0.1:52052) [13]  
-    * transport: TCPROS  
- * topic: /franka_state_controller/joint_states  
-    * to: /joint_state_publisher  
-    * direction: outbound (46445 - 127.0.0.1:52090) [12]  
-    * transport: TCPROS  
-```
-
-3. 1-3 name="state\_controller\_spawner" pkg="controller_manager" type="spawner" respawn="false"  
-```  
-Node [/state_controller_spawner]  
-Publications:   
- * /rosout [rosgraph_msgs/Log]  
-
-Subscriptions: None  
-
-Services:   
- * /state_controller_spawner/get_loggers  
- * /state_controller_spawner/set_logger_level  
-
-
-contacting node http://abml:41701/ ...  
-Pid: 85053  
-Connections:  
- * topic: /rosout  
-    * to: /rosout  
-    * direction: outbound (42849 - 127.0.0.1:37650) [8]  
-    * transport: TCPROS  
-```
-
-4. 1-4 name="robot\_state\_publisher" pkg="robot\_state\_publisher" type="robot\_state_publisher"  
-```
-Node [/robot_state_publisher]  
-Publications:   
- * /rosout [rosgraph_msgs/Log]  
- * /tf [tf2_msgs/TFMessage]  
- * /tf_static [tf2_msgs/TFMessage]  
-
-Subscriptions:   
- * /joint_states [sensor_msgs/JointState]  
-
-Services:   
- * /robot_state_publisher/get_loggers  
- * /robot_state_publisher/set_logger_level  
-
-
-contacting node http://abml:37851/ ...  
-Pid: 85054  
-Connections:  
- * topic: /rosout  
-    * to: /rosout  
-    * direction: outbound (49481 - 127.0.0.1:36768) [11]  
-    * transport: TCPROS  
- * topic: /joint_states  
-    * to: /joint_state_publisher (http://abml:42555/)  
-    * direction: inbound (33910 - abml:44321) [13]  
-    * transport: TCPROS  
-```
-
-5. 1-5 name="joint\_state\_publisher" pkg="joint\_state\_publisher" type="joint\_state_publisher"   
-```
-Node [/joint_state_publisher]  
-Publications:  
- ** /joint_states [sensor_msgs/JointState]  
- * /rosout [rosgraph_msgs/Log]  
-
-Subscriptions:  
- * /franka_gripper/joint_states [sensor_msgs/JointState]  
- * /franka_state_controller/joint_states [sensor_msgs/JointState]  
-
-Services:   
- * /joint_state_publisher/get_loggers  
- * /joint_state_publisher/set_logger_level  
-
-
-contacting node http://abml:42555/ ...  
-Pid: 85060  
-Connections:  
- * topic: /rosout  
-    * to: /rosout  
-    * direction: outbound (44321 - 127.0.0.1:33908) [9]  
-    * transport: TCPROS  
- * topic: /joint_states  
-    * to: /robot_state_publisher  
-    * direction: outbound (44321 - 127.0.0.1:33910) [7]  
-    * transport: TCPROS  
- * topic: /franka_state_controller/joint_states  
-    * to: /franka_control (http://abml:38309/)  
-    * direction: inbound  
-    * transport: TCPROS  
- * topic: /franka_gripper/joint_states  
-    * to: /franka_gripper (http://abml:38657/)  
-    * direction: inbound  
-    * transport: TCPROS  
+header: 
+  seq: 208206
+  stamp: 
+    secs: 1710484933
+    nsecs: 126548471
+  frame_id: ''
+name: 
+  - panda_joint1
+  - panda_joint2
+  - panda_joint3
+  - panda_joint4
+  - panda_joint5
+  - panda_joint6
+  - panda_joint7
+position: [0.89522913440069, 0.44167418931520475, -0.8973612387972845, -2.31483014484874, 0.4912188812295596, 2.2763984821312713, 0.5283940817870442]
+velocity: [-0.0007187489802257906, 0.0006938567564774313, 0.000862680079172758, 0.0006432245071607099, -1.2711813091633669e-05, 0.0002131094376944469, -0.00029667792283876864]
+effort: [0.17024928331375122, -25.941246032714844, -9.267027854919434, 16.101726531982422, 0.6915948987007141, 1.904165506362915, -0.14393071830272675]
 ```
  
- 
+3. /joint\_states [sensor_msgs/JointState]   
+from node 1-5 joint\_state\_publisher to node 1-4 robot\_state\_publisher  
+```
+header: 
+  seq: 220238
+  stamp: 
+    secs: 1710485183
+    nsecs: 689952611
+  frame_id: ''
+name: 
+  - panda_joint1
+  - panda_joint2
+  - panda_joint3
+  - panda_joint4
+  - panda_joint5
+  - panda_joint6
+  - panda_joint7
+  - panda_finger_joint1
+  - panda_finger_joint2
+position: [0.8952338259139105, 0.4416706966237804, -0.8973665285109783, -2.3148277219504196, 0.49121888122955953, 2.2763983280311013, 0.5283901368914931, 0.04010230675339699, 0.04010230675339699]
+velocity: [-0.0003650391902504162, 0.0015916082667817475, 0.0008829863979122501, 0.0020634986393326432, -0.00016033748655701753, 0.00031076818906534466, 0.0020899901188669435, 0.0, 0.0]
+effort: [0.13057643175125122, -25.901573181152344, -9.191649436950684, 16.066020965576172, 0.6915948987007141, 1.904165506362915, -0.13385991752147675, 0.0, 0.0]
+```
+
 ## test   
 1. `$ roslaunch franka_gripper franka_gripper.launch robot_ip:=192.168.1.110`    
   
