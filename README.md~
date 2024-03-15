@@ -18,7 +18,7 @@ new:
 >>>>4. pkg="joint\_state\_publisher" type="joint\_state_publisher"   
 >>>2. $(find panda\_moveit\_config)/launch/ros_controllers.launch  
 >>>>include: node:  
->>>>>1. pkg="controller_manager" type="spawner" respawn="false"  
+>>>>1. pkg="controller_manager" type="spawner" respawn="false"  
 
 
 in "franka_control_in_franka_ros.launch"  
