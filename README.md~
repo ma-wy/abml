@@ -28,9 +28,8 @@ new (2 launch):
 `$ roslaunch franka_gripper franka_gripper.launch robot_ip:=192.168.1.110`  
 franka\_gripper\_node.cpp: publish the topic /franka\_gripper/joint\_states   
 ```
-Node [/franka_gripper]
 Publications: 
- * /franka\_gripper/joint\_states [sensor_msgs/JointState] (to node 1-5 joint_state_publisher)
+ * /franka_gripper/joint_states [sensor_msgs/JointState] (to node 1-5 joint_state_publisher)
  
  * /franka_gripper/grasp/feedback [franka_gripper/GraspActionFeedback]
  * /franka_gripper/grasp/result [franka_gripper/GraspActionResult]
@@ -70,7 +69,6 @@ Services:
  
 2. 1-2 name="franka\_control" pkg="franka\_control" type="franka\_control_node"   
 ```
-Node [/franka_control]  
 Publications:   
  * /franka_control/error_recovery/feedback [franka_msgs/ErrorRecoveryActionFeedback]  
  * /franka_control/error_recovery/result [franka_msgs/ErrorRecoveryActionResult]  
@@ -78,7 +76,7 @@ Publications:
  
  * /franka_state_controller/F_ext [geometry_msgs/WrenchStamped]  
  * /franka_state_controller/franka_states [franka_msgs/FrankaState]  
- * /franka\_state\_controller/joint\_states [sensor_msgs/JointState] (to node 1-5 joint_state_publisher) 
+ * /franka_state_controller/joint_states [sensor_msgs/JointState] (to node 1-5 joint_state_publisher) 
  * /franka_state_controller/joint_states_desired [sensor_msgs/JointState]  
  
  * /tf [tf2_msgs/TFMessage]  
@@ -119,13 +117,12 @@ Services:
 
 4. 1-4 name="robot\_state\_publisher" pkg="robot\_state\_publisher" type="robot\_state_publisher"  
 ```
-Node [/robot_state_publisher]  
 Publications:    
  * /tf [tf2_msgs/TFMessage]  
  * /tf_static [tf2_msgs/TFMessage] 
 
 Subscriptions:   
- * /joint\_states [sensor_msgs/JointState]  (from node 1-5 joint_state_publisher)
+ * /joint_states [sensor_msgs/JointState]  (from node 1-5 joint_state_publisher)
 
 Services: 
  * /node_name/get_loggers, set_logger_level
@@ -133,9 +130,8 @@ Services:
 
 5. 1-5 name="joint\_state\_publisher" pkg="joint\_state\_publisher" type="joint\_state_publisher"   
 ```
-Node [/joint_state_publisher]  
 Publications:  
- * /joint\_states [sensor_msgs/JointState] (to node 1-4 robot_state_publisher) 
+ * /joint_states [sensor_msgs/JointState] (to node 1-4 robot_state_publisher) 
  
 Subscriptions:  
  * /franka\_gripper/joint\_states [sensor_msgs/JointState] (from node 1-1-1 franka_gripper)
@@ -153,11 +149,12 @@ node 1-2 franka\_control -> /franka\_state\_controller/joint\_states [sensor_msg
 node 1-5 joint\_state\_publisher -> /joint\_states [sensor_msgs/JointState] -> node 1-4 robot\_state\_publisher  
 
 node 1-3 state\_controller\_spawner: services noly  
+
 ---------------
 1. /franka\_gripper/joint\_states [sensor_msgs/JointState]   
 from node 1-1-1 franka\_gripper to node 1-5 joint\_state\_publisher  
 run:  
-`$ rostopic echo /franka\_gripper/joint\_states`  
+`$ rostopic echo /franka_gripper/joint_states`  
 output:  
 ```
 header: 
