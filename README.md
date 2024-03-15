@@ -10,7 +10,7 @@ new (2 launch):
 >1-1 (old) $(find franka\_control)/launch/franka_control.launch  
 >1-1 (new, launch: 1 launch, 4 nodes) $(dirname)/franka\_control\_in\_franka_ros.launch  
 >1-2 (launch: 1 node) $(find panda\_moveit\_config)/launch/ros_controllers.launch  
-><arg name="transmission" default="position" /> passed to 1-2  
+>arg name="transmission" default="position" passed to 1-2  
 >>> include:
 >1-1-1 (launch: 1 node) $(find franka\_gripper)/launch/franka_gripper.launch (1 node)   
 >1-1-2 (node) pkg="franka\_control" type="franka\_control_node"  

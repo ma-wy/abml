@@ -26,8 +26,7 @@ in "franka_control_in_franka_ros.launch"
 
 
 ## test  
-1. `$ roslaunch franka_gripper franka_gripper.launch robot_ip:=192.168.1.110`  
-__note:__    
+1. `$ roslaunch franka_gripper franka_gripper.launch robot_ip:=192.168.1.110`    
 franka\_gripper\_node.cpp: publish the topic /franka_gripper/joint_states  
 run:  
 `$ rostopic echo /franka_gripper/joint_states`  
