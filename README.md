@@ -136,13 +136,13 @@ Services: X
 ```
 
 ## important topic  
-node 1-1-1 franka\_gripper -> /franka\_gripper/joint\_states [sensor_msgs/JointState] -> node 1-5 joint\_state\_publisher  
+* __node 1-1-1__ franka\_gripper -> /franka\_gripper/joint\_states [sensor_msgs/JointState] -> node 1-5 joint\_state\_publisher  
 
-node 1-2 franka\_control -> /franka\_state\_controller/joint\_states [sensor_msgs/JointState] -> node 1-5 joint\_state\_publisher  
+* __node 1-2__ franka\_control -> /franka\_state\_controller/joint\_states [sensor_msgs/JointState] -> node 1-5 joint\_state\_publisher  
 
-node 1-5 joint\_state\_publisher -> /joint\_states [sensor_msgs/JointState] -> node 1-4 robot\_state\_publisher  
+* __node 1-5__ joint\_state\_publisher -> /joint\_states [sensor_msgs/JointState] -> node 1-4 robot\_state\_publisher  
 
-node 1-3 state\_controller\_spawner: services noly  
+* node 1-3 state\_controller\_spawner: services noly  
 > What's the function of this node? Try to remove it?  
 
 * packages are under /opt/ros/noetic/share/   
@@ -151,7 +151,8 @@ run:
 `$ rospack find robot_state_publisher`  
 output:  
 > /opt/ros/noetic/share/robot\_state\_publisher  
-Definitions of messages are also under this path.  
+
+* Definitions of messages are also under this path.  
 For example:  
 /opt/ros/noetic/share/robot\_state\_publisher/sensor_msgs/JointState.msg  
 ```
