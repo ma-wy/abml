@@ -5,11 +5,11 @@
 `$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
 new:  
 `$ roslaunch zoe_ws franka_control.launch robot_ip:=192.168.1.110`  
-> panda\_moveit\_config franka_control.launch
->> include 2 launch files   
+> panda\_moveit\_config franka_control.launch (include: 2 launch files)  
+>> include:    
 >1-1 (old) $(find franka\_control)/launch/franka_control.launch  
 >1-1 (new) $(dirname)/franka\_control\_in\_franka_ros.launch  
->> include:
+>>> include:
 >1-1-1 (launch) $(find franka\_gripper)/launch/franka_gripper.launch   
 >1-1-2 (node) pkg="franka\_control" type="franka\_control_node"  
 >1-1-3 (node) pkg="controller_manager" type="spawner" respawn="false"  
