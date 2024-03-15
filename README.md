@@ -6,7 +6,7 @@
 old (include MoveIt demo):  
 `$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
 new (2 launch):  
-`$ roslaunch zoe_ws franka_control.launch robot_ip:=192.168.1.110`  
+`$ roslaunch pick-and-place franka_control.launch robot_ip:=192.168.1.110`  
   
 1 (old) $(find franka\_control)/launch/franka_control.launch  
 1 (new, launch: 1 launch, 4 nodes) $(dirname)/franka\_control\_in\_franka\_ros.launch  
