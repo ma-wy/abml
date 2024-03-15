@@ -1,4 +1,6 @@
 ## commands  
+`$ roslaunch zoe_ws franka_control.launch robot_ip:=192.168.1.110`  
+
 
 ## launch structure  
 old (include MoveIt demo):  
@@ -8,26 +10,59 @@ new (2 launch):
   
 1 (old) $(find franka\_control)/launch/franka_control.launch  
 1 (new, launch: 1 launch, 4 nodes) $(dirname)/franka\_control\_in\_franka_ros.launch  
-* include:
 1-1 (launch: 1 node) $(find franka\_gripper)/launch/franka_gripper.launch (1 node)   
-1-1-1 (node) pkg="franka\_gripper" type="franka\_gripper_node"  
-1-2 (node) pkg="franka\_control" type="franka\_control_node"  
-1-3 (node) pkg="controller_manager" type="spawner" respawn="false"  
-1-4 (node) pkg="robot\_state\_publisher" type="robot\_state_publisher"  
-1-5 (node) pkg="joint\_state\_publisher" type="joint\_state_publisher"   
+1-1-1 (__node__) pkg="franka\_gripper" type="franka\_gripper_node"  
+1-2 (__node__) pkg="franka\_control" type="franka\_control_node"  
+1-3 (__node__) pkg="controller_manager" type="spawner" respawn="false"  
+1-4 (__node__) pkg="robot\_state\_publisher" type="robot\_state_publisher"  
+1-5 (__node__) pkg="joint\_state\_publisher" type="joint\_state_publisher"   
 
 2 (launch: 1 node) $(find panda\_moveit\_config)/launch/ros_controllers.launch  
 >arg name="transmission" default="position" passed to 1-2  
-2-1 (node) pkg="controller_manager" type="spawner" respawn="false"  
+2-1 (node) pkg="controller_manager" type="spawner" respawn="false"  (repeat node 1-3)
+* try to remove this launch  
 
 
-in "franka_control_in_franka_ros.launch"  
-`$ roslaunch zoe_ws franka_control_in_franka_ros.launch robot_ip:=192.168.1.110`  
-
-
-## test  
-1. `$ roslaunch franka_gripper franka_gripper.launch robot_ip:=192.168.1.110`    
+## node info  
+1. 1-1-1 gripper   
+`$ roslaunch franka_gripper franka_gripper.launch robot_ip:=192.168.1.110`  
 franka\_gripper\_node.cpp: publish the topic /franka_gripper/joint_states  
+run:  
+`$ rostopic list`  
+output:  
+'''
+/franka_gripper/grasp/cancel  
+/franka_gripper/grasp/feedback  
+/franka_gripper/grasp/goal  
+/franka_gripper/grasp/result  
+/franka_gripper/grasp/status  
+
+/franka\_gripper/gripper_action/cancel  
+/franka\_gripper/gripper_action/feedback  
+/franka\_gripper/gripper_action/goal  
+/franka\_gripper/gripper_action/result  
+/franka\_gripper/gripper_action/status  
+
+/franka_gripper/homing/cancel  
+/franka_gripper/homing/feedback  
+/franka_gripper/homing/goal  
+/franka_gripper/homing/result  
+/franka_gripper/homing/status  
+
+/franka_gripper/move/cancel  
+/franka_gripper/move/feedback  
+/franka_gripper/move/goal  
+/franka_gripper/move/result  
+/franka_gripper/move/status  
+
+/franka_gripper/stop/cancel  
+/franka_gripper/stop/feedback  
+/franka_gripper/stop/goal  
+/franka_gripper/stop/result  
+/franka_gripper/stop/status  
+
+/franka\_gripper/joint_states  
+'''
 run:  
 `$ rostopic echo /franka_gripper/joint_states`  
 output:  
@@ -46,6 +81,13 @@ velocity: [0.0, 0.0]
 effort: [0.0, 0.0]
 ```
 This topic publishes the states of the two fingers of the gripper.  
+ 
+2. 1-2  
+ 
+ 
+ 
+## test   
+1. `$ roslaunch franka_gripper franka_gripper.launch robot_ip:=192.168.1.110`    
  
 2. `$ rosparam load rosparam load ~/catkin_cl/src/franka_ros/franka_control/config/franka_control_node.yaml subst_value:=true`   
 
