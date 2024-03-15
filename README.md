@@ -1,4 +1,26 @@
 ## commands  
+
+## launch structure  
+1. old:  
+`$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
+new:  
+`$ roslaunch zoe_ws franka_control.launch robot_ip:=192.168.1.110`  
+> panda\_moveit\_config franka_control.launch
+>> include 2 launch files   
+>>>1. (old) $(find franka\_control)/launch/franka_control.launch  
+>>>1. (new) $(dirname)/franka\_control\_in\_franka_ros.launch  
+>>>> include: launch files:  
+>>>>>1. $(find franka\_gripper)/launch/franka_gripper.launch  
+>>>> include: nodes:  
+>>>>>1. pkg="franka\_control" type="franka\_control_node"  
+>>>>>2. pkg="controller_manager" type="spawner" respawn="false"  
+>>>>>3. pkg="robot\_state\_publisher" type="robot\_state_publisher"  
+>>>>>4. pkg="joint\_state\_publisher" type="joint\_state_publisher"   
+>>>2. $(find panda\_moveit\_config)/launch/ros_controllers.launch  
+>>>>include: node:  
+>>>>>1. pkg="controller_manager" type="spawner" respawn="false"  
+
+
 in "franka_control_in_franka_ros.launch"  
 `$ roslaunch zoe_ws franka_control_in_franka_ros.launch robot_ip:=192.168.1.110`  
 
@@ -42,7 +64,7 @@ xxx
 `$ ping 192.168.1.110`  
 
 
-
+* commands  
 `$ source ./catkin_cl/devel/setup.bash`  
 (This command had already been added in the ~/.bashrc)
 `$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
