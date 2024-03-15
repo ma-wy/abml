@@ -150,7 +150,6 @@ node 1-5 joint\_state\_publisher -> /joint\_states [sensor_msgs/JointState] -> n
 
 node 1-3 state\_controller\_spawner: services noly  
 
----------------
 1. /franka\_gripper/joint\_states [sensor_msgs/JointState]   
 from node 1-1-1 franka\_gripper to node 1-5 joint\_state\_publisher  
 run:  
