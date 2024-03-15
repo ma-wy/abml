@@ -1,28 +1,31 @@
 ## commands  
 
 ## launch structure  
-1. old:  
+1. old (include MoveIt demo):  
 `$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
-new:  
+new (2 launch):  
 `$ roslaunch zoe_ws franka_control.launch robot_ip:=192.168.1.110`  
-> panda\_moveit\_config franka_control.launch (include: 2 launch files)  
+>1. (launch: 2 launch) zoe\_ws franka_control.launch  
 >> include:    
 >1-1 (old) $(find franka\_control)/launch/franka_control.launch  
->1-1 (new) $(dirname)/franka\_control\_in\_franka_ros.launch  
->> include:
->1-1-1 (launch) $(find franka\_gripper)/launch/franka_gripper.launch   
+>1-1 (new, launch: 1 launch, 4 nodes) $(dirname)/franka\_control\_in\_franka_ros.launch  
+>1-2 (launch: 1 node) $(find panda\_moveit\_config)/launch/ros_controllers.launch  
+><arg name="transmission" default="position" /> passed to 1-2  
+>>> include:
+>1-1-1 (launch: 1 node) $(find franka\_gripper)/launch/franka_gripper.launch (1 node)   
 >1-1-2 (node) pkg="franka\_control" type="franka\_control_node"  
 >1-1-3 (node) pkg="controller_manager" type="spawner" respawn="false"  
 >1-1-4 (node) pkg="robot\_state\_publisher" type="robot\_state_publisher"  
->1-1-5 (node) pkg="joint\_state\_publisher" type="joint\_state_publisher"   
->1-2 (launch) $(find panda\_moveit\_config)/launch/ros_controllers.launch  
->include:   
+>1-1-5 (node) pkg="joint\_state\_publisher" type="joint\_state_publisher"     
 >1-2-1 (node) pkg="controller_manager" type="spawner" respawn="false"  
-
+>>>>include:  
+>1-1-1-1 (node) pkg="franka\_gripper" type="franka\_gripper_node"  
 
 in "franka_control_in_franka_ros.launch"  
 `$ roslaunch zoe_ws franka_control_in_franka_ros.launch robot_ip:=192.168.1.110`  
 
+
+## test  
 1. `$ roslaunch franka_gripper franka_gripper.launch robot_ip:=192.168.1.110`  
 __note:__    
 franka\_gripper\_node.cpp: publish the topic /franka_gripper/joint_states  
