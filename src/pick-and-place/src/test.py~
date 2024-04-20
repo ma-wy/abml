@@ -21,6 +21,7 @@ class franka_control_rocker:
     self.ee_p = []
     self.ee_q = []
     self.d_pose = []
+    self.gripper = MoveGroupCommander('panda_hand')
 # functions
 
 #  def callback_rocker(self,data):
@@ -42,15 +43,19 @@ def main(args):
   print(fcr.ee_p)
   print('current ee q:')
   print(fcr.ee_q)
-  ee_p_new = list(array(fcr.ee_p) + array([0,0,0.01]))
+  ee_p_new = array(fcr.ee_p) #+ array([0,0,0.01])
   ee_q_new = fcr.ee_q
-  ee_pose_new = ee_p_new + ee_q_new
+  ee_pose_new = list(ee_p_new) + list(ee_q_new)
   print(ee_pose_new)
-  
-  
-  fcr.rob.set_pose_target(ee_pose_new, ee_id) #plan
-#  fcr.rob.go() # execute
 
+  fcr.rob.set_pose_target(ee_pose_new, ee_id) #plan time: 0.06890296936035156 ms
+
+  t1 = time.time()    
+  fcr.rob.go() 
+  t2 = time.time()
+  dt = d_time_ms(t1, t2)  
+  # no change time: 240.22293090820312 ms
+  # execute time: 466.43757820129395 ms
 #  joint_goal = [0.338380620839303, 0.5052951123337996, 0.04423710695170519, -2.536839071135732, -0.08056383111038141, 2.9986641362303863, 1.2747214452214537]
 #  fcr.rob.go(joint_goal, wait=True)
   

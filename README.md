@@ -1,7 +1,26 @@
 ## commands  
-`$ roslaunch zoe_ws franka_control.launch robot_ip:=192.168.1.110`  
+`$ cd ~/zoe_ws`
+`$ ./franka.sh master`  
+`$ roslaunch franka_interface interface.launch fake_execution:=false`  
+`$ rostopic echo /franka_ros_interface/custom_franka_state_controller/joint_states`  
+`$ rosrun pick-and-place test2.py`  
 
+`$ roslaunch pick-and-place franka_control.launch robot_ip:=192.168.1.110`  
+`$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
+`$ rosrun franka_rocker_control origin.py`  
+`$ rosrun franka_rocker_control franka_state.py`  
+`$ rosrun franka_rocker_control external_input.py`  
+`$ rosrun franka_rocker_control franka_move.py`  
 
+`link: https://github.com/franzesegiovanni/franka_human_friendly_controllers`  
+`$ roslaunch franka_human_friendly_controllers cartesian_variable_impedance_controller.launch robot_ip:=192.168.1.110 load_gripper:=True`  
+`$ rosrun franka_rocker_control teleop_twist_keyboard.py`  
+`$ rosrun franka_rocker_control teleop_keyboard.py`  
+`$ rostopic echo /cmd_vel`  
+`$ rostopic echo /cartesian_pose`  
+
+error recovery  
+`$ rostopic pub -1 /franka_control/error_recovery/goal franka_msgs/ErrorRecoveryActionGoal "{}"`  
 ## launch structure  
 old (include MoveIt demo):  
 `$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  

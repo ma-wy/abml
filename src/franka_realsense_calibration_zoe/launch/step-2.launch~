@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="namespace_prefix" default="franka_realsense_handeyecalibration" />
+    <arg name="eye_on_hand" default="true" />
+
+    <arg name="camera_namespace" default="/camera/color" />
+    <arg name="robot_ip" default="192.168.1.110" />
+
+    <arg name="marker_size" doc="Size of the ArUco marker used, in meters" default="0.09074" />
+    <arg name="marker_id" doc="The ID of the ArUco marker used" default="582"/>
+
+
+    <!-- start easy_handeye -->
+    <include file="$(find easy_handeye)/launch/franka_realsense_zoe/calibrate_zoe.launch" >
+        <arg name="namespace_prefix" value="$(arg namespace_prefix)" />
+        <arg name="eye_on_hand" value="true" />
+
+        <arg name="tracking_base_frame" value="camera_color_optical_frame" />
+        <arg name="tracking_marker_frame" value="camera_marker" />
+        <arg name="robot_base_frame" value="panda_link0" />
+        <arg name="robot_effector_frame" value="panda_EE" />
+
+        <arg name="freehand_robot_movement" value="false" />
+        <arg name="robot_velocity_scaling" value="0.3" />
+        <arg name="robot_acceleration_scaling" value="0.2" />
+        <arg name="translation_delta_meters" value="0.05" />
+        <arg name="rotation_delta_degrees" value="25" />
+        <arg name="move_group_namespace" value="/"/>
+        <arg name="move_group" value="panda_manipulator" />
+    </include>
+
+</launch>
+
