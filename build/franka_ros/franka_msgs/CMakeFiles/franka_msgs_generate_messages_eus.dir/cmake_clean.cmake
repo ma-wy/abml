@@ -13,7 +13,6 @@ file(REMOVE_RECURSE
   "/home/abml/zoe_ws/devel/share/roseus/ros/franka_msgs/srv/SetEEFrame.l"
   "/home/abml/zoe_ws/devel/share/roseus/ros/franka_msgs/srv/SetForceTorqueCollisionBehavior.l"
   "/home/abml/zoe_ws/devel/share/roseus/ros/franka_msgs/srv/SetFullCollisionBehavior.l"
-  "/home/abml/zoe_ws/devel/share/roseus/ros/franka_msgs/srv/SetJointConfiguration.l"
   "/home/abml/zoe_ws/devel/share/roseus/ros/franka_msgs/srv/SetJointImpedance.l"
   "/home/abml/zoe_ws/devel/share/roseus/ros/franka_msgs/srv/SetKFrame.l"
   "/home/abml/zoe_ws/devel/share/roseus/ros/franka_msgs/srv/SetLoad.l"

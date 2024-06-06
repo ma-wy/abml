@@ -12,7 +12,6 @@ file(REMOVE_RECURSE
   "/home/abml/zoe_ws/devel/share/common-lisp/ros/franka_msgs/srv/SetEEFrame.lisp"
   "/home/abml/zoe_ws/devel/share/common-lisp/ros/franka_msgs/srv/SetForceTorqueCollisionBehavior.lisp"
   "/home/abml/zoe_ws/devel/share/common-lisp/ros/franka_msgs/srv/SetFullCollisionBehavior.lisp"
-  "/home/abml/zoe_ws/devel/share/common-lisp/ros/franka_msgs/srv/SetJointConfiguration.lisp"
   "/home/abml/zoe_ws/devel/share/common-lisp/ros/franka_msgs/srv/SetJointImpedance.lisp"
   "/home/abml/zoe_ws/devel/share/common-lisp/ros/franka_msgs/srv/SetKFrame.lisp"
   "/home/abml/zoe_ws/devel/share/common-lisp/ros/franka_msgs/srv/SetLoad.lisp"

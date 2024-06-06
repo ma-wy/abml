@@ -8,6 +8,8 @@
   <param name="rotational_stiffness_Y" type="double" value="30.0" />
   <param name="rotational_stiffness_Z" type="double" value="30.0" />
   <param name="nullspace_stiffness" type="double" value="0.0" />
+  <param name="max_delta_lin" type="double" value="0.05" />
+  <param name="max_delta_ori" type="double" value="0.15" />
 </node>
 \endverbatim
 

@@ -12,7 +12,6 @@ file(REMOVE_RECURSE
   "/home/abml/zoe_ws/devel/share/gennodejs/ros/franka_msgs/srv/SetEEFrame.js"
   "/home/abml/zoe_ws/devel/share/gennodejs/ros/franka_msgs/srv/SetForceTorqueCollisionBehavior.js"
   "/home/abml/zoe_ws/devel/share/gennodejs/ros/franka_msgs/srv/SetFullCollisionBehavior.js"
-  "/home/abml/zoe_ws/devel/share/gennodejs/ros/franka_msgs/srv/SetJointConfiguration.js"
   "/home/abml/zoe_ws/devel/share/gennodejs/ros/franka_msgs/srv/SetJointImpedance.js"
   "/home/abml/zoe_ws/devel/share/gennodejs/ros/franka_msgs/srv/SetKFrame.js"
   "/home/abml/zoe_ws/devel/share/gennodejs/ros/franka_msgs/srv/SetLoad.js"

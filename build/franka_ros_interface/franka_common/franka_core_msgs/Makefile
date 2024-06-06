@@ -56,6 +56,18 @@ CMAKE_BINARY_DIR = /home/abml/zoe_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -89,17 +101,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -123,17 +124,16 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
 
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,79 +168,64 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/rule
-.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/rule
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/rule
 
 # Convenience name for target.
-franka_core_msgs_genpy: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/rule
+franka_core_msgs_generate_messages: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/rule
 
-.PHONY : franka_core_msgs_genpy
+.PHONY : franka_core_msgs_generate_messages
 
 # fast build rule for target.
-franka_core_msgs_genpy/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/build
-.PHONY : franka_core_msgs_genpy/fast
+franka_core_msgs_generate_messages/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/build
+.PHONY : franka_core_msgs_generate_messages/fast
 
 # Convenience name for target.
-franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/rule
-.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/rule
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-franka_core_msgs_generate_messages_py: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/rule
+trajectory_msgs_generate_messages_cpp: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : franka_core_msgs_generate_messages_py
+.PHONY : trajectory_msgs_generate_messages_cpp
 
 # fast build rule for target.
-franka_core_msgs_generate_messages_py/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/build
-.PHONY : franka_core_msgs_generate_messages_py/fast
+trajectory_msgs_generate_messages_cpp/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
+.PHONY : trajectory_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/rule
-.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/rule
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-franka_core_msgs_gennodejs: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/rule
+trajectory_msgs_generate_messages_py: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
 
-.PHONY : franka_core_msgs_gennodejs
+.PHONY : trajectory_msgs_generate_messages_py
 
 # fast build rule for target.
-franka_core_msgs_gennodejs/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/build
-.PHONY : franka_core_msgs_gennodejs/fast
+trajectory_msgs_generate_messages_py/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
+.PHONY : trajectory_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/rule
-.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/rule
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-_franka_core_msgs_generate_messages_check_deps_JointLimits: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/rule
+trajectory_msgs_generate_messages_lisp: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : _franka_core_msgs_generate_messages_check_deps_JointLimits
+.PHONY : trajectory_msgs_generate_messages_lisp
 
 # fast build rule for target.
-_franka_core_msgs_generate_messages_check_deps_JointLimits/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/build
-.PHONY : _franka_core_msgs_generate_messages_check_deps_JointLimits/fast
-
-# Convenience name for target.
-franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/rule
-.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/rule
-
-# Convenience name for target.
-_franka_core_msgs_generate_messages_check_deps_JointCommand: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/rule
-
-.PHONY : _franka_core_msgs_generate_messages_check_deps_JointCommand
-
-# fast build rule for target.
-_franka_core_msgs_generate_messages_check_deps_JointCommand/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/build
-.PHONY : _franka_core_msgs_generate_messages_check_deps_JointCommand/fast
+trajectory_msgs_generate_messages_lisp/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/build
+.PHONY : trajectory_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_eus.dir/rule:
@@ -258,6 +243,141 @@ franka_core_msgs_generate_messages_eus/fast:
 .PHONY : franka_core_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/rule
+
+# Convenience name for target.
+_franka_core_msgs_generate_messages_check_deps_RobotState: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/rule
+
+.PHONY : _franka_core_msgs_generate_messages_check_deps_RobotState
+
+# fast build rule for target.
+_franka_core_msgs_generate_messages_check_deps_RobotState/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/build
+.PHONY : _franka_core_msgs_generate_messages_check_deps_RobotState/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_py.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_py.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+control_msgs_generate_messages_py: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_py.dir/rule
+
+.PHONY : control_msgs_generate_messages_py
+
+# fast build rule for target.
+control_msgs_generate_messages_py/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_py.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_py.dir/build
+.PHONY : control_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+control_msgs_generate_messages_nodejs: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : control_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+control_msgs_generate_messages_nodejs/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_nodejs.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_nodejs.dir/build
+.PHONY : control_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_nodejs: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_nodejs/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
+.PHONY : trajectory_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_eus.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+control_msgs_generate_messages_eus: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_eus.dir/rule
+
+.PHONY : control_msgs_generate_messages_eus
+
+# fast build rule for target.
+control_msgs_generate_messages_eus/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_eus.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_eus.dir/build
+.PHONY : control_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_eus: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_eus
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_eus/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build
+.PHONY : trajectory_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+control_msgs_generate_messages_lisp: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : control_msgs_generate_messages_lisp
+
+# fast build rule for target.
+control_msgs_generate_messages_lisp/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_lisp.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_lisp.dir/build
+.PHONY : control_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/rule
+
+# Convenience name for target.
+franka_core_msgs_genlisp: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/rule
+
+.PHONY : franka_core_msgs_genlisp
+
+# fast build rule for target.
+franka_core_msgs_genlisp/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/build
+.PHONY : franka_core_msgs_genlisp/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+control_msgs_generate_messages_cpp: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : control_msgs_generate_messages_cpp
+
+# fast build rule for target.
+control_msgs_generate_messages_cpp/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_cpp.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/control_msgs_generate_messages_cpp.dir/build
+.PHONY : control_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_EndPointState.dir/rule:
 	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_EndPointState.dir/rule
 .PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_EndPointState.dir/rule
@@ -271,6 +391,36 @@ _franka_core_msgs_generate_messages_check_deps_EndPointState: franka_ros_interfa
 _franka_core_msgs_generate_messages_check_deps_EndPointState/fast:
 	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_EndPointState.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_EndPointState.dir/build
 .PHONY : _franka_core_msgs_generate_messages_check_deps_EndPointState/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/rule
+
+# Convenience name for target.
+_franka_core_msgs_generate_messages_check_deps_JointLimits: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/rule
+
+.PHONY : _franka_core_msgs_generate_messages_check_deps_JointLimits
+
+# fast build rule for target.
+_franka_core_msgs_generate_messages_check_deps_JointLimits/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointLimits.dir/build
+.PHONY : _franka_core_msgs_generate_messages_check_deps_JointLimits/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/rule
+
+# Convenience name for target.
+franka_core_msgs_geneus: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/rule
+
+.PHONY : franka_core_msgs_geneus
+
+# fast build rule for target.
+franka_core_msgs_geneus/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/build
+.PHONY : franka_core_msgs_geneus/fast
 
 # Convenience name for target.
 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointControllerStates.dir/rule:
@@ -303,6 +453,21 @@ franka_core_msgs_generate_messages_cpp/fast:
 .PHONY : franka_core_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/rule
+
+# Convenience name for target.
+_franka_core_msgs_generate_messages_check_deps_JointCommand: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/rule
+
+.PHONY : _franka_core_msgs_generate_messages_check_deps_JointCommand
+
+# fast build rule for target.
+_franka_core_msgs_generate_messages_check_deps_JointCommand/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_JointCommand.dir/build
+.PHONY : _franka_core_msgs_generate_messages_check_deps_JointCommand/fast
+
+# Convenience name for target.
 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gencpp.dir/rule:
 	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gencpp.dir/rule
 .PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gencpp.dir/rule
@@ -316,51 +481,6 @@ franka_core_msgs_gencpp: franka_ros_interface/franka_common/franka_core_msgs/CMa
 franka_core_msgs_gencpp/fast:
 	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gencpp.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gencpp.dir/build
 .PHONY : franka_core_msgs_gencpp/fast
-
-# Convenience name for target.
-franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/rule
-.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/rule
-
-# Convenience name for target.
-franka_core_msgs_generate_messages: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/rule
-
-.PHONY : franka_core_msgs_generate_messages
-
-# fast build rule for target.
-franka_core_msgs_generate_messages/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages.dir/build
-.PHONY : franka_core_msgs_generate_messages/fast
-
-# Convenience name for target.
-franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/rule
-.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/rule
-
-# Convenience name for target.
-_franka_core_msgs_generate_messages_check_deps_RobotState: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/rule
-
-.PHONY : _franka_core_msgs_generate_messages_check_deps_RobotState
-
-# fast build rule for target.
-_franka_core_msgs_generate_messages_check_deps_RobotState/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/_franka_core_msgs_generate_messages_check_deps_RobotState.dir/build
-.PHONY : _franka_core_msgs_generate_messages_check_deps_RobotState/fast
-
-# Convenience name for target.
-franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/rule
-.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/rule
-
-# Convenience name for target.
-franka_core_msgs_geneus: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/rule
-
-.PHONY : franka_core_msgs_geneus
-
-# fast build rule for target.
-franka_core_msgs_geneus/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_geneus.dir/build
-.PHONY : franka_core_msgs_geneus/fast
 
 # Convenience name for target.
 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_lisp.dir/rule:
@@ -378,21 +498,6 @@ franka_core_msgs_generate_messages_lisp/fast:
 .PHONY : franka_core_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/rule
-.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/rule
-
-# Convenience name for target.
-franka_core_msgs_genlisp: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/rule
-
-.PHONY : franka_core_msgs_genlisp
-
-# fast build rule for target.
-franka_core_msgs_genlisp/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genlisp.dir/build
-.PHONY : franka_core_msgs_genlisp/fast
-
-# Convenience name for target.
 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_nodejs.dir/rule
 .PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_nodejs.dir/rule
@@ -407,35 +512,90 @@ franka_core_msgs_generate_messages_nodejs/fast:
 	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_nodejs.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_nodejs.dir/build
 .PHONY : franka_core_msgs_generate_messages_nodejs/fast
 
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/rule
+
+# Convenience name for target.
+franka_core_msgs_gennodejs: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/rule
+
+.PHONY : franka_core_msgs_gennodejs
+
+# fast build rule for target.
+franka_core_msgs_gennodejs/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_gennodejs.dir/build
+.PHONY : franka_core_msgs_gennodejs/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+franka_core_msgs_generate_messages_py: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/rule
+
+.PHONY : franka_core_msgs_generate_messages_py
+
+# fast build rule for target.
+franka_core_msgs_generate_messages_py/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_generate_messages_py.dir/build
+.PHONY : franka_core_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/rule
+.PHONY : franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/rule
+
+# Convenience name for target.
+franka_core_msgs_genpy: franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/rule
+
+.PHONY : franka_core_msgs_genpy
+
+# fast build rule for target.
+franka_core_msgs_genpy/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/build.make franka_ros_interface/franka_common/franka_core_msgs/CMakeFiles/franka_core_msgs_genpy.dir/build
+.PHONY : franka_core_msgs_genpy/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install/strip"
 	@echo "... install"
+	@echo "... franka_core_msgs_generate_messages"
+	@echo "... trajectory_msgs_generate_messages_cpp"
 	@echo "... list_install_components"
+	@echo "... trajectory_msgs_generate_messages_py"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... franka_core_msgs_genpy"
-	@echo "... franka_core_msgs_generate_messages_py"
-	@echo "... franka_core_msgs_gennodejs"
-	@echo "... _franka_core_msgs_generate_messages_check_deps_JointLimits"
-	@echo "... _franka_core_msgs_generate_messages_check_deps_JointCommand"
-	@echo "... test"
+	@echo "... trajectory_msgs_generate_messages_lisp"
 	@echo "... franka_core_msgs_generate_messages_eus"
+	@echo "... _franka_core_msgs_generate_messages_check_deps_RobotState"
+	@echo "... test"
+	@echo "... control_msgs_generate_messages_py"
+	@echo "... control_msgs_generate_messages_nodejs"
+	@echo "... trajectory_msgs_generate_messages_nodejs"
+	@echo "... control_msgs_generate_messages_eus"
+	@echo "... trajectory_msgs_generate_messages_eus"
 	@echo "... install/local"
+	@echo "... control_msgs_generate_messages_lisp"
+	@echo "... franka_core_msgs_genlisp"
+	@echo "... control_msgs_generate_messages_cpp"
 	@echo "... _franka_core_msgs_generate_messages_check_deps_EndPointState"
+	@echo "... _franka_core_msgs_generate_messages_check_deps_JointLimits"
+	@echo "... franka_core_msgs_geneus"
 	@echo "... _franka_core_msgs_generate_messages_check_deps_JointControllerStates"
 	@echo "... franka_core_msgs_generate_messages_cpp"
+	@echo "... _franka_core_msgs_generate_messages_check_deps_JointCommand"
 	@echo "... franka_core_msgs_gencpp"
-	@echo "... install/strip"
-	@echo "... franka_core_msgs_generate_messages"
-	@echo "... _franka_core_msgs_generate_messages_check_deps_RobotState"
-	@echo "... franka_core_msgs_geneus"
+	@echo "... edit_cache"
 	@echo "... franka_core_msgs_generate_messages_lisp"
-	@echo "... franka_core_msgs_genlisp"
 	@echo "... franka_core_msgs_generate_messages_nodejs"
+	@echo "... franka_core_msgs_gennodejs"
+	@echo "... franka_core_msgs_generate_messages_py"
+	@echo "... franka_core_msgs_genpy"
 .PHONY : help
 
 

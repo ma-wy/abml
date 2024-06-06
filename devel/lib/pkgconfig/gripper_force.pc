@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/devel
+
+Name: gripper_force
+Description: Description of gripper_force
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

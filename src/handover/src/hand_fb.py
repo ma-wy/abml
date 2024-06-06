@@ -1,0 +1,85 @@
+#!/usr/bin/env python3.8
+# -*- coding: utf-8 -*-
+
+import sys 
+sys.path.append("/home/abml/zoe_ws/lib")
+from mwy_lib import *
+
+
+class hand_detect:
+  def __init__(self):
+#=======input==================================================================================
+    self.bridge = CvBridge()
+    self.rgb_sub = message_filters.Subscriber('/camera_top/color/image_raw', Image)
+    self.rgb_sub.registerCallback(self.callback_rgb) 
+#=======output==================================================================================
+# members
+    self.blank_image = np.zeros((720,1280,3), np.uint8)
+    self.gray = np.zeros((720,1280,3), np.uint8)
+
+  def callback_rgb(self, data):
+    self.blank_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
+
+
+    mp_drawing = mp.solutions.drawing_utils
+    mp_drawing_styles = mp.solutions.drawing_styles
+    mp_hands = mp.solutions.hands
+
+# For webcam input:
+    with mp_hands.Hands(
+      model_complexity=0,
+      min_detection_confidence=0.5,
+      min_tracking_confidence=0.5) as hands:
+      image = self.blank_image
+    # To improve performance, optionally mark the image as not writeable to
+    # pass by reference.
+      image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+      results = hands.process(image)
+
+    # Draw the hand annotations on the image.
+      image.flags.writeable = True
+      image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+      if results.multi_hand_landmarks:
+        for hand_landmarks in results.multi_hand_landmarks:
+          mp_drawing.draw_landmarks(
+              image,
+              hand_landmarks,
+              mp_hands.HAND_CONNECTIONS,
+              mp_drawing_styles.get_default_hand_landmarks_style(),
+              mp_drawing_styles.get_default_hand_connections_style())
+    
+    # Flip the image horizontally for a selfie-view display.
+#      cv2.imshow('MediaPipe Hands', cv2.flip(image, 1))
+#      if cv2.waitKey(5) & 0xFF == 27:
+#        break
+      self.gray = cv2.flip(image, 1)
+
+#    self.interest_area_pub.publish(self.bridge.cv2_to_imgmsg(self.gray, "passthrough"))
+#    self.raw_image_pub.publish(self.bridge.cv2_to_imgmsg(self.blank_image, "passthrough"))
+#    self.obj_corners_pub.publish(self.contours)
+#    self.obj_num_pub.publish(obj_num)
+#    print "qrcode_detect: running"
+#    print "qrcode_detect obj_num: " + str(obj_num)
+# class end=========================================================================================
+
+def main(args):
+  rospy.init_node('hand_detect', anonymous=True)
+
+  hd = hand_detect()
+  while True:
+    cv2.imshow("raw_image", hd.blank_image)    
+#    cv2.imshow("gray_image", hd.gray)
+    if cv2.waitKey(1) == ord('q'):
+      break
+  cv2.destroyAllWindows()
+  try:
+    rospy.spin()    
+  except KeyboardInterrupt:
+    print("Shutting down")
+
+if __name__ == '__main__':
+
+    main(sys.argv)
+    
+    
+    

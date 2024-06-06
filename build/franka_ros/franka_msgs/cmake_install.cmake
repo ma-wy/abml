@@ -50,7 +50,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetEEFrame.srv"
     "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetForceTorqueCollisionBehavior.srv"
     "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv"
-    "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv"
     "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointImpedance.srv"
     "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetKFrame.srv"
     "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetLoad.srv"

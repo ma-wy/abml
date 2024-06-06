@@ -9,4 +9,6 @@ Reads and maintains the following parameters on the ROS server
 - \b "~rotational_stiffness_Y" : \b [double] Cartesian rotational stiffness min: 0.0, default: 30.0, max: 50.0
 - \b "~rotational_stiffness_Z" : \b [double] Cartesian rotational stiffness min: 0.0, default: 30.0, max: 50.0
 - \b "~nullspace_stiffness" : \b [double] Stiffness of the joint space nullspace controller (the desired configuration is the one at startup) min: 0.0, default: 0.0, max: 100.0
+- \b "~max_delta_lin" : \b [double] Maximum delta linear displacement [m] min: 0.01, default: 0.05, max: 0.2
+- \b "~max_delta_ori" : \b [double] Maximum delta angular displacement [rad] min: 0.01, default: 0.15, max: 0.5
 

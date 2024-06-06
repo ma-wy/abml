@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/install
+
+Name: handover
+Description: Description of handover
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

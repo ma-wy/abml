@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -DGTEST_HAS_PTHREAD=1 -pthread -std=gnu++14
 
 CXX_DEFINES = -DENABLE_BASE_ACCELERATION -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"franka_hw\"
 
-CXX_INCLUDES = -I/home/abml/zoe_ws/src/franka_ros/franka_hw/include -isystem /home/abml/zoe_ws/devel/include -isystem /opt/ros/noetic/include -isystem /opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /home/abml/libfranka/include -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest 
+CXX_INCLUDES = -I/home/abml/zoe_ws/src/franka_ros/franka_hw/include -isystem /home/abml/zoe_ws/devel/include -isystem /opt/ros/noetic/include -isystem /opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/src/googletest/googletest/include -isystem /usr/src/googletest/googletest -isystem /home/abml/libfranka/include 
 

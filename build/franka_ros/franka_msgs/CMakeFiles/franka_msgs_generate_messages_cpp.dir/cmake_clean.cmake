@@ -12,7 +12,6 @@ file(REMOVE_RECURSE
   "/home/abml/zoe_ws/devel/include/franka_msgs/SetEEFrame.h"
   "/home/abml/zoe_ws/devel/include/franka_msgs/SetForceTorqueCollisionBehavior.h"
   "/home/abml/zoe_ws/devel/include/franka_msgs/SetFullCollisionBehavior.h"
-  "/home/abml/zoe_ws/devel/include/franka_msgs/SetJointConfiguration.h"
   "/home/abml/zoe_ws/devel/include/franka_msgs/SetJointImpedance.h"
   "/home/abml/zoe_ws/devel/include/franka_msgs/SetKFrame.h"
   "/home/abml/zoe_ws/devel/include/franka_msgs/SetLoad.h"

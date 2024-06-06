@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<launch>
+<!--<node
+	pkg="tf" 
+	type="static_transform_publisher" 
+	name="tf_ur_base_broadcaster" 
+	args=" 0 -0.2 1.34 0.0 -0.7071 0.7071 0.0 world base 10" 
+/>
+-->
+
+<node
+	pkg="tf" 
+	type="static_transform_publisher" 
+	name="tf_ee_cam_broadcaster" 
+
+    args="0.07619489190049436  -0.03736380277807538  -0.006190084207829973  0.07862123732913182  0.07667483937426689   0.6602204842601687 0.742999718849903 panda_hand camera_color_optical_frame 10"
+/>
+
+
+</launch>
+

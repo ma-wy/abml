@@ -246,6 +246,8 @@ class DEFAULT
         if("rotational_stiffness_Y"==(*_i)->name){rotational_stiffness_Y = boost::any_cast<double>(val);}
         if("rotational_stiffness_Z"==(*_i)->name){rotational_stiffness_Z = boost::any_cast<double>(val);}
         if("nullspace_stiffness"==(*_i)->name){nullspace_stiffness = boost::any_cast<double>(val);}
+        if("max_delta_lin"==(*_i)->name){max_delta_lin = boost::any_cast<double>(val);}
+        if("max_delta_ori"==(*_i)->name){max_delta_ori = boost::any_cast<double>(val);}
       }
     }
 
@@ -256,6 +258,8 @@ double rotational_stiffness_X;
 double rotational_stiffness_Y;
 double rotational_stiffness_Z;
 double nullspace_stiffness;
+double max_delta_lin;
+double max_delta_ori;
 
     bool state;
     std::string name;
@@ -279,6 +283,10 @@ double nullspace_stiffness;
       double rotational_stiffness_Z;
 //#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       double nullspace_stiffness;
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      double max_delta_lin;
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      double max_delta_ori;
 //#line 231 "/opt/ros/noetic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
     bool __fromMessage__(dynamic_reconfigure::Config &msg)
@@ -487,6 +495,26 @@ compliance_paramConfig::GroupDescription<compliance_paramConfig::DEFAULT, compli
       Default.abstract_parameters.push_back(compliance_paramConfig::AbstractParamDescriptionConstPtr(new compliance_paramConfig::ParamDescription<double>("nullspace_stiffness", "double", 0, "Stiffness of the joint space nullspace controller (the desired configuration is the one at startup)", "", &compliance_paramConfig::nullspace_stiffness)));
 //#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(compliance_paramConfig::AbstractParamDescriptionConstPtr(new compliance_paramConfig::ParamDescription<double>("nullspace_stiffness", "double", 0, "Stiffness of the joint space nullspace controller (the desired configuration is the one at startup)", "", &compliance_paramConfig::nullspace_stiffness)));
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __min__.max_delta_lin = 0.01;
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __max__.max_delta_lin = 0.2;
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __default__.max_delta_lin = 0.05;
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      Default.abstract_parameters.push_back(compliance_paramConfig::AbstractParamDescriptionConstPtr(new compliance_paramConfig::ParamDescription<double>("max_delta_lin", "double", 0, "Maximum delta linear displacement [m]", "", &compliance_paramConfig::max_delta_lin)));
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __param_descriptions__.push_back(compliance_paramConfig::AbstractParamDescriptionConstPtr(new compliance_paramConfig::ParamDescription<double>("max_delta_lin", "double", 0, "Maximum delta linear displacement [m]", "", &compliance_paramConfig::max_delta_lin)));
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __min__.max_delta_ori = 0.01;
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __max__.max_delta_ori = 0.5;
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __default__.max_delta_ori = 0.15;
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      Default.abstract_parameters.push_back(compliance_paramConfig::AbstractParamDescriptionConstPtr(new compliance_paramConfig::ParamDescription<double>("max_delta_ori", "double", 0, "Maximum delta angular displacement [rad]", "", &compliance_paramConfig::max_delta_ori)));
+//#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
+      __param_descriptions__.push_back(compliance_paramConfig::AbstractParamDescriptionConstPtr(new compliance_paramConfig::ParamDescription<double>("max_delta_ori", "double", 0, "Maximum delta angular displacement [rad]", "", &compliance_paramConfig::max_delta_ori)));
 //#line 246 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Default.convertParams();
 //#line 246 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"

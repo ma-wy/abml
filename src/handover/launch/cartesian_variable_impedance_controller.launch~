@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="robot_ip" />
+  <arg name="load_gripper" default="true" />
+  <arg name="arm_id" default="panda" />
+
+  <rosparam file="$(find franka_description)/robots/$(arg arm_id)/joint_limits.yaml" command="load"/>
+
+  <include file="$(find move_franka)/launch/franka_control.launch" >
+    <arg name="robot_ip" value="$(arg robot_ip)" />
+    <arg name="load_gripper" value="$(arg load_gripper)" />
+  </include>
+
+  <rosparam command="load" file="$(find franka_human_friendly_controllers)/config/franka_human_friendly_controllers.yaml" />
+</launch>

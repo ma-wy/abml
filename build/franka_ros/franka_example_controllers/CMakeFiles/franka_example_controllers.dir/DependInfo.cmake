@@ -32,12 +32,12 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/abml/zoe_ws/src/franka_ros/franka_example_controllers/include"
   "/home/abml/zoe_ws/devel/include"
+  "/home/abml/libfranka/include"
   "/usr/include/eigen3"
   "/home/abml/zoe_ws/src/franka_ros/franka_hw/include"
   "/home/abml/zoe_ws/src/franka_ros/franka_gripper/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
-  "/home/abml/libfranka/include"
   )
 
 # Targets to which this target links.

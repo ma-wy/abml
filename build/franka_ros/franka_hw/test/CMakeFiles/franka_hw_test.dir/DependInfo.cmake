@@ -25,9 +25,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/abml/zoe_ws/devel/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
-  "/home/abml/libfranka/include"
   "/usr/src/googletest/googletest/include"
   "/usr/src/googletest/googletest"
+  "/home/abml/libfranka/include"
   )
 
 # Targets to which this target links.

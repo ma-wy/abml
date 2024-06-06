@@ -1,8 +1,8 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "franka_msgs: 9 messages, 8 services")
+message(STATUS "franka_msgs: 9 messages, 7 services")
 
-set(MSG_I_FLAGS "-Ifranka_msgs:/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg;-Ifranka_msgs:/home/abml/zoe_ws/devel/share/franka_msgs/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Ifranka_msgs:/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg;-Ifranka_msgs:/home/abml/zoe_ws/devel/share/franka_msgs/msg;-Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -24,27 +24,27 @@ add_custom_target(_franka_msgs_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/FrankaState.msg" NAME_WE)
 add_custom_target(_franka_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/FrankaState.msg" "std_msgs/Header:franka_msgs/Errors"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/FrankaState.msg" "franka_msgs/Errors:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryAction.msg" NAME_WE)
 add_custom_target(_franka_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryAction.msg" "franka_msgs/ErrorRecoveryActionResult:franka_msgs/ErrorRecoveryResult:franka_msgs/ErrorRecoveryGoal:franka_msgs/ErrorRecoveryActionGoal:franka_msgs/ErrorRecoveryFeedback:actionlib_msgs/GoalID:std_msgs/Header:franka_msgs/ErrorRecoveryActionFeedback:actionlib_msgs/GoalStatus"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryAction.msg" "actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:franka_msgs/ErrorRecoveryFeedback:franka_msgs/ErrorRecoveryResult:franka_msgs/ErrorRecoveryActionGoal:std_msgs/Header:franka_msgs/ErrorRecoveryActionFeedback:franka_msgs/ErrorRecoveryGoal:franka_msgs/ErrorRecoveryActionResult"
 )
 
 get_filename_component(_filename "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg" NAME_WE)
 add_custom_target(_franka_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg" "std_msgs/Header:franka_msgs/ErrorRecoveryGoal:actionlib_msgs/GoalID"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg" "actionlib_msgs/GoalID:franka_msgs/ErrorRecoveryGoal:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg" NAME_WE)
 add_custom_target(_franka_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg" "std_msgs/Header:franka_msgs/ErrorRecoveryResult:actionlib_msgs/GoalStatus:actionlib_msgs/GoalID"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg" "franka_msgs/ErrorRecoveryResult:actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg" NAME_WE)
 add_custom_target(_franka_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg" "std_msgs/Header:franka_msgs/ErrorRecoveryFeedback:actionlib_msgs/GoalStatus:actionlib_msgs/GoalID"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg" "actionlib_msgs/GoalID:franka_msgs/ErrorRecoveryFeedback:actionlib_msgs/GoalStatus:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg" NAME_WE)
@@ -82,11 +82,6 @@ add_custom_target(_franka_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv" ""
 )
 
-get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv" NAME_WE)
-add_custom_target(_franka_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv" ""
-)
-
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointImpedance.srv" NAME_WE)
 add_custom_target(_franka_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "franka_msgs" "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointImpedance.srv" ""
@@ -117,31 +112,31 @@ _generate_msg_cpp(franka_msgs
 _generate_msg_cpp(franka_msgs
   "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/FrankaState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/Errors.msg"
+  "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/Errors.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_cpp(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryAction.msg"
   "${MSG_I_FLAGS}"
-  "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_cpp(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_cpp(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_cpp(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_cpp(franka_msgs
@@ -184,12 +179,6 @@ _generate_srv_cpp(franka_msgs
 )
 _generate_srv_cpp(franka_msgs
   "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/franka_msgs
-)
-_generate_srv_cpp(franka_msgs
-  "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/franka_msgs
@@ -251,8 +240,6 @@ get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/s
 add_dependencies(franka_msgs_generate_messages_cpp _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv" NAME_WE)
 add_dependencies(franka_msgs_generate_messages_cpp _franka_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv" NAME_WE)
-add_dependencies(franka_msgs_generate_messages_cpp _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointImpedance.srv" NAME_WE)
 add_dependencies(franka_msgs_generate_messages_cpp _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetKFrame.srv" NAME_WE)
@@ -278,31 +265,31 @@ _generate_msg_eus(franka_msgs
 _generate_msg_eus(franka_msgs
   "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/FrankaState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/Errors.msg"
+  "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/Errors.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_eus(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryAction.msg"
   "${MSG_I_FLAGS}"
-  "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_eus(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_eus(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_eus(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_eus(franka_msgs
@@ -345,12 +332,6 @@ _generate_srv_eus(franka_msgs
 )
 _generate_srv_eus(franka_msgs
   "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/franka_msgs
-)
-_generate_srv_eus(franka_msgs
-  "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/franka_msgs
@@ -412,8 +393,6 @@ get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/s
 add_dependencies(franka_msgs_generate_messages_eus _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv" NAME_WE)
 add_dependencies(franka_msgs_generate_messages_eus _franka_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv" NAME_WE)
-add_dependencies(franka_msgs_generate_messages_eus _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointImpedance.srv" NAME_WE)
 add_dependencies(franka_msgs_generate_messages_eus _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetKFrame.srv" NAME_WE)
@@ -439,31 +418,31 @@ _generate_msg_lisp(franka_msgs
 _generate_msg_lisp(franka_msgs
   "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/FrankaState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/Errors.msg"
+  "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/Errors.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_lisp(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryAction.msg"
   "${MSG_I_FLAGS}"
-  "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_lisp(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_lisp(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_lisp(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_lisp(franka_msgs
@@ -506,12 +485,6 @@ _generate_srv_lisp(franka_msgs
 )
 _generate_srv_lisp(franka_msgs
   "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/franka_msgs
-)
-_generate_srv_lisp(franka_msgs
-  "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/franka_msgs
@@ -573,8 +546,6 @@ get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/s
 add_dependencies(franka_msgs_generate_messages_lisp _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv" NAME_WE)
 add_dependencies(franka_msgs_generate_messages_lisp _franka_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv" NAME_WE)
-add_dependencies(franka_msgs_generate_messages_lisp _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointImpedance.srv" NAME_WE)
 add_dependencies(franka_msgs_generate_messages_lisp _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetKFrame.srv" NAME_WE)
@@ -600,31 +571,31 @@ _generate_msg_nodejs(franka_msgs
 _generate_msg_nodejs(franka_msgs
   "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/FrankaState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/Errors.msg"
+  "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/Errors.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_nodejs(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryAction.msg"
   "${MSG_I_FLAGS}"
-  "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_nodejs(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_nodejs(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_nodejs(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_nodejs(franka_msgs
@@ -667,12 +638,6 @@ _generate_srv_nodejs(franka_msgs
 )
 _generate_srv_nodejs(franka_msgs
   "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/franka_msgs
-)
-_generate_srv_nodejs(franka_msgs
-  "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/franka_msgs
@@ -734,8 +699,6 @@ get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/s
 add_dependencies(franka_msgs_generate_messages_nodejs _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv" NAME_WE)
 add_dependencies(franka_msgs_generate_messages_nodejs _franka_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv" NAME_WE)
-add_dependencies(franka_msgs_generate_messages_nodejs _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointImpedance.srv" NAME_WE)
 add_dependencies(franka_msgs_generate_messages_nodejs _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetKFrame.srv" NAME_WE)
@@ -761,31 +724,31 @@ _generate_msg_py(franka_msgs
 _generate_msg_py(franka_msgs
   "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/FrankaState.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/Errors.msg"
+  "/home/abml/zoe_ws/src/franka_ros/franka_msgs/msg/Errors.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_py(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryAction.msg"
   "${MSG_I_FLAGS}"
-  "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_py(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_py(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_py(franka_msgs
   "/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg"
+  "/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg;/opt/ros/noetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/noetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/franka_msgs
 )
 _generate_msg_py(franka_msgs
@@ -828,12 +791,6 @@ _generate_srv_py(franka_msgs
 )
 _generate_srv_py(franka_msgs
   "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/franka_msgs
-)
-_generate_srv_py(franka_msgs
-  "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/franka_msgs
@@ -895,8 +852,6 @@ get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/s
 add_dependencies(franka_msgs_generate_messages_py _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetFullCollisionBehavior.srv" NAME_WE)
 add_dependencies(franka_msgs_generate_messages_py _franka_msgs_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointConfiguration.srv" NAME_WE)
-add_dependencies(franka_msgs_generate_messages_py _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetJointImpedance.srv" NAME_WE)
 add_dependencies(franka_msgs_generate_messages_py _franka_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/abml/zoe_ws/src/franka_ros/franka_msgs/srv/SetKFrame.srv" NAME_WE)
@@ -923,9 +878,6 @@ endif()
 if(TARGET std_msgs_generate_messages_cpp)
   add_dependencies(franka_msgs_generate_messages_cpp std_msgs_generate_messages_cpp)
 endif()
-if(TARGET sensor_msgs_generate_messages_cpp)
-  add_dependencies(franka_msgs_generate_messages_cpp sensor_msgs_generate_messages_cpp)
-endif()
 if(TARGET actionlib_msgs_generate_messages_cpp)
   add_dependencies(franka_msgs_generate_messages_cpp actionlib_msgs_generate_messages_cpp)
 endif()
@@ -939,9 +891,6 @@ if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/fr
 endif()
 if(TARGET std_msgs_generate_messages_eus)
   add_dependencies(franka_msgs_generate_messages_eus std_msgs_generate_messages_eus)
-endif()
-if(TARGET sensor_msgs_generate_messages_eus)
-  add_dependencies(franka_msgs_generate_messages_eus sensor_msgs_generate_messages_eus)
 endif()
 if(TARGET actionlib_msgs_generate_messages_eus)
   add_dependencies(franka_msgs_generate_messages_eus actionlib_msgs_generate_messages_eus)
@@ -957,9 +906,6 @@ endif()
 if(TARGET std_msgs_generate_messages_lisp)
   add_dependencies(franka_msgs_generate_messages_lisp std_msgs_generate_messages_lisp)
 endif()
-if(TARGET sensor_msgs_generate_messages_lisp)
-  add_dependencies(franka_msgs_generate_messages_lisp sensor_msgs_generate_messages_lisp)
-endif()
 if(TARGET actionlib_msgs_generate_messages_lisp)
   add_dependencies(franka_msgs_generate_messages_lisp actionlib_msgs_generate_messages_lisp)
 endif()
@@ -973,9 +919,6 @@ if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_D
 endif()
 if(TARGET std_msgs_generate_messages_nodejs)
   add_dependencies(franka_msgs_generate_messages_nodejs std_msgs_generate_messages_nodejs)
-endif()
-if(TARGET sensor_msgs_generate_messages_nodejs)
-  add_dependencies(franka_msgs_generate_messages_nodejs sensor_msgs_generate_messages_nodejs)
 endif()
 if(TARGET actionlib_msgs_generate_messages_nodejs)
   add_dependencies(franka_msgs_generate_messages_nodejs actionlib_msgs_generate_messages_nodejs)
@@ -991,9 +934,6 @@ if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/fran
 endif()
 if(TARGET std_msgs_generate_messages_py)
   add_dependencies(franka_msgs_generate_messages_py std_msgs_generate_messages_py)
-endif()
-if(TARGET sensor_msgs_generate_messages_py)
-  add_dependencies(franka_msgs_generate_messages_py sensor_msgs_generate_messages_py)
 endif()
 if(TARGET actionlib_msgs_generate_messages_py)
   add_dependencies(franka_msgs_generate_messages_py actionlib_msgs_generate_messages_py)

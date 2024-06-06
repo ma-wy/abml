@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/install
+
+Name: move_franka
+Description: Description of move_franka
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

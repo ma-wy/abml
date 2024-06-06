@@ -13,7 +13,6 @@ file(REMOVE_RECURSE
   "/home/abml/zoe_ws/devel/lib/python3/dist-packages/franka_msgs/srv/_SetEEFrame.py"
   "/home/abml/zoe_ws/devel/lib/python3/dist-packages/franka_msgs/srv/_SetForceTorqueCollisionBehavior.py"
   "/home/abml/zoe_ws/devel/lib/python3/dist-packages/franka_msgs/srv/_SetFullCollisionBehavior.py"
-  "/home/abml/zoe_ws/devel/lib/python3/dist-packages/franka_msgs/srv/_SetJointConfiguration.py"
   "/home/abml/zoe_ws/devel/lib/python3/dist-packages/franka_msgs/srv/_SetJointImpedance.py"
   "/home/abml/zoe_ws/devel/lib/python3/dist-packages/franka_msgs/srv/_SetKFrame.py"
   "/home/abml/zoe_ws/devel/lib/python3/dist-packages/franka_msgs/srv/_SetLoad.py"
