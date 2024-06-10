@@ -3,6 +3,6 @@ prefix=/home/abml/zoe_ws/devel
 Name: franka_human_friendly_controllers
 Description: Description of franka_human_friendly_controllers
 Version: 0.8.1
-Cflags: -I/home/abml/zoe_ws/devel/include -I/home/abml/zoe_ws/src/franka_human_friendly_controllers/include -I/home/abml/libfranka/include
+Cflags: -I/home/abml/zoe_ws/devel/include -I/home/abml/zoe_ws/src/Franka/franka_human_friendly_controllers/include -I/home/abml/libfranka/include
 Libs: -L${prefix}/lib -lfranka_human_friendly_controllers /home/abml/libfranka/build/libfranka.so.0.9.2
 Requires: controller_interface dynamic_reconfigure eigen_conversions franka_hw franka_gripper geometry_msgs hardware_interface tf tf_conversions message_runtime pluginlib realtime_tools roscpp

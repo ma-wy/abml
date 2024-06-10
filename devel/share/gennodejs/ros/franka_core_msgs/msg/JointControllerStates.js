@@ -11,8 +11,8 @@ const _deserializer = _ros_msg_utils.Deserialize;
 const _arrayDeserializer = _deserializer.Array;
 const _finder = _ros_msg_utils.Find;
 const _getByteLength = _ros_msg_utils.getByteLength;
-let control_msgs = _finder('control_msgs');
 let std_msgs = _finder('std_msgs');
+let control_msgs = _finder('control_msgs');
 
 //-----------------------------------------------------------
 

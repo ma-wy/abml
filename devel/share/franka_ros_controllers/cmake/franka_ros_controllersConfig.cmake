@@ -67,7 +67,7 @@ set(franka_ros_controllers_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(franka_ros_controllers_SOURCE_PREFIX /home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers)
+  set(franka_ros_controllers_SOURCE_PREFIX /home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers)
   set(franka_ros_controllers_DEVEL_PREFIX /home/abml/zoe_ws/devel)
   set(franka_ros_controllers_INSTALL_PREFIX "")
   set(franka_ros_controllers_PREFIX ${franka_ros_controllers_DEVEL_PREFIX})
@@ -110,7 +110,7 @@ if(NOT "/home/abml/zoe_ws/devel/include;/home/abml/libfranka/include " STREQUAL 
         message(FATAL_ERROR "Project 'franka_ros_controllers' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'franka_ros_controllers' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'franka_ros_controllers' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/${idir}'.  ${_report}")
     endif()
     _list_append_unique(franka_ros_controllers_INCLUDE_DIRS ${include})
   endforeach()

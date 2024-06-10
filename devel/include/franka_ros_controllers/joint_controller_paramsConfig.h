@@ -312,33 +312,33 @@ double j7_d;
       double position_joint_delta_filter;
 //#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       double velocity_joint_delta_filter;
-//#line 20 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 20 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j1_k;
-//#line 21 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 21 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j2_k;
-//#line 22 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 22 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j3_k;
-//#line 23 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 23 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j4_k;
-//#line 24 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 24 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j5_k;
-//#line 25 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 25 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j6_k;
-//#line 26 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 26 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j7_k;
-//#line 28 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 28 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j1_d;
-//#line 29 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 29 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j2_d;
-//#line 30 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 30 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j3_d;
-//#line 31 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 31 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j4_d;
-//#line 32 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 32 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j5_d;
-//#line 33 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 33 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j6_d;
-//#line 34 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 34 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       double j7_d;
 //#line 231 "/opt/ros/noetic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
@@ -499,145 +499,145 @@ joint_controller_paramsConfig::GroupDescription<joint_controller_paramsConfig::D
 //#line 291 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("velocity_joint_delta_filter", "double", 0, "Filter parameter that dictates how smoothly subsequent joint velocity commands are smoothed. Also responsible for acceleration of joints.", "", &joint_controller_paramsConfig::velocity_joint_delta_filter)));
 joint_controller_paramsConfig::GroupDescription<joint_controller_paramsConfig::DEFAULT::CONTROLLER_GAINS, joint_controller_paramsConfig::DEFAULT> Controller_Gains("Controller_Gains", "", 0, 1, true, &joint_controller_paramsConfig::DEFAULT::controller_gains);
-//#line 20 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 20 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j1_k = 200.0;
-//#line 20 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 20 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j1_k = 1500.0;
-//#line 20 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 20 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j1_k = 1200.0;
-//#line 20 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 20 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j1_k", "double", 0, "Stiffness parameter of joint 1", "", &joint_controller_paramsConfig::j1_k)));
-//#line 20 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 20 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j1_k", "double", 0, "Stiffness parameter of joint 1", "", &joint_controller_paramsConfig::j1_k)));
-//#line 21 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 21 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j2_k = 200.0;
-//#line 21 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 21 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j2_k = 1500.0;
-//#line 21 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 21 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j2_k = 1000.0;
-//#line 21 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 21 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j2_k", "double", 0, "Stiffness parameter of joint 2", "", &joint_controller_paramsConfig::j2_k)));
-//#line 21 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 21 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j2_k", "double", 0, "Stiffness parameter of joint 2", "", &joint_controller_paramsConfig::j2_k)));
-//#line 22 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 22 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j3_k = 200.0;
-//#line 22 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 22 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j3_k = 1500.0;
-//#line 22 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 22 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j3_k = 1000.0;
-//#line 22 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 22 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j3_k", "double", 0, "Stiffness parameter of joint 3", "", &joint_controller_paramsConfig::j3_k)));
-//#line 22 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 22 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j3_k", "double", 0, "Stiffness parameter of joint 3", "", &joint_controller_paramsConfig::j3_k)));
-//#line 23 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 23 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j4_k = 200.0;
-//#line 23 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 23 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j4_k = 1500.0;
-//#line 23 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 23 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j4_k = 800.0;
-//#line 23 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 23 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j4_k", "double", 0, "Stiffness parameter of joint 4", "", &joint_controller_paramsConfig::j4_k)));
-//#line 23 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 23 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j4_k", "double", 0, "Stiffness parameter of joint 4", "", &joint_controller_paramsConfig::j4_k)));
-//#line 24 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 24 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j5_k = 100.0;
-//#line 24 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 24 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j5_k = 1000.0;
-//#line 24 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 24 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j5_k = 300.0;
-//#line 24 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 24 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j5_k", "double", 0, "Stiffness parameter of joint 5", "", &joint_controller_paramsConfig::j5_k)));
-//#line 24 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 24 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j5_k", "double", 0, "Stiffness parameter of joint 5", "", &joint_controller_paramsConfig::j5_k)));
-//#line 25 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 25 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j6_k = 75.0;
-//#line 25 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 25 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j6_k = 500.0;
-//#line 25 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 25 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j6_k = 200.0;
-//#line 25 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 25 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j6_k", "double", 0, "Stiffness parameter of joint 6", "", &joint_controller_paramsConfig::j6_k)));
-//#line 25 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 25 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j6_k", "double", 0, "Stiffness parameter of joint 6", "", &joint_controller_paramsConfig::j6_k)));
-//#line 26 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 26 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j7_k = 20.0;
-//#line 26 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 26 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j7_k = 200.0;
-//#line 26 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 26 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j7_k = 50.0;
-//#line 26 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 26 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j7_k", "double", 0, "Stiffness parameter of joint 7", "", &joint_controller_paramsConfig::j7_k)));
-//#line 26 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 26 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j7_k", "double", 0, "Stiffness parameter of joint 7", "", &joint_controller_paramsConfig::j7_k)));
-//#line 28 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 28 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j1_d = 0.0;
-//#line 28 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 28 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j1_d = 200.0;
-//#line 28 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 28 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j1_d = 50.0;
-//#line 28 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 28 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j1_d", "double", 0, "Damping parameter of joint 1", "", &joint_controller_paramsConfig::j1_d)));
-//#line 28 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 28 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j1_d", "double", 0, "Damping parameter of joint 1", "", &joint_controller_paramsConfig::j1_d)));
-//#line 29 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 29 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j2_d = 0.0;
-//#line 29 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 29 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j2_d = 200.0;
-//#line 29 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 29 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j2_d = 50.0;
-//#line 29 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 29 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j2_d", "double", 0, "Damping parameter of joint 2", "", &joint_controller_paramsConfig::j2_d)));
-//#line 29 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 29 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j2_d", "double", 0, "Damping parameter of joint 2", "", &joint_controller_paramsConfig::j2_d)));
-//#line 30 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 30 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j3_d = 0.0;
-//#line 30 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 30 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j3_d = 200.0;
-//#line 30 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 30 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j3_d = 50.0;
-//#line 30 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 30 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j3_d", "double", 0, "Damping parameter of joint 3", "", &joint_controller_paramsConfig::j3_d)));
-//#line 30 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 30 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j3_d", "double", 0, "Damping parameter of joint 3", "", &joint_controller_paramsConfig::j3_d)));
-//#line 31 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 31 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j4_d = 0.0;
-//#line 31 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 31 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j4_d = 200.0;
-//#line 31 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 31 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j4_d = 20.0;
-//#line 31 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 31 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j4_d", "double", 0, "Damping parameter of joint 4", "", &joint_controller_paramsConfig::j4_d)));
-//#line 31 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 31 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j4_d", "double", 0, "Damping parameter of joint 4", "", &joint_controller_paramsConfig::j4_d)));
-//#line 32 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 32 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j5_d = 0.0;
-//#line 32 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 32 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j5_d = 200.0;
-//#line 32 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 32 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j5_d = 20.0;
-//#line 32 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 32 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j5_d", "double", 0, "Damping parameter of joint 5", "", &joint_controller_paramsConfig::j5_d)));
-//#line 32 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 32 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j5_d", "double", 0, "Damping parameter of joint 5", "", &joint_controller_paramsConfig::j5_d)));
-//#line 33 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 33 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j6_d = 0.0;
-//#line 33 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 33 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j6_d = 200.0;
-//#line 33 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 33 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j6_d = 20.0;
-//#line 33 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 33 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j6_d", "double", 0, "Damping parameter of joint 6", "", &joint_controller_paramsConfig::j6_d)));
-//#line 33 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 33 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j6_d", "double", 0, "Damping parameter of joint 6", "", &joint_controller_paramsConfig::j6_d)));
-//#line 34 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 34 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __min__.j7_d = 0.0;
-//#line 34 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 34 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __max__.j7_d = 200.0;
-//#line 34 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 34 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __default__.j7_d = 10.0;
-//#line 34 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 34 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       Controller_Gains.abstract_parameters.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j7_d", "double", 0, "Damping parameter of joint 7", "", &joint_controller_paramsConfig::j7_d)));
-//#line 34 "/home/abml/zoe_ws/src/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
+//#line 34 "/home/abml/zoe_ws/src/Franka/franka_ros_interface/franka_ros_controllers/cfg/joint_controller_params.cfg"
       __param_descriptions__.push_back(joint_controller_paramsConfig::AbstractParamDescriptionConstPtr(new joint_controller_paramsConfig::ParamDescription<double>("j7_d", "double", 0, "Damping parameter of joint 7", "", &joint_controller_paramsConfig::j7_d)));
 //#line 124 "/opt/ros/noetic/lib/python3/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       Controller_Gains.convertParams();
