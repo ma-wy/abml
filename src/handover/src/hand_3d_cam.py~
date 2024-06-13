@@ -11,7 +11,6 @@ class hand_detect:
     self.hand_sub = rospy.Subscriber('/hand_msg', hand_mp, self.callback_hand)
     self.image2_sub = message_filters.Subscriber('/camera_top/aligned_depth_to_color/image_raw', Image)#, queue_size=2
     self.image2_sub.registerCallback(self.callback_image2) 
-    self.camera_to_base_sub = rospy.Subscriber("/cam_to_base_tf",Pose, self.callback_camera_to_base)
 #=======output==================================================================================
     #self.hand_v_pub = rospy.Publisher("/hand_v", Float32, queue_size=1)
     #self.if_hand_pub = rospy.Publisher("/if_hand", Int32, queue_size=1)
@@ -29,16 +28,6 @@ class hand_detect:
     self.cam_to_base_q = zeros(4)
 #===============================================================================================
 # members
-  def callback_camera_to_base(self, data):
-    sefl.cam_to_base_p[0] = data.position.x
-    sefl.cam_to_base_p[1] = data.position.y
-    sefl.cam_to_base_p[2] = data.position.z
-    sefl.cam_to_base_q[0] = data.orientation.x
-    sefl.cam_to_base_q[1] = data.orientation.y
-    sefl.cam_to_base_q[2] = data.orientation.z
-    sefl.cam_to_base_q[3] = data.orientation.w
-
-
   def callback_hand(self, data):
     hand_t = data.header.stamp.to_sec()
     handedness = data.handedness.data
@@ -97,7 +86,7 @@ class hand_detect:
     
     
 def main(args):
-  rospy.init_node('hand_3d', anonymous=True)
+  rospy.init_node('hand_3d_cam', anonymous=True)
 
   hd = hand_detect()
 

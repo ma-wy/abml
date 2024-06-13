@@ -15,7 +15,7 @@ class hand_detect:
     #self.hand_v_pub = rospy.Publisher("/hand_v", Float32, queue_size=1)
     #self.if_hand_pub = rospy.Publisher("/if_hand", Int32, queue_size=1)
     self.bridge = CvBridge()
-    self.hand_pc_pub = rospy.Publisher("/hand_pc",PointCloud2,queue_size=10)
+    self.hand_pc_pub = rospy.Publisher("/hand_pc_cam",PointCloud2,queue_size=10)
         # change the intrinsics
     self.Cx = 650.407
     self.Cy = 357.483
@@ -24,6 +24,8 @@ class hand_detect:
     self.col = 1280
     self.row = 720
     self.hand_list = []
+    self.cam_to_base_p = zeros(3)
+    self.cam_to_base_q = zeros(4)
 #===============================================================================================
 # members
   def callback_hand(self, data):
@@ -84,7 +86,7 @@ class hand_detect:
     
     
 def main(args):
-  rospy.init_node('hand_3d', anonymous=True)
+  rospy.init_node('hand_3d_cam', anonymous=True)
 
   hd = hand_detect()
 

@@ -9,7 +9,7 @@ class save_data:
   def __init__(self):
 #=======input==================================================================================
     # trajectory
-    self.hand_pc_rob_sub = rospy.Subscriber('/hand_pc_rob', PointCloud2, self.callback_hand_rob) # average depth
+    self.hand_pc_rob_sub = rospy.Subscriber('/hand_pc_rob', PointCloud2, self.callback_hand_rob)
     # once per trajectory
     self.hand_mp_sub = rospy.Subscriber('/hand_msg', hand_mp, self.callback_handrdness)
     self.cam_to_base_sub = rospy.Subscriber("/cam_to_base_tf", Pose, self.callback_cam_to_base)
