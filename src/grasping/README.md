@@ -25,9 +25,9 @@ step 6: move to the instrument, progressively approaching the target z_d
 `$ rostopic pub /position_goal std_msgs/Float64MultiArray "data: [x_d, y_d, 0.0]" `  
 `$ rostopic pub /position_goal std_msgs/Float64MultiArray "data: [x_d, y_d, z_d]" `  
 step 7: activate the electral magnet  
-`$ rostopic pub /control\_magnet std\_msgs/Int32 "data: 1"`  
+`$ rostopic pub /control_magnet std_msgs/Int32 "data: 1"`  
 step 8: activate the bellow  
-`$ rostopic pub /control\_pump std\_msgs/Float64 "data: 3.8"`  
+`$ rostopic pub /control_pump std_msgs/Float64 "data: 3.8"`  
 step 9: close the gripper in rviz via moveit  
 step 10: raise the instrument  
 `$ rostopic pub /position_goal std_msgs/Float64MultiArray "data: [x_d, y_d, 0.2]" `  
