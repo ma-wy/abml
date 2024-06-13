@@ -16,6 +16,11 @@
 #include <ros/message_operations.h>
 
 #include <std_msgs/Header.h>
+#include <std_msgs/String.h>
+#include <geometry_msgs/Point.h>
+#include <geometry_msgs/Point.h>
+#include <geometry_msgs/Point.h>
+#include <geometry_msgs/Point.h>
 #include <geometry_msgs/Point.h>
 #include <geometry_msgs/Point.h>
 #include <geometry_msgs/Point.h>
@@ -32,21 +37,31 @@ struct hand_mp_
 
   hand_mp_()
     : header()
+    , handedness()
     , wrist()
     , thumb_tip()
     , index_tip()
     , middle_tip()
     , ring_tip()
-    , pinky_tip()  {
+    , pinky_tip()
+    , index_mcp()
+    , middle_mcp()
+    , ring_mcp()
+    , pinky_mcp()  {
     }
   hand_mp_(const ContainerAllocator& _alloc)
     : header(_alloc)
+    , handedness(_alloc)
     , wrist(_alloc)
     , thumb_tip(_alloc)
     , index_tip(_alloc)
     , middle_tip(_alloc)
     , ring_tip(_alloc)
-    , pinky_tip(_alloc)  {
+    , pinky_tip(_alloc)
+    , index_mcp(_alloc)
+    , middle_mcp(_alloc)
+    , ring_mcp(_alloc)
+    , pinky_mcp(_alloc)  {
   (void)_alloc;
     }
 
@@ -54,6 +69,9 @@ struct hand_mp_
 
    typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
   _header_type header;
+
+   typedef  ::std_msgs::String_<ContainerAllocator>  _handedness_type;
+  _handedness_type handedness;
 
    typedef  ::geometry_msgs::Point_<ContainerAllocator>  _wrist_type;
   _wrist_type wrist;
@@ -72,6 +90,18 @@ struct hand_mp_
 
    typedef  ::geometry_msgs::Point_<ContainerAllocator>  _pinky_tip_type;
   _pinky_tip_type pinky_tip;
+
+   typedef  ::geometry_msgs::Point_<ContainerAllocator>  _index_mcp_type;
+  _index_mcp_type index_mcp;
+
+   typedef  ::geometry_msgs::Point_<ContainerAllocator>  _middle_mcp_type;
+  _middle_mcp_type middle_mcp;
+
+   typedef  ::geometry_msgs::Point_<ContainerAllocator>  _ring_mcp_type;
+  _ring_mcp_type ring_mcp;
+
+   typedef  ::geometry_msgs::Point_<ContainerAllocator>  _pinky_mcp_type;
+  _pinky_mcp_type pinky_mcp;
 
 
 
@@ -103,12 +133,17 @@ template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::handover::hand_mp_<ContainerAllocator1> & lhs, const ::handover::hand_mp_<ContainerAllocator2> & rhs)
 {
   return lhs.header == rhs.header &&
+    lhs.handedness == rhs.handedness &&
     lhs.wrist == rhs.wrist &&
     lhs.thumb_tip == rhs.thumb_tip &&
     lhs.index_tip == rhs.index_tip &&
     lhs.middle_tip == rhs.middle_tip &&
     lhs.ring_tip == rhs.ring_tip &&
-    lhs.pinky_tip == rhs.pinky_tip;
+    lhs.pinky_tip == rhs.pinky_tip &&
+    lhs.index_mcp == rhs.index_mcp &&
+    lhs.middle_mcp == rhs.middle_mcp &&
+    lhs.ring_mcp == rhs.ring_mcp &&
+    lhs.pinky_mcp == rhs.pinky_mcp;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -165,12 +200,12 @@ struct MD5Sum< ::handover::hand_mp_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "bee6e7ec827cd5a686ce9e3c8b2a5b20";
+    return "c180baaf221b3c9ea1b674a724ca2e79";
   }
 
   static const char* value(const ::handover::hand_mp_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xbee6e7ec827cd5a6ULL;
-  static const uint64_t static_value2 = 0x86ce9e3c8b2a5b20ULL;
+  static const uint64_t static_value1 = 0xc180baaf221b3c9eULL;
+  static const uint64_t static_value2 = 0xa1b674a724ca2e79ULL;
 };
 
 template<class ContainerAllocator>
@@ -190,12 +225,17 @@ struct Definition< ::handover::hand_mp_<ContainerAllocator> >
   static const char* value()
   {
     return "Header header\n"
+"std_msgs/String handedness\n"
 "geometry_msgs/Point wrist\n"
 "geometry_msgs/Point thumb_tip\n"
 "geometry_msgs/Point index_tip\n"
 "geometry_msgs/Point middle_tip\n"
 "geometry_msgs/Point ring_tip\n"
 "geometry_msgs/Point pinky_tip\n"
+"geometry_msgs/Point index_mcp\n"
+"geometry_msgs/Point middle_mcp\n"
+"geometry_msgs/Point ring_mcp\n"
+"geometry_msgs/Point pinky_mcp\n"
 "\n"
 "================================================================================\n"
 "MSG: std_msgs/Header\n"
@@ -212,6 +252,10 @@ struct Definition< ::handover::hand_mp_<ContainerAllocator> >
 "time stamp\n"
 "#Frame this data is associated with\n"
 "string frame_id\n"
+"\n"
+"================================================================================\n"
+"MSG: std_msgs/String\n"
+"string data\n"
 "\n"
 "================================================================================\n"
 "MSG: geometry_msgs/Point\n"
@@ -238,12 +282,17 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.header);
+      stream.next(m.handedness);
       stream.next(m.wrist);
       stream.next(m.thumb_tip);
       stream.next(m.index_tip);
       stream.next(m.middle_tip);
       stream.next(m.ring_tip);
       stream.next(m.pinky_tip);
+      stream.next(m.index_mcp);
+      stream.next(m.middle_mcp);
+      stream.next(m.ring_mcp);
+      stream.next(m.pinky_mcp);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -265,6 +314,9 @@ struct Printer< ::handover::hand_mp_<ContainerAllocator> >
     s << indent << "header: ";
     s << std::endl;
     Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
+    s << indent << "handedness: ";
+    s << std::endl;
+    Printer< ::std_msgs::String_<ContainerAllocator> >::stream(s, indent + "  ", v.handedness);
     s << indent << "wrist: ";
     s << std::endl;
     Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "  ", v.wrist);
@@ -283,6 +335,18 @@ struct Printer< ::handover::hand_mp_<ContainerAllocator> >
     s << indent << "pinky_tip: ";
     s << std::endl;
     Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "  ", v.pinky_tip);
+    s << indent << "index_mcp: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "  ", v.index_mcp);
+    s << indent << "middle_mcp: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "  ", v.middle_mcp);
+    s << indent << "ring_mcp: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "  ", v.ring_mcp);
+    s << indent << "pinky_mcp: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "  ", v.pinky_mcp);
   }
 };
 

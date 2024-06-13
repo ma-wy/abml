@@ -64,9 +64,10 @@ all: UR/ur_msgs/all
 all: air_pump/all
 all: franka_realsense_calibration/all
 all: franka_rocker_control/all
+all: grasping/all
 all: gripper_force/all
 all: handover/all
-all: move_franka/all
+all: ndi_calibration/all
 all: pick-and-place/all
 all: UR/robotiq_arg85_description/all
 all: Franka/franka_ros_interface/franka_common/franka_core_msgs/all
@@ -110,9 +111,10 @@ preinstall: UR/ur_msgs/preinstall
 preinstall: air_pump/preinstall
 preinstall: franka_realsense_calibration/preinstall
 preinstall: franka_rocker_control/preinstall
+preinstall: grasping/preinstall
 preinstall: gripper_force/preinstall
 preinstall: handover/preinstall
-preinstall: move_franka/preinstall
+preinstall: ndi_calibration/preinstall
 preinstall: pick-and-place/preinstall
 preinstall: UR/robotiq_arg85_description/preinstall
 preinstall: Franka/franka_ros_interface/franka_common/franka_core_msgs/preinstall
@@ -161,9 +163,10 @@ clean: UR/ur_msgs/clean
 clean: air_pump/clean
 clean: franka_realsense_calibration/clean
 clean: franka_rocker_control/clean
+clean: grasping/clean
 clean: gripper_force/clean
 clean: handover/clean
-clean: move_franka/clean
+clean: ndi_calibration/clean
 clean: pick-and-place/clean
 clean: UR/robotiq_arg85_description/clean
 clean: Franka/franka_ros_interface/franka_common/franka_core_msgs/clean
@@ -1312,6 +1315,24 @@ franka_rocker_control/clean:
 .PHONY : franka_rocker_control/clean
 
 #=============================================================================
+# Directory level rules for directory grasping
+
+# Recursive "all" directory target.
+grasping/all:
+
+.PHONY : grasping/all
+
+# Recursive "preinstall" directory target.
+grasping/preinstall:
+
+.PHONY : grasping/preinstall
+
+# Recursive "clean" directory target.
+grasping/clean:
+
+.PHONY : grasping/clean
+
+#=============================================================================
 # Directory level rules for directory gripper_force
 
 # Recursive "all" directory target.
@@ -1436,22 +1457,22 @@ handover/clean: handover/CMakeFiles/handover_genlisp.dir/clean
 .PHONY : handover/clean
 
 #=============================================================================
-# Directory level rules for directory move_franka
+# Directory level rules for directory ndi_calibration
 
 # Recursive "all" directory target.
-move_franka/all:
+ndi_calibration/all:
 
-.PHONY : move_franka/all
+.PHONY : ndi_calibration/all
 
 # Recursive "preinstall" directory target.
-move_franka/preinstall:
+ndi_calibration/preinstall:
 
-.PHONY : move_franka/preinstall
+.PHONY : ndi_calibration/preinstall
 
 # Recursive "clean" directory target.
-move_franka/clean:
+ndi_calibration/clean:
 
-.PHONY : move_franka/clean
+.PHONY : ndi_calibration/clean
 
 #=============================================================================
 # Directory level rules for directory pick-and-place

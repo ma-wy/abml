@@ -10,7 +10,7 @@ class hand_detect:
   def __init__(self):
 #=======input==================================================================================
     self.bridge = CvBridge()
-    self.rgb_sub = message_filters.Subscriber('/camera1/color/image_raw', Image)
+    self.rgb_sub = message_filters.Subscriber('/camera_top/color/image_raw', Image)
     self.rgb_sub.registerCallback(self.callback_rgb) 
 #=======output==================================================================================
 # members

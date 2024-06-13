@@ -37,7 +37,7 @@ import glob
 import math
 from math import *
 from moveit_commander import MoveGroupCommander
-#import mediapipe as mp
+import mediapipe as mp
 import message_filters 
 from message_filters import Subscriber
 #n

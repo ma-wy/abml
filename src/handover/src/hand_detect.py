@@ -44,7 +44,13 @@ class hand_detect:
         results = hands.process(image)
     # Draw the hand annotations on the image.
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+          
         if results.multi_hand_landmarks:
+          print(results.multi_handedness[0].classification[0].label)
+          if results.multi_handedness[0].classification[0].label == 'Left':
+            self.hand_list.handedness.data = 'right'
+          elif results.multi_handedness[0].classification[0].label == 'Right':
+            self.hand_list.handedness.data = 'left'
           for hand_landmarks in results.multi_hand_landmarks:
             self.hand_list.header.stamp = rospy.Time.now() 
             wrist_temp = [
@@ -77,7 +83,29 @@ class hand_detect:
               int(hand_landmarks.landmark[self.mp_hands.HandLandmark.PINKY_TIP].y * image_height),
               hand_landmarks.landmark[self.mp_hands.HandLandmark.PINKY_TIP].z]
             self.hand_list.pinky_tip = give_Point(pinky_temp)
-            self.mp_drawing.draw_landmarks(
+            
+            index_mcp_temp = [
+              int(hand_landmarks.landmark[self.mp_hands.HandLandmark.INDEX_FINGER_MCP].x * image_width), 
+              int(hand_landmarks.landmark[self.mp_hands.HandLandmark.INDEX_FINGER_MCP].y * image_height),
+              hand_landmarks.landmark[self.mp_hands.HandLandmark.INDEX_FINGER_MCP].z]
+            self.hand_list.index_mcp = give_Point(index_mcp_temp)
+            middle_mcp_temp = [
+              int(hand_landmarks.landmark[self.mp_hands.HandLandmark.MIDDLE_FINGER_MCP].x * image_width), 
+              int(hand_landmarks.landmark[self.mp_hands.HandLandmark.MIDDLE_FINGER_MCP].y * image_height),
+              hand_landmarks.landmark[self.mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z]
+            self.hand_list.middle_mcp = give_Point(middle_mcp_temp)
+            ring_mcp_temp = [
+              int(hand_landmarks.landmark[self.mp_hands.HandLandmark.RING_FINGER_MCP].x * image_width), 
+              int(hand_landmarks.landmark[self.mp_hands.HandLandmark.RING_FINGER_MCP].y * image_height),
+              hand_landmarks.landmark[self.mp_hands.HandLandmark.RING_FINGER_MCP].z]
+            self.hand_list.ring_mcp = give_Point(ring_mcp_temp)
+            pinky_mcp_temp = [
+              int(hand_landmarks.landmark[self.mp_hands.HandLandmark.PINKY_MCP].x * image_width), 
+              int(hand_landmarks.landmark[self.mp_hands.HandLandmark.PINKY_MCP].y * image_height),
+              hand_landmarks.landmark[self.mp_hands.HandLandmark.RING_FINGER_MCP].z]
+            self.hand_list.pinky_mcp = give_Point(pinky_mcp_temp)
+            
+            self.mp_drawing.draw_landmarks( # no difference with time of drawing or not 
               image,
               hand_landmarks,
               self.mp_hands.HAND_CONNECTIONS,

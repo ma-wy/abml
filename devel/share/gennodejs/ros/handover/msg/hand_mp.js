@@ -11,8 +11,8 @@ const _deserializer = _ros_msg_utils.Deserialize;
 const _arrayDeserializer = _deserializer.Array;
 const _finder = _ros_msg_utils.Find;
 const _getByteLength = _ros_msg_utils.getByteLength;
-let std_msgs = _finder('std_msgs');
 let geometry_msgs = _finder('geometry_msgs');
+let std_msgs = _finder('std_msgs');
 
 //-----------------------------------------------------------
 
@@ -21,12 +21,17 @@ class hand_mp {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.header = null;
+      this.handedness = null;
       this.wrist = null;
       this.thumb_tip = null;
       this.index_tip = null;
       this.middle_tip = null;
       this.ring_tip = null;
       this.pinky_tip = null;
+      this.index_mcp = null;
+      this.middle_mcp = null;
+      this.ring_mcp = null;
+      this.pinky_mcp = null;
     }
     else {
       if (initObj.hasOwnProperty('header')) {
@@ -34,6 +39,12 @@ class hand_mp {
       }
       else {
         this.header = new std_msgs.msg.Header();
+      }
+      if (initObj.hasOwnProperty('handedness')) {
+        this.handedness = initObj.handedness
+      }
+      else {
+        this.handedness = new std_msgs.msg.String();
       }
       if (initObj.hasOwnProperty('wrist')) {
         this.wrist = initObj.wrist
@@ -71,6 +82,30 @@ class hand_mp {
       else {
         this.pinky_tip = new geometry_msgs.msg.Point();
       }
+      if (initObj.hasOwnProperty('index_mcp')) {
+        this.index_mcp = initObj.index_mcp
+      }
+      else {
+        this.index_mcp = new geometry_msgs.msg.Point();
+      }
+      if (initObj.hasOwnProperty('middle_mcp')) {
+        this.middle_mcp = initObj.middle_mcp
+      }
+      else {
+        this.middle_mcp = new geometry_msgs.msg.Point();
+      }
+      if (initObj.hasOwnProperty('ring_mcp')) {
+        this.ring_mcp = initObj.ring_mcp
+      }
+      else {
+        this.ring_mcp = new geometry_msgs.msg.Point();
+      }
+      if (initObj.hasOwnProperty('pinky_mcp')) {
+        this.pinky_mcp = initObj.pinky_mcp
+      }
+      else {
+        this.pinky_mcp = new geometry_msgs.msg.Point();
+      }
     }
   }
 
@@ -78,6 +113,8 @@ class hand_mp {
     // Serializes a message object of type hand_mp
     // Serialize message field [header]
     bufferOffset = std_msgs.msg.Header.serialize(obj.header, buffer, bufferOffset);
+    // Serialize message field [handedness]
+    bufferOffset = std_msgs.msg.String.serialize(obj.handedness, buffer, bufferOffset);
     // Serialize message field [wrist]
     bufferOffset = geometry_msgs.msg.Point.serialize(obj.wrist, buffer, bufferOffset);
     // Serialize message field [thumb_tip]
@@ -90,6 +127,14 @@ class hand_mp {
     bufferOffset = geometry_msgs.msg.Point.serialize(obj.ring_tip, buffer, bufferOffset);
     // Serialize message field [pinky_tip]
     bufferOffset = geometry_msgs.msg.Point.serialize(obj.pinky_tip, buffer, bufferOffset);
+    // Serialize message field [index_mcp]
+    bufferOffset = geometry_msgs.msg.Point.serialize(obj.index_mcp, buffer, bufferOffset);
+    // Serialize message field [middle_mcp]
+    bufferOffset = geometry_msgs.msg.Point.serialize(obj.middle_mcp, buffer, bufferOffset);
+    // Serialize message field [ring_mcp]
+    bufferOffset = geometry_msgs.msg.Point.serialize(obj.ring_mcp, buffer, bufferOffset);
+    // Serialize message field [pinky_mcp]
+    bufferOffset = geometry_msgs.msg.Point.serialize(obj.pinky_mcp, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -99,6 +144,8 @@ class hand_mp {
     let data = new hand_mp(null);
     // Deserialize message field [header]
     data.header = std_msgs.msg.Header.deserialize(buffer, bufferOffset);
+    // Deserialize message field [handedness]
+    data.handedness = std_msgs.msg.String.deserialize(buffer, bufferOffset);
     // Deserialize message field [wrist]
     data.wrist = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
     // Deserialize message field [thumb_tip]
@@ -111,13 +158,22 @@ class hand_mp {
     data.ring_tip = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
     // Deserialize message field [pinky_tip]
     data.pinky_tip = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
+    // Deserialize message field [index_mcp]
+    data.index_mcp = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
+    // Deserialize message field [middle_mcp]
+    data.middle_mcp = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
+    // Deserialize message field [ring_mcp]
+    data.ring_mcp = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
+    // Deserialize message field [pinky_mcp]
+    data.pinky_mcp = geometry_msgs.msg.Point.deserialize(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    return length + 144;
+    length += std_msgs.msg.String.getMessageSize(object.handedness);
+    return length + 240;
   }
 
   static datatype() {
@@ -127,19 +183,24 @@ class hand_mp {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'bee6e7ec827cd5a686ce9e3c8b2a5b20';
+    return 'c180baaf221b3c9ea1b674a724ca2e79';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     Header header
+    std_msgs/String handedness
     geometry_msgs/Point wrist
     geometry_msgs/Point thumb_tip
     geometry_msgs/Point index_tip
     geometry_msgs/Point middle_tip
     geometry_msgs/Point ring_tip
     geometry_msgs/Point pinky_tip
+    geometry_msgs/Point index_mcp
+    geometry_msgs/Point middle_mcp
+    geometry_msgs/Point ring_mcp
+    geometry_msgs/Point pinky_mcp
     
     ================================================================================
     MSG: std_msgs/Header
@@ -156,6 +217,10 @@ class hand_mp {
     time stamp
     #Frame this data is associated with
     string frame_id
+    
+    ================================================================================
+    MSG: std_msgs/String
+    string data
     
     ================================================================================
     MSG: geometry_msgs/Point
@@ -178,6 +243,13 @@ class hand_mp {
     }
     else {
       resolved.header = new std_msgs.msg.Header()
+    }
+
+    if (msg.handedness !== undefined) {
+      resolved.handedness = std_msgs.msg.String.Resolve(msg.handedness)
+    }
+    else {
+      resolved.handedness = new std_msgs.msg.String()
     }
 
     if (msg.wrist !== undefined) {
@@ -220,6 +292,34 @@ class hand_mp {
     }
     else {
       resolved.pinky_tip = new geometry_msgs.msg.Point()
+    }
+
+    if (msg.index_mcp !== undefined) {
+      resolved.index_mcp = geometry_msgs.msg.Point.Resolve(msg.index_mcp)
+    }
+    else {
+      resolved.index_mcp = new geometry_msgs.msg.Point()
+    }
+
+    if (msg.middle_mcp !== undefined) {
+      resolved.middle_mcp = geometry_msgs.msg.Point.Resolve(msg.middle_mcp)
+    }
+    else {
+      resolved.middle_mcp = new geometry_msgs.msg.Point()
+    }
+
+    if (msg.ring_mcp !== undefined) {
+      resolved.ring_mcp = geometry_msgs.msg.Point.Resolve(msg.ring_mcp)
+    }
+    else {
+      resolved.ring_mcp = new geometry_msgs.msg.Point()
+    }
+
+    if (msg.pinky_mcp !== undefined) {
+      resolved.pinky_mcp = geometry_msgs.msg.Point.Resolve(msg.pinky_mcp)
+    }
+    else {
+      resolved.pinky_mcp = new geometry_msgs.msg.Point()
     }
 
     return resolved;

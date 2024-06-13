@@ -13,6 +13,44 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+
+def judge_decimal(data):
+  a = format(float(data), '.3e')
+  index = a.find('e')
+  if int(a[index+1:]) < -4:
+    result = 'e'
+  else:
+    result = 'd'
+  return result 
+  
+# shorten one line data
+def shorten_data(data):
+  data_list = []
+  for i in data:
+    i = float(i)
+    result = judge_decimal(i)
+    if result == 'd':
+      data_list.append(float('{:.4f}'.format(i)))
+    elif result == 'e':
+      data_list.append(float('{:.3e}'.format(i)))
+  return data_list
+
+def clean_data(data):
+  data_str = str(data)[1:-1]
+  remove_chr = [",", "'"]
+  for i in remove_chr:
+    data_str = data_str.replace(i, "")
+  return data_str
+
+def saveDataStep(data, file_path):
+  data_list = shorten_data(list(data))
+  data_str = clean_data(data_list)
+  f = open(file_path, "a")
+  f.truncate()
+  f.write(data_str)
+  f.write('\n')
+  f.close()  
+
 def ee_pose_link8_to_ee(pose):
   # MoveGroupCommander set panda_link8 as the default ee
   # the input pose is PoseStamped() returned from MoveGroupCommander("panda_arm").get_current_pose()

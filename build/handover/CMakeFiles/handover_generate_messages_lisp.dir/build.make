@@ -60,6 +60,7 @@ handover/CMakeFiles/handover_generate_messages_lisp: /home/abml/zoe_ws/devel/sha
 /home/abml/zoe_ws/devel/share/common-lisp/ros/handover/msg/hand_mp.lisp: /home/abml/zoe_ws/src/handover/msg/hand_mp.msg
 /home/abml/zoe_ws/devel/share/common-lisp/ros/handover/msg/hand_mp.lisp: /opt/ros/noetic/share/geometry_msgs/msg/Point.msg
 /home/abml/zoe_ws/devel/share/common-lisp/ros/handover/msg/hand_mp.lisp: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/home/abml/zoe_ws/devel/share/common-lisp/ros/handover/msg/hand_mp.lisp: /opt/ros/noetic/share/std_msgs/msg/String.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/abml/zoe_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from handover/hand_mp.msg"
 	cd /home/abml/zoe_ws/build/handover && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/abml/zoe_ws/src/handover/msg/hand_mp.msg -Ihandover:/home/abml/zoe_ws/src/handover/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p handover -o /home/abml/zoe_ws/devel/share/common-lisp/ros/handover/msg
 

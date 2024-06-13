@@ -8,7 +8,7 @@ revise self.grasp\_pix and self.handle\_pix in detect_table.py
 `$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
 `$ rosrun grasping detect_table.py`  
 `$ rosrun grasping generate_target.py`  
-`$ rosrun grasping move_to_ee3_goal.py`  
+`$ rosrun grasping move_to_ee3_goal.py (test_grasp.py)`  
 `$ rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=57600`  
 `$ rosrun grasping move_method_2.py`  
 step 1: reset robot pose    

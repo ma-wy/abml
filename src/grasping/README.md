@@ -3,7 +3,7 @@
 (to be improved)  
 revise self.grasp\_pix and self.handle\_pix in detect_table.py   
 `$ roslaunch franka_human_friendly_controllers cartesian_variable_impedance_controller.launch robot_ip:=192.168.1.110 load_gripper:=True arm_id:=panda`  
-‵ $ roslaunch grasping launch\_tfs.launch`  
+`$ roslaunch grasping launch\_tfs.launch`  
 `$ roslaunch grasping launch_tf_subs.launch`  
 `$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
 `$ rosrun grasping detect_table.py`  
