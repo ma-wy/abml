@@ -280,6 +280,10 @@ def get_PoseArray(posearray):
       pose.orientation.w
       ]) 
   return pose_list
+
+def get_PointStamped(pointstamped):
+  p = [pointstamped.point.x, pointstamped.point.y, pointstamped.point.z]
+  return p
   
 def get_control_degree(input_button):
   degree = zeros(6)

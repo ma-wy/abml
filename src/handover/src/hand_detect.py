@@ -32,6 +32,7 @@ class hand_detect:
     image_width = 1280
     image_height = 720
     print()
+    print('hand_detect.py is running')
     self.blank_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
     with self.mp_hands.Hands(
       model_complexity=0,
@@ -45,6 +46,8 @@ class hand_detect:
     # Draw the hand annotations on the image.
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
           
+     # if there is a hand, pub if_hand
+     # if the angle is between ...     
         if results.multi_hand_landmarks:
           print(results.multi_handedness[0].classification[0].label)
           if results.multi_handedness[0].classification[0].label == 'Left':

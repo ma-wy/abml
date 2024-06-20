@@ -15,7 +15,7 @@ class hand_detect:
     #self.hand_v_pub = rospy.Publisher("/hand_v", Float32, queue_size=1)
     #self.if_hand_pub = rospy.Publisher("/if_hand", Int32, queue_size=1)
     self.bridge = CvBridge()
-    self.hand_pc_pub = rospy.Publisher("/hand_pc",PointCloud2,queue_size=10)
+    self.hand_pc_pub = rospy.Publisher("/hand_pc_cam",PointCloud2,queue_size=10)
         # change the intrinsics
     self.Cx = 650.407
     self.Cy = 357.483
@@ -26,6 +26,7 @@ class hand_detect:
     self.hand_list = []
     self.cam_to_base_p = zeros(3)
     self.cam_to_base_q = zeros(4)
+    self.frame_cam = "camera_top_color_optical_frame"
 #===============================================================================================
 # members
   def callback_hand(self, data):
@@ -41,8 +42,14 @@ class hand_detect:
     middle_mcp = [data.middle_mcp.x, data.middle_mcp.y, data.middle_mcp.z]
     ring_mcp = [data.ring_mcp.x, data.ring_mcp.y, data.ring_mcp.z]
     pinky_mcp = [data.pinky_mcp.x, data.pinky_mcp.y, data.pinky_mcp.z]
-    self.hand_list = [wrist, thumb_tip, index_tip, middle_tip, ring_tip, pinky_tip, index_mcp, middle_mcp, ring_mcp, pinky_mcp]
+    
+    palm = [wrist, index_mcp, middle_mcp, ring_mcp, pinky_mcp]
+    hand_axy = mean(array(palm), axis=0)
+    
+    self.hand_list = [wrist, thumb_tip, index_tip, middle_tip, ring_tip, pinky_tip, index_mcp, middle_mcp, ring_mcp, pinky_mcp, hand_axy]
+    print('hand_3d_cam.py is running')
     print(handedness)
+
     
   def callback_image2(self, data):
     self.cv_image2 = self.bridge.imgmsg_to_cv2(data, "passthrough")
@@ -66,14 +73,14 @@ class hand_detect:
       elif j >= self.col:
         j = self.col-1 
       elif j < 0:
-        j = 0
+        j = 0[-0.8990887761116029, 0.20733824968338013, 0.1100000023841855, 4294901760], [-0.8157045602798463, 0.15817894637584687, 0.12499998807907076, 4294901760], [-0.7772366911172868, 0.17929760962724686, 0.1320000171661374, 4294901760], [-0.7692658811807633, 0.20970840603113175, 0.1320000171661374, 4294901760], [-0.7759835928678513, 0.23175879418849946, 0.13399999141693086, 4294901760], 
 
       d = cv_image2[i][j]
       pt = [(float(j)-self.Cx)*d/self.fx/scale, (float(i)-self.Cy)*d/self.fy/scale, float(d)/scale, rgb]
       hand_pc.append(pt)
 
     HEADER = Header()
-    HEADER.frame_id = 'camera_top_color_optical_frame'
+    HEADER.frame_id = self.frame_cam
     FIELDS = [
       PointField('x', 0, PointField.FLOAT32, 1),
       PointField('y', 4, PointField.FLOAT32, 1),

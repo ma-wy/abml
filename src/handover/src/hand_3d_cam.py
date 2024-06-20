@@ -26,6 +26,7 @@ class hand_detect:
     self.hand_list = []
     self.cam_to_base_p = zeros(3)
     self.cam_to_base_q = zeros(4)
+    self.frame_cam = "camera_top_color_optical_frame"
 #===============================================================================================
 # members
   def callback_hand(self, data):
@@ -41,8 +42,14 @@ class hand_detect:
     middle_mcp = [data.middle_mcp.x, data.middle_mcp.y, data.middle_mcp.z]
     ring_mcp = [data.ring_mcp.x, data.ring_mcp.y, data.ring_mcp.z]
     pinky_mcp = [data.pinky_mcp.x, data.pinky_mcp.y, data.pinky_mcp.z]
-    self.hand_list = [wrist, thumb_tip, index_tip, middle_tip, ring_tip, pinky_tip, index_mcp, middle_mcp, ring_mcp, pinky_mcp]
+    
+    palm = [wrist, index_mcp, middle_mcp, ring_mcp, pinky_mcp]
+    hand_axy = mean(array(palm), axis=0)
+    
+    self.hand_list = [wrist, thumb_tip, index_tip, middle_tip, ring_tip, pinky_tip, index_mcp, middle_mcp, ring_mcp, pinky_mcp, hand_axy]
+    print('hand_3d_cam.py is running')
     print(handedness)
+
     
   def callback_image2(self, data):
     self.cv_image2 = self.bridge.imgmsg_to_cv2(data, "passthrough")
@@ -73,7 +80,7 @@ class hand_detect:
       hand_pc.append(pt)
 
     HEADER = Header()
-    HEADER.frame_id = 'camera_top_color_optical_frame'
+    HEADER.frame_id = self.frame_cam
     FIELDS = [
       PointField('x', 0, PointField.FLOAT32, 1),
       PointField('y', 4, PointField.FLOAT32, 1),

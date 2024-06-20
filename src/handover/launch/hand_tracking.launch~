@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="robot_ip" default="169.254.162.54" />
-  <include file="$(find handover)/launch/launch_cam.launch"> </include>
-  <include file="$(find ur_modern_driver)/launch/ur5_bringup.launch">
-    <arg name="robot_ip" value="$(arg robot_ip)" />
-  </include>
-  <include file="$(find handover)/launch/tf_cam_to_base.launch"> </include>  
-  <node pkg="rviz" type="rviz" output="screen" name="rviz" args="-d $(find handover)/rviz/handover.rviz"/>
+  <node pkg="handover" type="camera_to_base_pub.py" name="camera_to_base_pub" output="screen"/> 
+  <node pkg="handover" type="hand_detect.py" name="hand_detect" output="screen"/> 
+  <node pkg="handover" type="hand_3d_cam.py" name="hand_3d_cam" output="screen"/>
+  <!--
+  <node pkg="handover" type="hand_3d_rob.py" name="hand_3d_rob" output="screen"/>
+  -->
 </launch>
 

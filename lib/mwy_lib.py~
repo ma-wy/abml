@@ -14,6 +14,15 @@ sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
 
+def judge_decimal(data):
+  a = format(float(data), '.3e')
+  index = a.find('e')
+  if int(a[index+1:]) < -4:
+    result = 'e'
+  else:
+    result = 'd'
+  return result 
+  
 # shorten one line data
 def shorten_data(data):
   data_list = []
@@ -271,6 +280,16 @@ def get_PoseArray(posearray):
       pose.orientation.w
       ]) 
   return pose_list
+
+def get_PointStamped(pointstamped):
+  pose = [posestamped.pose.position.x, 
+    posestamped.pose.position.y, 
+    posestamped.pose.position.z, 
+    posestamped.pose.orientation.x,
+    posestamped.pose.orientation.y,
+    posestamped.pose.orientation.z,
+    posestamped.pose.orientation.w]
+  return pose 
   
 def get_control_degree(input_button):
   degree = zeros(6)

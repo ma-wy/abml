@@ -8,12 +8,15 @@ from mwy_lib import *
 class hand_detect:
   def __init__(self):
 #=======input==================================================================================
-    self.hand_cam_sub = rospy.Subscriber('/hand_pc_cam', PointCloud2, self.callback_hand)
-    self.camera_to_base_sub = rospy.Subscriber("/cam_to_base_tf",Pose, self.callback_camera_to_base)
+    self.hand_pc_cam_sub = rospy.Subscriber('/hand_pc_cam', PointCloud2, self.callback_hand)
+    self.camera_to_base_sub = rospy.Subscriber("/cam_to_base_tf", Pose, self.callback_camera_to_base)
 #=======output==================================================================================
-    self.hand_pc_pub = rospy.Publisher("/hand_pc_rob", PointCloud2,queue_size=10)
+    self.hand_pc_pub = rospy.Publisher("/hand_pc_rob", PointCloud2, queue_size=10)
+    self.hand_average_depth_pub = rospy.Publisher("/hand_average_depth", PointStamped, queue_size=10)
+#=================================================================================
     self.cam_to_base_p = zeros(3)
     self.cam_to_base_q = zeros(4)
+    self.hand_average_xy = zeros(3)
 #===============================================================================================
 # members
   def callback_camera_to_base(self, data):
@@ -24,6 +27,9 @@ class hand_detect:
     self.cam_to_base_q[1] = data.orientation.y
     self.cam_to_base_q[2] = data.orientation.z
     self.cam_to_base_q[3] = data.orientation.w
+
+  def callback_hand_average_xy(self, data):
+    self.hand_average_xy = get_PointStamped(data)
 
   def callback_hand(self, data):
     r = 255
@@ -52,6 +58,10 @@ class hand_detect:
     outputPoints = point_cloud2.create_cloud(HEADER, FIELDS, POINTS)
     self.hand_pc_pub.publish(outputPoints)     
     
+    # hand average depth
+    self.hand_ad = give_PointStamped("base", hand_pc[-1][0:3])
+    self.hand_average_depth_pub.publish(self.hand_ad)  
+
 def main(args):
   rospy.init_node('hand_3d_rob', anonymous=True)
 
