@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/abml/zoe_ws/build
 include handover/CMakeFiles/_handover_generate_messages_check_deps_hand_mp.dir/progress.make
 
 handover/CMakeFiles/_handover_generate_messages_check_deps_hand_mp:
-	cd /home/abml/zoe_ws/build/handover && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py handover /home/abml/zoe_ws/src/handover/msg/hand_mp.msg geometry_msgs/Point:std_msgs/Header:std_msgs/String
+	cd /home/abml/zoe_ws/build/handover && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py handover /home/abml/zoe_ws/src/handover/msg/hand_mp.msg std_msgs/Header:std_msgs/String:geometry_msgs/Point
 
 _handover_generate_messages_check_deps_hand_mp: handover/CMakeFiles/_handover_generate_messages_check_deps_hand_mp
 _handover_generate_messages_check_deps_hand_mp: handover/CMakeFiles/_handover_generate_messages_check_deps_hand_mp.dir/build.make

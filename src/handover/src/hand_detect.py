@@ -124,12 +124,13 @@ def main(args):
   rospy.init_node('hand_detect', anonymous=True)
 
   hd = hand_detect()
-  
+  '''
   while not rospy.is_shutdown():
     cv2.imshow("hand_detect", hd.hand)    
     if cv2.waitKey(1) == ord('q'):
       break
   cv2.destroyAllWindows()    
+  '''
   try:
     rospy.spin()
   except KeyboardInterrupt:

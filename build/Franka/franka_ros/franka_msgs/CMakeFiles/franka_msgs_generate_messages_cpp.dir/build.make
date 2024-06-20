@@ -79,23 +79,23 @@ Franka/franka_ros/franka_msgs/CMakeFiles/franka_msgs_generate_messages_cpp: /hom
 
 /home/abml/zoe_ws/devel/include/franka_msgs/FrankaState.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/abml/zoe_ws/devel/include/franka_msgs/FrankaState.h: /home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs/msg/FrankaState.msg
-/home/abml/zoe_ws/devel/include/franka_msgs/FrankaState.h: /home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs/msg/Errors.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/FrankaState.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/home/abml/zoe_ws/devel/include/franka_msgs/FrankaState.h: /home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs/msg/Errors.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/FrankaState.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/abml/zoe_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from franka_msgs/FrankaState.msg"
 	cd /home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs && /home/abml/zoe_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs/msg/FrankaState.msg -Ifranka_msgs:/home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs/msg -Ifranka_msgs:/home/abml/zoe_ws/devel/share/franka_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -p franka_msgs -o /home/abml/zoe_ws/devel/include/franka_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
 
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryAction.msg
-/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg
-/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg
+/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
-/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg
-/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg
-/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
+/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg
+/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionGoal.msg
+/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryGoal.msg
+/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryAction.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/abml/zoe_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from franka_msgs/ErrorRecoveryAction.msg"
 	cd /home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs && /home/abml/zoe_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryAction.msg -Ifranka_msgs:/home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs/msg -Ifranka_msgs:/home/abml/zoe_ws/devel/share/franka_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -p franka_msgs -o /home/abml/zoe_ws/devel/include/franka_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
@@ -111,10 +111,10 @@ Franka/franka_ros/franka_msgs/CMakeFiles/franka_msgs_generate_messages_cpp: /hom
 
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionResult.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionResult.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg
-/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionResult.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionResult.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
-/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionResult.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
+/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionResult.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryResult.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionResult.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionResult.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionResult.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/abml/zoe_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating C++ code from franka_msgs/ErrorRecoveryActionResult.msg"
 	cd /home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs && /home/abml/zoe_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionResult.msg -Ifranka_msgs:/home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs/msg -Ifranka_msgs:/home/abml/zoe_ws/devel/share/franka_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -p franka_msgs -o /home/abml/zoe_ws/devel/include/franka_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
@@ -123,8 +123,8 @@ Franka/franka_ros/franka_msgs/CMakeFiles/franka_msgs_generate_messages_cpp: /hom
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionFeedback.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionFeedback.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalID.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionFeedback.h: /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryFeedback.msg
-/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionFeedback.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionFeedback.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionFeedback.h: /opt/ros/noetic/share/actionlib_msgs/msg/GoalStatus.msg
 /home/abml/zoe_ws/devel/include/franka_msgs/ErrorRecoveryActionFeedback.h: /opt/ros/noetic/share/gencpp/msg.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/abml/zoe_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating C++ code from franka_msgs/ErrorRecoveryActionFeedback.msg"
 	cd /home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs && /home/abml/zoe_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/abml/zoe_ws/devel/share/franka_msgs/msg/ErrorRecoveryActionFeedback.msg -Ifranka_msgs:/home/abml/zoe_ws/src/Franka/franka_ros/franka_msgs/msg -Ifranka_msgs:/home/abml/zoe_ws/devel/share/franka_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/noetic/share/actionlib_msgs/cmake/../msg -p franka_msgs -o /home/abml/zoe_ws/devel/include/franka_msgs -e /opt/ros/noetic/share/gencpp/cmake/..

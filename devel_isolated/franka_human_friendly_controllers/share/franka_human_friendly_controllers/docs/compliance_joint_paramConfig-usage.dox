@@ -1,0 +1,14 @@
+\subsubsection usage Usage
+\verbatim
+<node name="dynamic_compliance" pkg="franka_human_friendly_controllers" type="dynamic_compliance">
+  <param name="joint_1" type="double" value="600.0" />
+  <param name="joint_2" type="double" value="600.0" />
+  <param name="joint_3" type="double" value="600.0" />
+  <param name="joint_4" type="double" value="600.0" />
+  <param name="joint_5" type="double" value="250.0" />
+  <param name="joint_6" type="double" value="150.0" />
+  <param name="joint_7" type="double" value="50.0" />
+  <param name="damping_ratio" type="double" value="1.0" />
+</node>
+\endverbatim
+

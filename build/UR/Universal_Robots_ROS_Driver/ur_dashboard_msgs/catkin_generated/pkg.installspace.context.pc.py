@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "actionlib_msgs;message_runtime;std_msgs".replace(';', 
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "ur_dashboard_msgs"
 PROJECT_SPACE_DIR = "/home/abml/zoe_ws/install"
-PROJECT_VERSION = "2.1.4"
+PROJECT_VERSION = "2.1.5"

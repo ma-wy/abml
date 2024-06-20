@@ -105,19 +105,6 @@ class hand_detect:
               hand_landmarks.landmark[self.mp_hands.HandLandmark.RING_FINGER_MCP].z]
             self.hand_list.pinky_mcp = give_Point(pinky_mcp_temp)
             
-            
-            
-            '''
-            INDEX_FINGER_MCP = 5
-            MIDDLE_FINGER_MCP = 9
-            RING_FINGER_MCP = 13
-            PINKY_MCP = 17
-geometry_msgs/Point index_mcp
-geometry_msgs/Point middle_mcp
-geometry_msgs/Point ring_mcp
-geometry_msgs/Point pinky_mcp
-            '''
-            
             self.mp_drawing.draw_landmarks( # no difference with time of drawing or not 
               image,
               hand_landmarks,

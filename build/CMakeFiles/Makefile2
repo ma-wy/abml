@@ -62,12 +62,12 @@ all: Franka/franka_ros/franka_msgs/all
 all: UR/universal_robot/universal_robots/all
 all: UR/ur_msgs/all
 all: air_pump/all
-all: franka_realsense_calibration/all
+all: calibration/franka_realsense_calibration/all
 all: franka_rocker_control/all
 all: grasping/all
 all: gripper_force/all
 all: handover/all
-all: ndi_calibration/all
+all: calibration/ndi_calibration/all
 all: pick-and-place/all
 all: UR/robotiq_arg85_description/all
 all: Franka/franka_ros_interface/franka_common/franka_core_msgs/all
@@ -85,6 +85,7 @@ all: UR/universal_robot/ur5e_moveit_config/all
 all: UR/universal_robot/ur_description/all
 all: UR/universal_robot/ur_gazebo/all
 all: UR/ur_modern_driver/all
+all: calibration/ur_realsense_calibration/all
 all: UR/universal_robot/ur_kinematics/all
 all: Franka/franka_ros/franka_hw/all
 all: Franka/franka_ros/franka_control/all
@@ -109,12 +110,12 @@ preinstall: Franka/franka_ros/franka_msgs/preinstall
 preinstall: UR/universal_robot/universal_robots/preinstall
 preinstall: UR/ur_msgs/preinstall
 preinstall: air_pump/preinstall
-preinstall: franka_realsense_calibration/preinstall
+preinstall: calibration/franka_realsense_calibration/preinstall
 preinstall: franka_rocker_control/preinstall
 preinstall: grasping/preinstall
 preinstall: gripper_force/preinstall
 preinstall: handover/preinstall
-preinstall: ndi_calibration/preinstall
+preinstall: calibration/ndi_calibration/preinstall
 preinstall: pick-and-place/preinstall
 preinstall: UR/robotiq_arg85_description/preinstall
 preinstall: Franka/franka_ros_interface/franka_common/franka_core_msgs/preinstall
@@ -132,6 +133,7 @@ preinstall: UR/universal_robot/ur5e_moveit_config/preinstall
 preinstall: UR/universal_robot/ur_description/preinstall
 preinstall: UR/universal_robot/ur_gazebo/preinstall
 preinstall: UR/ur_modern_driver/preinstall
+preinstall: calibration/ur_realsense_calibration/preinstall
 preinstall: UR/universal_robot/ur_kinematics/preinstall
 preinstall: Franka/franka_ros/franka_hw/preinstall
 preinstall: Franka/franka_ros/franka_control/preinstall
@@ -161,12 +163,12 @@ clean: Franka/franka_ros/franka_msgs/clean
 clean: UR/universal_robot/universal_robots/clean
 clean: UR/ur_msgs/clean
 clean: air_pump/clean
-clean: franka_realsense_calibration/clean
+clean: calibration/franka_realsense_calibration/clean
 clean: franka_rocker_control/clean
 clean: grasping/clean
 clean: gripper_force/clean
 clean: handover/clean
-clean: ndi_calibration/clean
+clean: calibration/ndi_calibration/clean
 clean: pick-and-place/clean
 clean: UR/robotiq_arg85_description/clean
 clean: Franka/franka_ros_interface/franka_common/franka_core_msgs/clean
@@ -184,6 +186,7 @@ clean: UR/universal_robot/ur5e_moveit_config/clean
 clean: UR/universal_robot/ur_description/clean
 clean: UR/universal_robot/ur_gazebo/clean
 clean: UR/ur_modern_driver/clean
+clean: calibration/ur_realsense_calibration/clean
 clean: UR/universal_robot/ur_kinematics/clean
 clean: Franka/franka_ros/franka_hw/clean
 clean: Franka/franka_ros/franka_control/clean
@@ -1279,22 +1282,58 @@ air_pump/clean: air_pump/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 .PHONY : air_pump/clean
 
 #=============================================================================
-# Directory level rules for directory franka_realsense_calibration
+# Directory level rules for directory calibration/franka_realsense_calibration
 
 # Recursive "all" directory target.
-franka_realsense_calibration/all:
+calibration/franka_realsense_calibration/all:
 
-.PHONY : franka_realsense_calibration/all
+.PHONY : calibration/franka_realsense_calibration/all
 
 # Recursive "preinstall" directory target.
-franka_realsense_calibration/preinstall:
+calibration/franka_realsense_calibration/preinstall:
 
-.PHONY : franka_realsense_calibration/preinstall
+.PHONY : calibration/franka_realsense_calibration/preinstall
 
 # Recursive "clean" directory target.
-franka_realsense_calibration/clean:
+calibration/franka_realsense_calibration/clean:
 
-.PHONY : franka_realsense_calibration/clean
+.PHONY : calibration/franka_realsense_calibration/clean
+
+#=============================================================================
+# Directory level rules for directory calibration/ndi_calibration
+
+# Recursive "all" directory target.
+calibration/ndi_calibration/all:
+
+.PHONY : calibration/ndi_calibration/all
+
+# Recursive "preinstall" directory target.
+calibration/ndi_calibration/preinstall:
+
+.PHONY : calibration/ndi_calibration/preinstall
+
+# Recursive "clean" directory target.
+calibration/ndi_calibration/clean:
+
+.PHONY : calibration/ndi_calibration/clean
+
+#=============================================================================
+# Directory level rules for directory calibration/ur_realsense_calibration
+
+# Recursive "all" directory target.
+calibration/ur_realsense_calibration/all:
+
+.PHONY : calibration/ur_realsense_calibration/all
+
+# Recursive "preinstall" directory target.
+calibration/ur_realsense_calibration/preinstall:
+
+.PHONY : calibration/ur_realsense_calibration/preinstall
+
+# Recursive "clean" directory target.
+calibration/ur_realsense_calibration/clean:
+
+.PHONY : calibration/ur_realsense_calibration/clean
 
 #=============================================================================
 # Directory level rules for directory franka_rocker_control
@@ -1455,24 +1494,6 @@ handover/clean: handover/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
 handover/clean: handover/CMakeFiles/handover_genlisp.dir/clean
 
 .PHONY : handover/clean
-
-#=============================================================================
-# Directory level rules for directory ndi_calibration
-
-# Recursive "all" directory target.
-ndi_calibration/all:
-
-.PHONY : ndi_calibration/all
-
-# Recursive "preinstall" directory target.
-ndi_calibration/preinstall:
-
-.PHONY : ndi_calibration/preinstall
-
-# Recursive "clean" directory target.
-ndi_calibration/clean:
-
-.PHONY : ndi_calibration/clean
 
 #=============================================================================
 # Directory level rules for directory pick-and-place

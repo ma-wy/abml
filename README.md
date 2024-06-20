@@ -1,4 +1,7 @@
 # useful command:  
+## make packages isolatedly  
+`$ catkin_make_isolated`  
+* some packages (e.g. ur_client_library) is not a catkin pacakge  
 ## create a new package  
 `$ catkin_create_pkg pkg_name rospy roscpp std_msgs`  
 
