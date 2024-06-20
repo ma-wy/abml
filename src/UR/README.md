@@ -13,7 +13,7 @@ In the file `src/ur_hardware_interface.cpp`, replace `controller_it->hardware_in
 
 | right | wrong |  
 | --- | --- |   
-| 1 | 1 |  
+| <img src=https://github.com/ma-wy/zoe_ws/blob/main/src/UR/markdown_source/1.png align=center /> | ./markdown_source/3.png |  
 
 2. Under the path `path/to/universal_robot-melodic-devel/ur5_moveit_config/config`,   
 
