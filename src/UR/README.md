@@ -9,10 +9,10 @@ In the file `src/ur_hardware_interface.cpp`, replace `controller_it->hardware_in
 `git clone -b calibration_devel https://github.com/rxjia/fmauch_universal_robot.git`  
 ### Notes:  
 1. Under the path `path/to/universal_robot-melodic-devel`,  
-![] (./markdown_source/1.png)
+![] (https://github.com/ma-wy/zoe_ws/blob/main/src/UR/markdown_source/1.png)
 | right | wrong |  
 | --- | --- |   
-| ![] (./markdown_source/1.png) | ![] (./markdown_source/3.png) |  
+| 1 | 1 |  
 2. Under the path `path/to/universal_robot-melodic-devel/ur5_moveit_config/config`,   
 | right | wrong |    
 | --- | --- |   
