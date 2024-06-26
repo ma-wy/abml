@@ -7,6 +7,7 @@ __step 2:__ connect NDI
 `$ rosrun ndi tool_tracking P9-01872.local`  
 __step 3:__ publish and check tool frame
 `$ rosrun ndi tool_frame`  
+Output: /robot\_ref\_frame  
 `$ rviz`  
 __step 4:__ calibrate the tool to the end-effector  
 `$ rosrun ndi calibration_rr_to_ee`   
@@ -23,6 +24,7 @@ __step 5:__ calibrate the opical track system to the robot base
 `/home/abml/ndi_ws/src/ndi/calibration/T_ots_to_rb.txt`  
 __step 6:__ publish transformation between ost and robot base as tf    
 `$ rosrun ndi static_frame`  
+Output: /ost  
 
 # Notes
 __API__  
@@ -33,6 +35,6 @@ Run GUI
 `$ cd /opt/NDIToolBox`  
 `$ ./Tack`  
 Load .rom file for the particular equipment with markers  
-__Ros Package__  
+__ROS Package__  
 by Yitian  
 

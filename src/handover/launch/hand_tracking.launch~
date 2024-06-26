@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-  <node pkg="handover" type="camera_to_base_pub.py" name="camera_to_base_pub" output="screen"/> 
   <node pkg="handover" type="hand_detect.py" name="hand_detect" output="screen"/> 
   <node pkg="handover" type="hand_3d_cam.py" name="hand_3d_cam" output="screen"/>
   <!--

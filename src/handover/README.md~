@@ -1,9 +1,37 @@
 # Usage  
+## Launch devices and rviz  
 __step 1:__ launch UR robot, camera, tfs, and rviz    
 `$ roslaunch handover launch_cam_and_rob.launch`  
-__step 2:__ launch tf subs  
-`roslaunch handover launch_tf_subs.launch`  
-__step 3:__ start to track hand  
+__step 2:__ run NDI and pulish tool frame and ots frame
+`$ rosrun ndi tool_tracking P9-01872.local`  
+## Launch tfs and pubs  
+__step 1__: launch tfs   
+`$ roslaunch handover launch_tfs.launch`  
+
+| parent frame | child frame |  
+| ---          | ---         |
+| base_link    | ost         |
+| ost          | robot\_ref\_frame |
+| base         | camera\_top\_color\_optical\_frame |
+
+__step 2:__ launch tf pubs  
+`$ roslaunch handover launch_tf_pubs.launch`  
+camera\_to\_base\_pub.py   
+handle\_to\_base\_pub.py  
+
+## Start to track hand   
 `$ roslaunch handover hand_tracking.launch`  
-__step 4:__ test method  
-`$ rosrun handover hand_3d_rob.py`  
+
+## Start to save data  
+`$ rosrun handover save_data_1.py`  
+__Usage:__  
+* save data at  
+`path = '/home/abml/zoe_ws/src/handover/data/dataset_1/member_' + str(member_num) + '/pose_' + str(pose_num) +'/'`  
+* before running the script, revise two params:  
+  > member_num = 1
+  > pose_num = 1 
+
+
+
+
+

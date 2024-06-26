@@ -13,7 +13,22 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+def check_make_clear_folder(path):
+  if not os.path.exists(path):
+    print('No such folder. Now create one.')
+    os.makedirs(path)
+  else:
+    print('The folder exists. Now clear it.')
+    clear_folder(path)
 
+def clear_folder(folder_path):
+  files = glob.glob(folder_path+'*')
+  for f in files:
+    os.remove(f)
+  print 'folder: ' + str(folder_path)
+  print 'files: ' + str(len(files))
+  print 'the folder has been emptied.'
+  
 def judge_decimal(data):
   a = format(float(data), '.3e')
   index = a.find('e')
@@ -257,7 +272,7 @@ def give_PoseArray(frame, poses):
   pose.poses = poses #Pose()
   return pose
 
-def get_Pose(posestamped):
+def get_PoseStamped(posestamped):
   pose = [posestamped.pose.position.x, 
     posestamped.pose.position.y, 
     posestamped.pose.position.z, 
@@ -267,6 +282,16 @@ def get_Pose(posestamped):
     posestamped.pose.orientation.w]
   return pose
   
+def get_Pose(pose):
+  pose = [pose.position.x, 
+    pose.position.y, 
+    pose.position.z, 
+    pose.orientation.x,
+    pose.orientation.y,
+    pose.orientation.z,
+    pose.orientation.w]
+  return pose
+    
 def get_PoseArray(posearray):
   pose_list = []
   for pose in posearray.poses:
@@ -282,14 +307,8 @@ def get_PoseArray(posearray):
   return pose_list
 
 def get_PointStamped(pointstamped):
-  pose = [posestamped.pose.position.x, 
-    posestamped.pose.position.y, 
-    posestamped.pose.position.z, 
-    posestamped.pose.orientation.x,
-    posestamped.pose.orientation.y,
-    posestamped.pose.orientation.z,
-    posestamped.pose.orientation.w]
-  return pose 
+  p = [pointstamped.point.x, pointstamped.point.y, pointstamped.point.z]
+  return p
   
 def get_control_degree(input_button):
   degree = zeros(6)
@@ -366,7 +385,15 @@ def angle_axis_to_q(r):
     q = tf.transformations.quaternion_from_matrix(R) 
   return q
   
-
+def xyz_axis_to_q(x_axis, y_axis, z_axis):
+  T = tf.transformations.identity_matrix()
+  T[0][0:3] = x_axis
+  T[1][0:3] = y_axis
+  T[2][0:3] = z_axis
+  T = array(T)
+  q = tf.transformations.quaternion_from_matrix(T.T) 
+  return q
+  
 # weight
 def filter3(data, k):
   temp_data = np.zeros(len(data))

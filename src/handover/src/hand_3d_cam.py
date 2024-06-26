@@ -12,11 +12,10 @@ class hand_detect:
     self.image2_sub = message_filters.Subscriber('/camera_top/aligned_depth_to_color/image_raw', Image)#, queue_size=2
     self.image2_sub.registerCallback(self.callback_image2) 
 #=======output==================================================================================
-    #self.hand_v_pub = rospy.Publisher("/hand_v", Float32, queue_size=1)
-    #self.if_hand_pub = rospy.Publisher("/if_hand", Int32, queue_size=1)
-    self.bridge = CvBridge()
     self.hand_pc_pub = rospy.Publisher("/hand_pc_cam",PointCloud2,queue_size=10)
-        # change the intrinsics
+    self.img_pc_pub = rospy.Publisher("/downsampled_pc",PointCloud2,queue_size=10)
+    
+    # change the intrinsics
     self.Cx = 650.407
     self.Cy = 357.483
     self.fx = 921.864
@@ -27,6 +26,9 @@ class hand_detect:
     self.cam_to_base_p = zeros(3)
     self.cam_to_base_q = zeros(4)
     self.frame_cam = "camera_top_color_optical_frame"
+    self.bridge = CvBridge()
+    self.blank_image = np.zeros((self.row,self.col,3), np.uint8)
+    self.cv_image2 = np.zeros((self.row,self.col,3), np.uint8)
 #===============================================================================================
 # members
   def callback_hand(self, data):
@@ -55,6 +57,7 @@ class hand_detect:
     self.cv_image2 = self.bridge.imgmsg_to_cv2(data, "passthrough")
     cv_image2 = self.cv_image2
     scale = 1000.0
+    
     hand_pc = []
     hand_list = self.hand_list
     r = 0

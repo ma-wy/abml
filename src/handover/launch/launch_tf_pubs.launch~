@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <launch>
     <node pkg="handover" type="camera_to_base_pub.py" name="camera_to_base_pub" output="screen"/> 
-    <!--
-    <node pkg="grasping" type="ee_to_ee3_pub.py" name="ee_to_ee3_pub" output="screen"/> 
-    -->
+    <node pkg="handover" type="handle_to_base_pub.py" name="handle_to_base_pub" output="screen"/> 
 </launch>
 

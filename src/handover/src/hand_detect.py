@@ -25,6 +25,7 @@ class hand_detect:
     self.hand_list = hand_mp()
     self.hand_list.header.frame_id = "base"
     self.hand_list.header.stamp = rospy.Time.now() 
+    self.hand_list_pre = self.hand_list
 
   def callback_rgb(self, data):
     self.hand_list.header.stamp = rospy.Time.now() 
@@ -107,13 +108,17 @@ class hand_detect:
               int(hand_landmarks.landmark[self.mp_hands.HandLandmark.PINKY_MCP].y * image_height),
               hand_landmarks.landmark[self.mp_hands.HandLandmark.RING_FINGER_MCP].z]
             self.hand_list.pinky_mcp = give_Point(pinky_mcp_temp)
-            
+            self.hand_list_pre = self.hand_list
             self.mp_drawing.draw_landmarks( # no difference with time of drawing or not 
               image,
               hand_landmarks,
               self.mp_hands.HAND_CONNECTIONS,
               self.mp_drawing_styles.get_default_hand_landmarks_style(),
               self.mp_drawing_styles.get_default_hand_connections_style())
+        else:
+            self.hand_list = self.hand_list_pre
+            
+
             
     # Flip the image horizontally for a selfie-view display.
         self.hand = image

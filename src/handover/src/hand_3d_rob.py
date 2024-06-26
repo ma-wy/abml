@@ -8,15 +8,19 @@ from mwy_lib import *
 class hand_detect:
   def __init__(self):
 #=======input==================================================================================
+    self.hand_sub = rospy.Subscriber('/hand_msg', hand_mp, self.callback_handedness)
     self.hand_pc_cam_sub = rospy.Subscriber('/hand_pc_cam', PointCloud2, self.callback_hand)
     self.camera_to_base_sub = rospy.Subscriber("/cam_to_base_tf", Pose, self.callback_camera_to_base)
 #=======output==================================================================================
     self.hand_pc_pub = rospy.Publisher("/hand_pc_rob", PointCloud2, queue_size=10)
     self.hand_average_depth_pub = rospy.Publisher("/hand_average_depth", PointStamped, queue_size=10)
+    self.hand_frame_pub = rospy.Publisher("/hand_frame", PoseStamped, queue_size=10)
 #=================================================================================
     self.cam_to_base_p = zeros(3)
     self.cam_to_base_q = zeros(4)
     self.hand_average_xy = zeros(3)
+    self.handedness = 'right'
+    
 #===============================================================================================
 # members
   def callback_camera_to_base(self, data):
@@ -28,8 +32,9 @@ class hand_detect:
     self.cam_to_base_q[2] = data.orientation.z
     self.cam_to_base_q[3] = data.orientation.w
 
-  def callback_hand_average_xy(self, data):
-    self.hand_average_xy = get_PointStamped(data)
+    
+  def callback_handedness(self, data):
+    self.handedness = data.handedness.data
 
   def callback_hand(self, data):
     r = 255
@@ -54,7 +59,7 @@ class hand_detect:
       PointField('z', 8, PointField.FLOAT32, 1),
       PointField('rgb', 12, PointField.UINT32, 1),
     ]
-    POINTS = hand_pc#list
+    POINTS = hand_pc#listhand_pc
     outputPoints = point_cloud2.create_cloud(HEADER, FIELDS, POINTS)
     self.hand_pc_pub.publish(outputPoints)     
     
@@ -62,9 +67,10 @@ class hand_detect:
     self.hand_ad = give_PointStamped("base", hand_pc[-1][0:3])
     self.hand_average_depth_pub.publish(self.hand_ad)  
 
+
 def main(args):
   rospy.init_node('hand_3d_rob', anonymous=True)
-
+  rate = rospy.Rate(20)
   hd = hand_detect()
 
   
