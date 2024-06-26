@@ -2,7 +2,7 @@
 ## Launch devices and rviz  
 __step 1:__ launch UR robot, camera, tfs, and rviz    
 `$ roslaunch handover launch_cam_and_rob.launch`  
-__step 2:__ run NDI and pulish tool frame and ots frame
+__step 2:__ run NDI and pulish tool frame and ots frame  
 `$ rosrun ndi tool_tracking P9-01872.local`  
 ## Launch tfs and pubs  
 __step 1__: launch tfs   
