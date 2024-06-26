@@ -66,7 +66,6 @@ class save_data:
 def main(args):
   rospy.init_node('save_data_1', anonymous=True)
   sd = save_data()
-  dataset_num = 1
   member_num = 1
   pose_num = 1 
   path = '/home/abml/zoe_ws/src/handover/data/dataset_1/member_' + str(member_num) + '/pose_' + str(pose_num) +'/'

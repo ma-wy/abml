@@ -13,7 +13,8 @@ __step 1__: launch tfs
 | base_link    | ost         |
 | ost          | robot\_ref\_frame |
 | base         | camera\_top\_color\_optical\_frame |
-
+| robot\_ref\_frame | handle_frame |
+ 
 __step 2:__ launch tf pubs  
 `$ roslaunch handover launch_tf_pubs.launch`  
 camera\_to\_base\_pub.py   
@@ -28,8 +29,8 @@ __Usage:__
 * save data at  
 `path = '/home/abml/zoe_ws/src/handover/data/dataset_1/member_' + str(member_num) + '/pose_' + str(pose_num) +'/'`  
 * before running the script, revise two params:  
-  > member_num = 1
-  > pose_num = 1 
+  > member_num = 1  
+  > pose_num = 1  
 
 
 
