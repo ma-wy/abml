@@ -43,7 +43,7 @@
     </include>
     
     
-    <include file="$(find ur5_moveit_config)/launch/moveit_planning_execution.launch"> </include>
+    <include file="$(find ur5_moveit_config)/launch/ur5_moveit_planning_execution.launch"> </include>
     <include file="$(find ur5_moveit_config)/launch/moveit_rviz.launch" > </include>
     
 </launch>

@@ -28,7 +28,7 @@
         <arg name="translation_delta_meters" value="0.05" />
         <arg name="rotation_delta_degrees" value="25" />
         <arg name="move_group_namespace" value="/"/>
-        <arg name="move_group" value="panda_manipulator" />
+        <arg name="move_group" value="manipulator" />
     </include>
 
 </launch>

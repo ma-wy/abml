@@ -356,7 +356,7 @@ xxx
 * commands  
 `$ source ./catkin_cl/devel/setup.bash`  
 (This command had already been added in the ~/.bashrc)
-`$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
+`$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  rosrun libfranka communication_test 192.168.1.110
 `$ python3 scrubnurseicravideo.py`  run:
 
 

@@ -72,7 +72,7 @@ def main(args):
   check_make_clear_folder(path)
   
   
-  print("\n============ Press `Enter` to compute and save data ============")
+  print("\n============ Press `Enter` save data ============")
   input()
   saveDataStep(sd.cam_to_base, path+'cam_to_base.txt')
   saveDataStep(sd.handle_to_base, path+'handle_to_base.txt')  

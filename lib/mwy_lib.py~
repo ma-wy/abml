@@ -13,6 +13,19 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+def ndi_ur_T_to_pq():
+  T = loadtxt('/home/abml/ndi_ws/src/ndi/calibration/T_ots_to_rb.text')
+  q = tf.transformations.quaternion_from_matrix(T)
+  p = T.T[3,0:3]
+  print('position: ' + str(p))
+  print('orientation: ' + str(q))
+
+def degree_to_rad(degree):
+  return float(degree)/180.0*pi
+
+def rad_to_degree(rad):
+  return float(rad)/pi*180.0
+
 def check_make_clear_folder(path):
   if not os.path.exists(path):
     print('No such folder. Now create one.')
@@ -25,9 +38,9 @@ def clear_folder(folder_path):
   files = glob.glob(folder_path+'*')
   for f in files:
     os.remove(f)
-  print 'folder: ' + str(folder_path)
-  print 'files: ' + str(len(files))
-  print 'the folder has been emptied.'
+  print('folder: ' + str(folder_path))
+  print('files: ' + str(len(files)))
+  print('the folder has been emptied.')
   
 def judge_decimal(data):
   a = format(float(data), '.3e')

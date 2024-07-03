@@ -11,8 +11,8 @@ https://www.guyuehome.com/35290
 `$ rosrun franka_realsense_calibration reset_rob.py`  
 
 1. The first launch file should open an rviz GUI. The second launch file should open 2 rqt GUI.  
-1. robot\_effector\_frame is set as "flange" but "tool0\_controller" is the tcp frame. If the tcp is reset in the script, tool0\_controller 
-2. Pay attention to the camera resolution included in the first launch file.  
+1. robot\_effector\_frame is set as "flange" but "tool0\_controller" is the __tcp__ frame. If the tcp is reset in the script, tool0\_controller 
+2. Pay attention to the camera __resolution__ included in the first launch file.  
 3. Add the image topic `/aruco_tracker/result` in rviz to check if the aruco is successfully detected.   
 4. Follow the blog https://www.guyuehome.com/35290  
 > Step 1: Move the robot until the aruco is in the middle of the camera view.  

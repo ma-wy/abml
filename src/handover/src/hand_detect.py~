@@ -109,15 +109,17 @@ class hand_detect:
               hand_landmarks.landmark[self.mp_hands.HandLandmark.RING_FINGER_MCP].z]
             self.hand_list.pinky_mcp = give_Point(pinky_mcp_temp)
             self.hand_list_pre = self.hand_list
+            self.mp_drawing.draw_landmarks( # no difference with time of drawing or not 
+              image,
+              hand_landmarks,
+              self.mp_hands.HAND_CONNECTIONS,
+              self.mp_drawing_styles.get_default_hand_landmarks_style(),
+              self.mp_drawing_styles.get_default_hand_connections_style())
         else:
             self.hand_list = self.hand_list_pre
-            
-        self.mp_drawing.draw_landmarks( # no difference with time of drawing or not 
-          image,
-          hand_landmarks,
-          self.mp_hands.HAND_CONNECTIONS,
-          self.mp_drawing_styles.get_default_hand_landmarks_style(),
-          self.mp_drawing_styles.get_default_hand_connections_style())
+        
+        mark2 = time.time()
+        print((mark2-mark1)*1000.0)
             
     # Flip the image horizontally for a selfie-view display.
         self.hand = image

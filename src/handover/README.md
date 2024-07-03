@@ -1,4 +1,4 @@
-# Usage  
+# Dataset 1   
 ## Launch devices and rviz  
 __step 1:__ launch UR robot, camera, tfs, and rviz    
 `$ roslaunch handover launch_cam_and_rob.launch`  
@@ -24,13 +24,44 @@ handle\_to\_base\_pub.py
 `$ roslaunch handover hand_tracking.launch`  
 
 ## Start to save data  
-`$ rosrun handover save_data_1.py`  
-__Usage:__  
-* save data at  
-`path = '/home/abml/zoe_ws/src/handover/data/dataset_1/member_' + str(member_num) + '/pose_' + str(pose_num) +'/'`  
-* before running the script, revise two params:  
+__step 1:__ initialize the robot  
+`$ cd /home/abml/zoe_ws/src/handover/src`/home/abml/zoe_ws/src/handover/src   
+`./ur_init_dataset_1.py`  
+__step 2:__ adjust the robot's pose
+`./ur_move_dataset_1.py`  
+__step 3:__ revise two params in `save_data_1.py`:  
   > member_num = 1  
   > pose_num = 1  
+__step 4:__ press `Enter` save data   
+`$ rosrun handover save_data_1.py`  
+
+# Dataset 2  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -117,8 +117,9 @@ class hand_detect:
               self.mp_drawing_styles.get_default_hand_connections_style())
         else:
             self.hand_list = self.hand_list_pre
-            
-
+        
+        mark2 = time.time()
+        print((mark2-mark1)*1000.0)
             
     # Flip the image horizontally for a selfie-view display.
         self.hand = image
@@ -132,13 +133,13 @@ def main(args):
   rospy.init_node('hand_detect', anonymous=True)
 
   hd = hand_detect()
-  '''
+  
   while not rospy.is_shutdown():
     cv2.imshow("hand_detect", hd.hand)    
     if cv2.waitKey(1) == ord('q'):
       break
   cv2.destroyAllWindows()    
-  '''
+  
   try:
     rospy.spin()
   except KeyboardInterrupt:

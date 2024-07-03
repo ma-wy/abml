@@ -24,6 +24,7 @@ __step 5:__ calibrate the opical track system to the robot base
 `/home/abml/ndi_ws/src/ndi/calibration/T_ots_to_rb.txt`  
 __step 6:__ publish transformation between ost and robot base as tf    
 `$ rosrun ndi static_frame`  
+Output: /ost  
 
 # Notes
 __API__  

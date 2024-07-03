@@ -13,6 +13,12 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+def degree_to_rad(degree):
+  return float(degree)/180.0*pi
+
+def rad_to_degree(rad):
+  return float(rad)/pi*180.0
+
 def check_make_clear_folder(path):
   if not os.path.exists(path):
     print('No such folder. Now create one.')
