@@ -1,0 +1,119 @@
+# Author: Ioan Sucan, William Baker
+class MoveGroupCommander(object):
+  def __init__(self, name, robot_description="robot_description", 
+      ns="", wait_for_servers=5.0):
+      self._g = _moveit_move_group_interface.MoveGroupInterface(
+          name, robot_description, ns, wait_for_servers)
+  # only get, no set
+  1 get_name(self):
+  3 get_active_joints(self):
+  4 get_joints(self):
+  5 get_variable_count(self):
+  9 get_interface_description(self):
+  12 get_planning_frame(self):  
+  13 get_current_joint_values(self):
+  20 get_current_state_bounded(self):
+  80 get_jacobian_matrix(self, joint_values, reference_point=None):
+  
+  # get-set pair
+  # ee link
+  7 get_end_effector_link(self):
+  8 set_end_effector_link(self, link_name):
+  6 has_end_effector_link(self):
+  
+  # ref frame
+  10 get_pose_reference_frame(self):
+  11 set_pose_reference_frame(self, reference_frame):
+  
+  # joint
+  22 get_joint_value_target(self):
+  23 set_joint_value_target(self, arg1, arg2=None, arg3=None):
+  
+  # named_target
+  33 get_named_targets(self):
+  35 get_named_target_values(self, target):
+  34 set_named_target(self, name):  
+  
+  # tolerance
+  39 get_goal_tolerance(self):
+  40 get_goal_joint_tolerance(self):
+  41 get_goal_position_tolerance(self):
+  42 get_goal_orientation_tolerance(self):
+  43 set_goal_tolerance(self, value):
+  44 set_goal_joint_tolerance(self, value):
+  45 set_goal_position_tolerance(self, value):
+  46 set_goal_orientation_tolerance(self, value):
+  
+  # speed and velocity limit
+  65 set_max_velocity_scaling_factor(self, value):
+  66 set_max_acceleration_scaling_factor(self, value):
+  67 limit_max_cartesian_link_speed(self, speed, link_name=""):
+  68 clear_max_cartesian_link_speed(self):  
+  
+  # random
+  16 get_random_joint_values(self):
+  17 get_random_pose(self, end_effector_link=""):
+  32 set_random_target(self):
+  
+  # rpy
+  15 get_current_rpy(self, end_effector_link=""):
+  24 set_rpy_target(self, rpy, end_effector_link=""):
+  
+  # pose
+  14 get_current_pose(self, end_effector_link=""):
+  27 set_pose_target(self, pose, end_effector_link=""):
+  28 set_pose_targets(self, poses, end_effector_link=""):
+  
+  # target
+  25 set_orientation_target(self, q, end_effector_link=""):
+  26 set_position_target(self, xyz, end_effector_link=""):
+  29 shift_pose_target(self, axis, value, end_effector_link=""):
+  30 clear_pose_target(self, end_effector_link):
+  31 clear_pose_targets(self):
+  
+  # state
+  21 get_current_state(self):
+  18 set_start_state_to_current_state(self):
+  19 set_start_state(self, msg):
+  
+  # constraints
+  49 get_known_constraints(self):
+  50 get_path_constraints(self):
+  53 get_trajectory_constraints(self):
+  51 set_path_constraints(self, value):
+  54 set_trajectory_constraints(self, value):
+  56 set_constraints_database(self, host, port):
+  52 clear_path_constraints(self):
+  55 clear_trajectory_constraints(self):
+  64 set_workspace(self, ws):
+  78 set_support_surface_name(self, value):
+  
+  # planner setting
+  58 get_planning_time(self):
+  57 set_planning_time(self, seconds):
+  60 get_planning_pipeline_id(self):
+  59 set_planning_pipeline_id(self, planning_pipeline):
+  62 get_planner_id(self):
+  61 set_planner_id(self, planner_id):
+  47 allow_looking(self, value):
+  48 allow_replanning(self, value):
+  63 set_num_planning_attempts(self, num_planning_attempts):
+   
+  # remember
+  37 get_remembered_joint_values(self):
+  36 remember_joint_values(self, name, values=None): 
+  38 forget_joint_values(self, name):
+  
+  # others
+  2 stop(self):
+  69 go(self, joints=None, wait=True):
+  70 plan(self, joints=None):
+  71 construct_motion_plan_request(self):
+  72 compute_cartesian_path
+  73 execute(self, trajectory, wait=True):
+  74 attach_object(self, object_name, link_name="", touch_links=[]):
+  75 detach_object(self, name=""):
+  76 pick(self, object_name, grasp=[], plan_only=False):
+  77 place(self, object_name, location=None, plan_only=False):
+  79 retime_trajectory
+  81 enforce_bounds(self, robot_state_msg):

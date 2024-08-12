@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_ip" />
+  <arg name="load_gripper" />
+
+  <!-- Launch real-robot control -->
+  <include file="$(dirname)/franka_control_in_franka_ros.launch" pass_all_args="true" />
+  <!-- By default use joint position controllers -->
+  <arg name="transmission" default="position" />
+  <!-- Start ROS controllers -->
+  <include file="$(find panda_moveit_config)/launch/ros_controllers.launch" pass_all_args="true" />
+  
+  
+</launch>

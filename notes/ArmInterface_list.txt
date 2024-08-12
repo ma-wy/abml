@@ -1,0 +1,67 @@
+# @author: Saif Sidhik <sxs1412@bham.ac.uk>
+from franka_moveit import PandaMoveGroupInterface
+class TipState():
+class ArmInterface(object):
+    class RobotMode(enum.IntEnum):
+    # get
+    1 get_movegroup_interface(self):
+    2 get_robot_params(self):
+    3 get_joint_limits(self):
+    8 get_robot_status(self):
+    35 get_flange_pose(self, pos=None, ori=None):
+    42 get_controller_manager(self):
+    43 get_frames_interface(self):
+    
+    # ee frame
+    38 reset_EE_frame(self):
+    39 set_EE_frame(self, frame):
+    40 set_EE_at_frame(self, frame_name, timeout=5.0):
+    
+    # ee p, v, f
+    19 endpoint_pose(self):
+    20 endpoint_velocity(self):
+    21 endpoint_effort(self, in_base_frame=True):    
+    
+    # joint position
+    4 joint_names(self):
+    12 joint_angle(self, joint):
+    13 joint_angles(self):
+    14 joint_ordered_angles(self):
+    5 get_joint_positions(self):
+    28 set_joint_positions(self, positions):
+    27 set_joint_position_speed(self, speed=0.3):
+    31 set_joint_positions_velocities(self, positions, velocities):
+    
+    # joint_velocity
+    15 joint_velocity(self, joint):
+    16 joint_velocities(self):
+    29 set_joint_velocities(self, velocities):
+    
+    # joint forces
+    17 joint_effort(self, joint):
+    18 joint_efforts(self):
+    30 set_joint_torques(self, torques):
+    
+    # move to
+    33 move_to_neutral(self, timeout=15.0, speed=0.15):
+    34 move_to_joint_positions(self, positions, timeout=10.0, 
+                     threshold=0.00085, test=None, use_moveit=True):
+    36 move_to_cartesian_pose(self, pos, ori=None, use_moveit=True):  
+  
+    # others    
+    6 coriolis_comp(self):
+    7 gravity_comp(self):
+    9 in_safe_state(self):
+    10 error_in_current_state(self):
+    11 what_errors(self):
+    22 exit_control_mode(self, timeout=5, velocity_tolerance=1e-2):
+    23 tip_states(self):
+    24 joint_inertia_matrix(self):
+    25 zero_jacobian(self):
+    26 set_command_timeout(self, timeout):
+    32 has_collided(self):
+    41 set_collision_threshold(self, cartesian_forces=None, joint_torques=None):
+    37 pause_controllers_and_do(self, func, *args, **kwargs):
+    
+
+

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="move_franka" type="camera_to_base_pub.py" name="camera_to_base_pub" output="screen"/>
+</launch>
+

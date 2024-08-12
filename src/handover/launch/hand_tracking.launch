@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="handover" type="hand_detect.py" name="hand_detect" output="screen"/> 
+  <node pkg="handover" type="hand_3d_cam.py" name="hand_3d_cam" output="screen"/>
+  <node pkg="handover" type="hand_3d_rob.py" name="hand_3d_rob" output="screen"/>
+</launch>
+

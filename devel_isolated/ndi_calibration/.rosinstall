@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/abml/zoe_ws/devel_isolated/ndi_calibration/setup.sh

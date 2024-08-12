@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/devel_isolated/ur_realsense_calibration
+
+Name: ur_realsense_calibration
+Description: Description of ur_realsense_calibration
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

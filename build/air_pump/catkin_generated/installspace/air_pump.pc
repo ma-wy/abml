@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/install
+
+Name: air_pump
+Description: Description of air_pump
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

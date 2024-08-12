@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/install
+
+Name: ndi_calibration
+Description: Description of ndi_calibration
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

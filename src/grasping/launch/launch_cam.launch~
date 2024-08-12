@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+<!--
+  <include file="$(find multi_rs_cam)/launch/rs_cam_filter_points.launch">  </include>
+  <include file="$(find multi_rs_cam)/launch/multi_rs_cam.launch">  </include>
+-->
+  <include file="$(find realsense2_camera)/launch/rs_d435_camera_with_model.launch">  
+<!--  <arg name="serial_no"    		       default="f0270157"/> 		-->	
+  <arg name="camera"              	   default="camera"/>	
+  <arg name="align_depth"              default="true"/>
+  <arg name="enable_pointcloud"        default="true"/>
+  <arg name="color_width"              default="640"/>
+  <arg name="color_height"             default="480"/>
+  <arg name="enable_color"             default="true"/>
+  <arg name="depth_width"              default="640"/>
+  <arg name="depth_height"             default="480"/>
+  <arg name="enable_depth"             default="true"/>
+  <arg name="enable_infra2"             default="false"/>
+<!-- 
+  <arg name="depth_fps"           default="20"/>
+  <arg name="infra_fps"           default="20"/>
+  <arg name="color_fps"           default="20"/>
+-->
+  </include>
+
+</launch>
+

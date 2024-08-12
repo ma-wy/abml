@@ -1,0 +1,27 @@
+# @author: Saif Sidhik <sxs1412@bham.ac.uk>
+from franka_gripper.msg import ( GraspAction, GraspGoal, 
+                                 HomingAction, HomingGoal,   
+                                 MoveAction, MoveGoal,
+                                 StopAction, StopGoal,
+                                 GraspEpsilon )
+class GripperInterface(object):
+    @property     def exists(self):
+    def set_velocity(self, value):
+    def joint_names(self):
+    def joint_position(self, joint):
+    def joint_positions(self):
+    def joint_ordered_positions(self):
+    def joint_velocity(self, joint):
+    def joint_velocities(self):
+    def joint_ordered_velocities(self):
+    def joint_effort(self, joint):
+    def joint_efforts(self):
+    def joint_ordered_efforts(self):
+    def home_joints(self, wait_for_result = False):
+    def open(self):
+    def close(self):
+    def calibrate(self):
+    def move_joints(self, width, speed = None, wait_for_result = True):
+    def stop_action(self):
+    def grasp(self, width, force, speed = None, epsilon_inner = 0.005, 
+              epsilon_outer = 0.005,wait_for_result = True, cb = None):

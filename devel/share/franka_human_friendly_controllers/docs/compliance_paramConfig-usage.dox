@@ -1,0 +1,15 @@
+\subsubsection usage Usage
+\verbatim
+<node name="dynamic_compliance" pkg="franka_human_friendly_controllers" type="dynamic_compliance">
+  <param name="translational_stiffness_X" type="double" value="400.0" />
+  <param name="translational_stiffness_Y" type="double" value="400.0" />
+  <param name="translational_stiffness_Z" type="double" value="400.0" />
+  <param name="rotational_stiffness_X" type="double" value="30.0" />
+  <param name="rotational_stiffness_Y" type="double" value="30.0" />
+  <param name="rotational_stiffness_Z" type="double" value="30.0" />
+  <param name="nullspace_stiffness" type="double" value="0.0" />
+  <param name="max_delta_lin" type="double" value="0.05" />
+  <param name="max_delta_ori" type="double" value="0.15" />
+</node>
+\endverbatim
+

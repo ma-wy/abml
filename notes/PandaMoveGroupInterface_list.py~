@@ -1,0 +1,36 @@
+# @author: Saif Sidhik <sxs1412@bham.ac.uk>
+import moveit_commander
+from franka_moveit import ExtendedPlanningSceneInterface
+def all_close(goal, actual, tolerance):
+class PandaMoveGroupInterface:
+    # property is not callable
+    @property     def robot_state_interface(self):
+    @property     def scene(self):
+    @property     def arm_group(self):
+    @property     def gripper_group(self):
+    def go_to_joint_positions
+        (self, positions, wait = True, tolerance = 0.005):
+    def go_to_cartesian_pose(self, pose, ee_link="", wait=True):
+    def plan_cartesian_path(self, poses):
+    def set_velocity_scale(self, value, group = "arm"):
+    def plan_joint_path(self, joint_position):
+    def close_gripper(self, wait = False):
+    def open_gripper(self, wait = False):
+    def display_trajectory(self, plan):
+    def move_to_neutral(self, wait = True):
+    def execute_plan(self, plan, group = "arm", wait = True):
+
+
+
+
+
+
+        
+
+
+
+
+    
+    
+
+

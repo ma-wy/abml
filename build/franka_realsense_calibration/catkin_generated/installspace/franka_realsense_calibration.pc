@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/install
+
+Name: franka_realsense_calibration
+Description: Description of franka_realsense_calibration
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
