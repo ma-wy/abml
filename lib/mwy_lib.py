@@ -13,6 +13,16 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+def load_str(file_path):
+  with open(file_path, 'r') as file:
+    data = file.read().rstrip()
+  return data
+    
+def load_str_lines(file_path):    
+  with open(file_path, 'r') as file:
+    data = file.read().replace('\n', '')  
+  return data
+
 def degree_to_rad(degree):
   return float(degree)/180.0*pi
 
@@ -399,7 +409,7 @@ def xyz_axis_to_q(x_axis, y_axis, z_axis):
   T = array(T)
   q = tf.transformations.quaternion_from_matrix(T.T) 
   return q
-  
+    
 # weight
 def filter3(data, k):
   temp_data = np.zeros(len(data))

@@ -13,12 +13,15 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
-def ndi_ur_T_to_pq():
-  T = loadtxt('/home/abml/ndi_ws/src/ndi/calibration/T_ots_to_rb.text')
-  q = tf.transformations.quaternion_from_matrix(T)
-  p = T.T[3,0:3]
-  print('position: ' + str(p))
-  print('orientation: ' + str(q))
+def load_str(file_path):
+  with open(file_path, 'r') as file:
+    data = file.read().rstrip()
+  return data
+    
+def load_str_lines(file_path):    
+  with open(file_path, 'r') as file:
+    data = file.read().replace('\n', '')  
+  return data
 
 def degree_to_rad(degree):
   return float(degree)/180.0*pi
@@ -407,6 +410,14 @@ def xyz_axis_to_q(x_axis, y_axis, z_axis):
   q = tf.transformations.quaternion_from_matrix(T.T) 
   return q
   
+def xyz_axis_to_T(x_axis, y_axis, z_axis):
+  T = tf.transformations.identity_matrix()
+  T[0][0:3] = x_axis
+  T[1][0:3] = y_axis
+  T[2][0:3] = z_axis
+  T = array(T)
+  return T.T
+    
 # weight
 def filter3(data, k):
   temp_data = np.zeros(len(data))

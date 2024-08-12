@@ -25,21 +25,50 @@ handle\_to\_base\_pub.py
 
 ## Start to save data  
 __step 1:__ initialize the robot  
-`$ cd /home/abml/zoe_ws/src/handover/src`/home/abml/zoe_ws/src/handover/src   
+`$ cd /home/abml/zoe_ws/src/handover/src`   
 `./ur_init_dataset_1.py`  
-__step 2:__ adjust the robot's pose
+__step 2:__ adjust the robot's pose  
 `./ur_move_dataset_1.py`  
-__step 3:__ revise two params in `save_data_1.py`:  
-  > member_num = 1  
+__step 3:__ revise two params in `save_data.py`:  
+  > dataset_num = 1  
+  > member_num = 1   
   > pose_num = 1  
-__step 4:__ press `Enter` save data   
-`$ rosrun handover save_data_1.py`  
+  
+__step 4:__ save images   
+`$ rosrun handover save_video.py`  
 
 # Dataset 2  
 
 
+## Start to save data  
+__step 1:__ initialize the robot  
+`$ cd /home/abml/zoe_ws/src/handover/src`   
+`./ur_init_dataset_2.py`  
+__step 2:__ human hands over the instrument to the robot  
+`$ rosrun handover grasp_target_generate.py`  
+__step 3:__ robot grasps the instrument  
+`./ur_move_dataset_1.py`  
+__step 4:__ revise two params in `save_data.py`:  
+  > dataset_num = 2  
+  > member_num = 1  
+  > pose_num = 1  
+  
+__step 4:__ press `Enter` save data   
+`$ rosrun handover save_data.py`  
 
 
+# Process Images  
+`$ cd /home/abml/zoe_ws/src/handover/data`  
+revise parameters  
+> image_num = 196  
+> dataset_num = 1  
+> member_num = 1  
+> pose_num = 1  
+`$ ./process_image.py`  
+
+# Visualize Data  
+`$ roslaunch handover launch_visualize_data.launch`  
+`$ rosrun handover visualize_data.py`
 
 
 
