@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="ndi_device" value="P9-01872.local"/>
+  <node pkg="ndi" type="tool_tracking" name="tool_tracking" output="screen" args="$(arg ndi_device)"/> 
+  <node pkg="ndi" type="tool_frame" name="tool_frame" output="screen"/>
+  <node pkg="ndi" type="static_frame" name="static_frame" output="screen"/>
+</launch>
+

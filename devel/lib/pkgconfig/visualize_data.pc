@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/devel
+
+Name: visualize_data
+Description: Description of visualize_data
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

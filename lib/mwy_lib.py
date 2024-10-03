@@ -13,6 +13,11 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+def generate_ur_cmd(p,q):
+  ra = q_to_angle_axis(array(q))
+  cmd = np.concatenate((array(p),ra)) 
+  return cmd
+
 def load_str(file_path):
   with open(file_path, 'r') as file:
     data = file.read().rstrip()

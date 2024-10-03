@@ -79,11 +79,11 @@ else()
 endif()
 
 # warn when using a deprecated package
-if(NOT "This package has been deprecated. Users of CB3 and e-Series controllers should migrate to ur_robot_driver." STREQUAL "")
+if(NOT "" STREQUAL "")
   set(_msg "WARNING: package 'ur_modern_driver' is deprecated")
   # append custom deprecation text if available
-  if(NOT "This package has been deprecated. Users of CB3 and e-Series controllers should migrate to ur_robot_driver." STREQUAL "TRUE")
-    set(_msg "${_msg} (This package has been deprecated. Users of CB3 and e-Series controllers should migrate to ur_robot_driver.)")
+  if(NOT "" STREQUAL "TRUE")
+    set(_msg "${_msg} ()")
   endif()
   message("${_msg}")
 endif()

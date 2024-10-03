@@ -13,6 +13,14 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+def generate_ur_cmd_from_posestamped(posestamped):
+  pose = array(get_PoseStamped(posestamped))
+  p = pose[0:3]
+  q = pose[3:7]
+  ra = q_to_angle_axis(array(q))
+  cmd = np.concatenate((array(p),ra)) 
+  return cmd
+
 def load_str(file_path):
   with open(file_path, 'r') as file:
     data = file.read().rstrip()
@@ -409,14 +417,6 @@ def xyz_axis_to_q(x_axis, y_axis, z_axis):
   T = array(T)
   q = tf.transformations.quaternion_from_matrix(T.T) 
   return q
-  
-def xyz_axis_to_T(x_axis, y_axis, z_axis):
-  T = tf.transformations.identity_matrix()
-  T[0][0:3] = x_axis
-  T[1][0:3] = y_axis
-  T[2][0:3] = z_axis
-  T = array(T)
-  return T.T
     
 # weight
 def filter3(data, k):

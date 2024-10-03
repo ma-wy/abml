@@ -1,0 +1,164 @@
+#!/usr/bin/env python3.8
+import sys 
+sys.path.append("/home/abml/zoe_ws/lib")
+from mwy_lib import *
+
+def rgb_to_pc(uv):
+  Cx = 650.407
+  Cy = 357.483
+  fx = 921.864
+  fy = 922.567
+  col = 1280
+  row = 720  
+  scale = 1000.0
+  
+  i = int(uv[1])
+  j = int(uv[0]) 
+  if i >= row:
+    i =  row-1 
+  elif i < 0:
+    i = 0
+  elif j >= col:
+    j = col-1 
+  elif j < 0:
+    j = 0
+
+  d = 0.8#dth_img[i][j]
+  pt = [(float(j)-Cx)*d/fx/scale, (float(i)-Cy)*d/fy/scale, d]
+  return pt
+  
+def cam_to_base(pt, cam_to_base):
+  trans = cam_to_base[0:3]
+  q_rot = cam_to_base[3:7]
+  pt_base = transformation_P(pt,trans,q_rot)
+  return list(pt_base)
+
+#####################
+image_num = 196
+dataset_num = 1
+member_num = 1
+pose_num = 1
+######################
+path = '/home/abml/zoe_ws/src/handover/data/dataset_' + str(dataset_num) +'/member_' + str(member_num) + '/image_' + str(pose_num) +'/'
+mp_drawing = mp.solutions.drawing_utils
+mp_drawing_styles = mp.solutions.drawing_styles
+mp_hands = mp.solutions.hands
+hand_list = []
+hand_list_pre = hand_list
+image_width = 1280
+image_height = 720
+Cx = 650.407
+Cy = 357.483
+fx = 921.864
+fy = 922.567
+col = 1280
+row = 720
+path_2 = '/home/abml/zoe_ws/src/handover/data/dataset_' + str(dataset_num) +'/member_' + str(member_num) + '/pose_' + str(pose_num) +'/cam_to_base.txt'
+cam_to_base_pq = loadtxt(path_2)
+cam_p = cam_to_base_pq[0:3]
+cam_q = cam_to_base_pq[3:7]
+file_path = '/home/abml/zoe_ws/src/handover/data/dataset_' + str(dataset_num) +'/member_' + str(member_num) + '/pose_' + str(pose_num) +'/hand_traj.txt'
+
+for i in range(image_num):
+  rgb_name = path + 'rgb-' + str(i+1) + '.jpg'
+  rgb_img = cv2.imread(rgb_name)
+  #dth_name = path + 'depth-' + str(i+1) + '.jpg'
+  #dth_img = cv2.imread(dth_name,-1)
+  
+  with mp_hands.Hands(
+    model_complexity=0,
+    min_detection_confidence=0.3,
+    min_tracking_confidence=0.3) as hands:
+      image = rgb_img
+      image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+      results = hands.process(image)
+      image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+        
+      if results.multi_hand_landmarks:
+        print(i+1)
+        print(results.multi_handedness[0].classification[0].label)
+        
+        for hand_landmarks in results.multi_hand_landmarks:
+          wrist_temp = rgb_to_pc([
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.WRIST].x * image_width), 
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.WRIST].y * image_height),
+            hand_landmarks.landmark[mp_hands.HandLandmark.WRIST].z]) 
+          wrist = cam_to_base(wrist_temp, cam_to_base_pq)
+          
+          thumb_temp = rgb_to_pc([
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].x * image_width), 
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].y * image_height),
+            hand_landmarks.landmark[mp_hands.HandLandmark.THUMB_TIP].z])
+          thumb = cam_to_base(thumb_temp, cam_to_base_pq)
+          
+          index_temp = rgb_to_pc([
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].x * image_width), 
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y * image_height),
+            hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].z])
+          index = cam_to_base(index_temp, cam_to_base_pq)
+            
+          middle_temp = rgb_to_pc([
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].x * image_width), 
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].y * image_height),
+            hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_TIP].z])
+          middle = cam_to_base(middle_temp, cam_to_base_pq)
+            
+          ring_temp = rgb_to_pc([
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.RING_FINGER_TIP].x * image_width), 
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.RING_FINGER_TIP].y * image_height),
+            hand_landmarks.landmark[mp_hands.HandLandmark.RING_FINGER_TIP].z])
+          ring = cam_to_base(ring_temp, cam_to_base_pq)
+            
+          pinky_temp = rgb_to_pc([
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.PINKY_TIP].x * image_width), 
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.PINKY_TIP].y * image_height),
+            hand_landmarks.landmark[mp_hands.HandLandmark.PINKY_TIP].z])
+          pinky = cam_to_base(pinky_temp, cam_to_base_pq)
+            
+          index_mcp_temp = rgb_to_pc([
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_MCP].x * image_width), 
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_MCP].y * image_height),
+            hand_landmarks.landmark[mp_hands.HandLandmark.INDEX_FINGER_MCP].z])
+          index_mcp = cam_to_base(index_mcp_temp, cam_to_base_pq)
+            
+          middle_mcp_temp = rgb_to_pc([
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].x * image_width), 
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].y * image_height),
+            hand_landmarks.landmark[mp_hands.HandLandmark.MIDDLE_FINGER_MCP].z])
+          middle_mcp = cam_to_base(middle_mcp_temp, cam_to_base_pq)
+            
+          ring_mcp_temp = rgb_to_pc([
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.RING_FINGER_MCP].x * image_width), 
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.RING_FINGER_MCP].y * image_height),
+            hand_landmarks.landmark[mp_hands.HandLandmark.RING_FINGER_MCP].z])
+          ring_mcp = cam_to_base(ring_mcp_temp, cam_to_base_pq)
+            
+          pinky_mcp_temp = rgb_to_pc([
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.PINKY_MCP].x * image_width), 
+            int(hand_landmarks.landmark[mp_hands.HandLandmark.PINKY_MCP].y * image_height),
+            hand_landmarks.landmark[mp_hands.HandLandmark.RING_FINGER_MCP].z])
+          pinky_mcp = cam_to_base(pinky_mcp_temp, cam_to_base_pq)
+            
+          palm = [wrist, index_mcp, middle_mcp, ring_mcp, pinky_mcp]
+          hand_a = list(mean(array(palm), axis=0))
+          print(hand_a)
+          
+          hand_list = wrist + thumb + index + middle + ring + pinky + index_mcp + middle_mcp + ring_mcp + pinky_mcp + hand_a
+          hand_list_pre = hand_list
+          mp_drawing.draw_landmarks( # no difference with time of drawing or not 
+            image,
+            hand_landmarks,
+            mp_hands.HAND_CONNECTIONS,
+            mp_drawing_styles.get_default_hand_landmarks_style(),
+            mp_drawing_styles.get_default_hand_connections_style())
+          #cv2.imshow("hand_detect", image)    
+          filename = path + 'hand-' + str(i+1) + '.jpg'  
+          #cv2.imwrite(filename, image) 
+          print(hand_list)  
+          saveDataStep(hand_list, file_path)
+      else:
+        hand_list = hand_list_pre
+        print(hand_list)  
+        saveDataStep(hand_list, file_path)
+
+    

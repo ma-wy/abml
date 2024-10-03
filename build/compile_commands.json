@@ -1,0 +1,42 @@
+[
+{
+  "directory": "/home/abml/zoe_ws/build/UR/ur_modern_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"ur_modern_driver\\\" -I/home/abml/zoe_ws/src/UR/ur_modern_driver/include -I/home/abml/zoe_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -std=c++11 -std=c++11 -O3 -DNDEBUG   -o CMakeFiles/ur_driver.dir/src/ur_ros_wrapper.cpp.o -c /home/abml/zoe_ws/src/UR/ur_modern_driver/src/ur_ros_wrapper.cpp",
+  "file": "/home/abml/zoe_ws/src/UR/ur_modern_driver/src/ur_ros_wrapper.cpp"
+},
+{
+  "directory": "/home/abml/zoe_ws/build/UR/ur_modern_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"ur_modern_driver\\\" -I/home/abml/zoe_ws/src/UR/ur_modern_driver/include -I/home/abml/zoe_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -std=c++11 -std=c++11 -O3 -DNDEBUG   -o CMakeFiles/ur_driver.dir/src/ur_driver.cpp.o -c /home/abml/zoe_ws/src/UR/ur_modern_driver/src/ur_driver.cpp",
+  "file": "/home/abml/zoe_ws/src/UR/ur_modern_driver/src/ur_driver.cpp"
+},
+{
+  "directory": "/home/abml/zoe_ws/build/UR/ur_modern_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"ur_modern_driver\\\" -I/home/abml/zoe_ws/src/UR/ur_modern_driver/include -I/home/abml/zoe_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -std=c++11 -std=c++11 -O3 -DNDEBUG   -o CMakeFiles/ur_driver.dir/src/ur_realtime_communication.cpp.o -c /home/abml/zoe_ws/src/UR/ur_modern_driver/src/ur_realtime_communication.cpp",
+  "file": "/home/abml/zoe_ws/src/UR/ur_modern_driver/src/ur_realtime_communication.cpp"
+},
+{
+  "directory": "/home/abml/zoe_ws/build/UR/ur_modern_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"ur_modern_driver\\\" -I/home/abml/zoe_ws/src/UR/ur_modern_driver/include -I/home/abml/zoe_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -std=c++11 -std=c++11 -O3 -DNDEBUG   -o CMakeFiles/ur_driver.dir/src/ur_communication.cpp.o -c /home/abml/zoe_ws/src/UR/ur_modern_driver/src/ur_communication.cpp",
+  "file": "/home/abml/zoe_ws/src/UR/ur_modern_driver/src/ur_communication.cpp"
+},
+{
+  "directory": "/home/abml/zoe_ws/build/UR/ur_modern_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"ur_modern_driver\\\" -I/home/abml/zoe_ws/src/UR/ur_modern_driver/include -I/home/abml/zoe_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -std=c++11 -std=c++11 -O3 -DNDEBUG   -o CMakeFiles/ur_driver.dir/src/robot_state.cpp.o -c /home/abml/zoe_ws/src/UR/ur_modern_driver/src/robot_state.cpp",
+  "file": "/home/abml/zoe_ws/src/UR/ur_modern_driver/src/robot_state.cpp"
+},
+{
+  "directory": "/home/abml/zoe_ws/build/UR/ur_modern_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"ur_modern_driver\\\" -I/home/abml/zoe_ws/src/UR/ur_modern_driver/include -I/home/abml/zoe_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -std=c++11 -std=c++11 -O3 -DNDEBUG   -o CMakeFiles/ur_driver.dir/src/robot_state_RT.cpp.o -c /home/abml/zoe_ws/src/UR/ur_modern_driver/src/robot_state_RT.cpp",
+  "file": "/home/abml/zoe_ws/src/UR/ur_modern_driver/src/robot_state_RT.cpp"
+},
+{
+  "directory": "/home/abml/zoe_ws/build/UR/ur_modern_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"ur_modern_driver\\\" -I/home/abml/zoe_ws/src/UR/ur_modern_driver/include -I/home/abml/zoe_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -std=c++11 -std=c++11 -O3 -DNDEBUG   -o CMakeFiles/ur_driver.dir/src/do_output.cpp.o -c /home/abml/zoe_ws/src/UR/ur_modern_driver/src/do_output.cpp",
+  "file": "/home/abml/zoe_ws/src/UR/ur_modern_driver/src/do_output.cpp"
+},
+{
+  "directory": "/home/abml/zoe_ws/build/UR/ur_modern_driver",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"ur_modern_driver\\\" -Dur_hardware_interface_EXPORTS -I/home/abml/zoe_ws/src/UR/ur_modern_driver/include -I/home/abml/zoe_ws/devel/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp  -std=c++11 -std=c++11 -O3 -DNDEBUG -fPIC   -o CMakeFiles/ur_hardware_interface.dir/src/ur_hardware_interface.cpp.o -c /home/abml/zoe_ws/src/UR/ur_modern_driver/src/ur_hardware_interface.cpp",
+  "file": "/home/abml/zoe_ws/src/UR/ur_modern_driver/src/ur_hardware_interface.cpp"
+}
+]

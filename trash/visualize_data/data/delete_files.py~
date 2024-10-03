@@ -1,0 +1,14 @@
+#!/usr/bin/env python3.8
+import os
+'''
+for i in range(11):
+  for j in range(9):
+    path = '/home/abml/zoe_ws/src/handover/data/dataset_1/member_' + str(i+1) + '/image_' + str(j+1)
+    print(path)
+    os.system("rm -f " + path + "/depth*")
+'''
+for i in range(11):
+  for j in range(10):
+    path = '/home/abml/zoe_ws/src/handover/data/dataset_1/member_' + str(i+1) + '/image_' + str(j+1)
+    print(path)
+    os.system("rm -f " + path + "/depth*")

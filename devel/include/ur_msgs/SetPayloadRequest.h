@@ -15,7 +15,6 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
-#include <geometry_msgs/Vector3.h>
 
 namespace ur_msgs
 {
@@ -25,22 +24,17 @@ struct SetPayloadRequest_
   typedef SetPayloadRequest_<ContainerAllocator> Type;
 
   SetPayloadRequest_()
-    : mass(0.0)
-    , center_of_gravity()  {
+    : payload(0.0)  {
     }
   SetPayloadRequest_(const ContainerAllocator& _alloc)
-    : mass(0.0)
-    , center_of_gravity(_alloc)  {
+    : payload(0.0)  {
   (void)_alloc;
     }
 
 
 
-   typedef float _mass_type;
-  _mass_type mass;
-
-   typedef  ::geometry_msgs::Vector3_<ContainerAllocator>  _center_of_gravity_type;
-  _center_of_gravity_type center_of_gravity;
+   typedef float _payload_type;
+  _payload_type payload;
 
 
 
@@ -71,8 +65,7 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::ur_msgs::SetPayloadRequest_<ContainerAllocator1> & lhs, const ::ur_msgs::SetPayloadRequest_<ContainerAllocator2> & rhs)
 {
-  return lhs.mass == rhs.mass &&
-    lhs.center_of_gravity == rhs.center_of_gravity;
+  return lhs.payload == rhs.payload;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -129,12 +122,12 @@ struct MD5Sum< ::ur_msgs::SetPayloadRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "6a2cd594b640cc49946d268b22a837bd";
+    return "d12269f931817591aa52047629ca66ca";
   }
 
   static const char* value(const ::ur_msgs::SetPayloadRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x6a2cd594b640cc49ULL;
-  static const uint64_t static_value2 = 0x946d268b22a837bdULL;
+  static const uint64_t static_value1 = 0xd12269f931817591ULL;
+  static const uint64_t static_value2 = 0xaa52047629ca66caULL;
 };
 
 template<class ContainerAllocator>
@@ -153,21 +146,7 @@ struct Definition< ::ur_msgs::SetPayloadRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float32 mass\n"
-"geometry_msgs/Vector3 center_of_gravity\n"
-"\n"
-"================================================================================\n"
-"MSG: geometry_msgs/Vector3\n"
-"# This represents a vector in free space. \n"
-"# It is only meant to represent a direction. Therefore, it does not\n"
-"# make sense to apply a translation to it (e.g., when applying a \n"
-"# generic rigid transformation to a Vector3, tf2 will only apply the\n"
-"# rotation). If you want your data to be translatable too, use the\n"
-"# geometry_msgs/Point message instead.\n"
-"\n"
-"float64 x\n"
-"float64 y\n"
-"float64 z\n"
+    return "float32 payload\n"
 ;
   }
 
@@ -186,8 +165,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.mass);
-      stream.next(m.center_of_gravity);
+      stream.next(m.payload);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -206,11 +184,8 @@ struct Printer< ::ur_msgs::SetPayloadRequest_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::ur_msgs::SetPayloadRequest_<ContainerAllocator>& v)
   {
-    s << indent << "mass: ";
-    Printer<float>::stream(s, indent + "  ", v.mass);
-    s << indent << "center_of_gravity: ";
-    s << std::endl;
-    Printer< ::geometry_msgs::Vector3_<ContainerAllocator> >::stream(s, indent + "  ", v.center_of_gravity);
+    s << indent << "payload: ";
+    Printer<float>::stream(s, indent + "  ", v.payload);
   }
 };
 

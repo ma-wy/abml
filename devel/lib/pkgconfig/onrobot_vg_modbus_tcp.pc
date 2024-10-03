@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/devel
+
+Name: onrobot_vg_modbus_tcp
+Description: Description of onrobot_vg_modbus_tcp
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: rospy

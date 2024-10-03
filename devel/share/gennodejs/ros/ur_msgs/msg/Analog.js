@@ -79,14 +79,14 @@ class Analog {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '6be678008703fe11fbea12281a3d6d23';
+    return 'f41c08a810adf63713aec88712cd553d';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    uint8 CURRENT=0
-    uint8 VOLTAGE=1
+    uint8 VOLTAGE=0
+    uint8 CURRENT=1
     
     uint8 pin
     uint8 domain # can be VOLTAGE or CURRENT
@@ -128,8 +128,8 @@ class Analog {
 
 // Constants for message
 Analog.Constants = {
-  CURRENT: 0,
-  VOLTAGE: 1,
+  VOLTAGE: 0,
+  CURRENT: 1,
 }
 
 module.exports = Analog;

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<launch>
+  <node pkg="ndi" type="tool_frame" name="tool_frame" output="screen"/>
+  <node pkg="ndi" type="static_frame" name="static_frame" output="screen"/>
+
+<node
+	pkg="tf" 
+	type="static_transform_publisher" 
+	name="tf_rob_cam_broadcaster" 
+  args="-1.39615885 0.58 0.79 0.06916627 -0.91867656 0.38881641 -0.00843863 base camera_top_color_optical_frame 10"
+/>
+
+
+  
+<node
+	pkg="tf" 
+	type="static_transform_publisher" 
+	name="tf_handle_tool_broadcaster" 
+  args="-0.02  0.0  -0.06 0.0 0.0  0.0 1.0 robot_ref_frame grasp_pt_frame 10"
+/>
+
+<node
+	pkg="tf" 
+	type="static_transform_publisher" 
+	name="tf_grasp_pt_broadcaster" 
+  args="-0.02  0.0  -0.26 0.0 0.0  0.0 1.0 robot_ref_frame handle_frame 10"
+/>
+</launch>
+
+  
+
+
+
+

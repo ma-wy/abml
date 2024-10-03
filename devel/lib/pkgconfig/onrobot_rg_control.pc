@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/devel
+
+Name: onrobot_rg_control
+Description: Description of onrobot_rg_control
+Version: 1.0.0
+Cflags: -I/home/abml/zoe_ws/devel/include
+Libs: -L${prefix}/lib -lonrobot_rg_control
+Requires: rospy onrobot_rg_modbus_tcp

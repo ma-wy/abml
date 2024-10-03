@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/devel
+
+Name: gelsight_mini_ros
+Description: Description of gelsight_mini_ros
+Version: 0.0.0
+Cflags: -I/home/abml/zoe_ws/devel/include
+Libs: -L${prefix}/lib 
+Requires: 

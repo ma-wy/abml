@@ -46,7 +46,7 @@ import numpy as np
 from numpy import *
 from numpy.linalg import *
 #o
-#import os
+import os
 #p
 from pose_transform_functions import  *
 from panda import Panda
