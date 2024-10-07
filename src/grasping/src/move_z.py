@@ -10,7 +10,7 @@ rob.set_end_effector_link("panda_hand")
 pose = rob.get_current_pose()
 target = pose.pose
 
-target.position.z = target.position.z + 0.0
+target.position.z = target.position.z - 0.01
 rob.go(pose)
 
 

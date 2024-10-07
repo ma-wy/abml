@@ -8,7 +8,7 @@
 `$ catkin_make -DCATKIN_WHITELIST_PACKAGES="package_name1; package_name2"`   
 
 ## Franka   
-`https://192.168.1.110/desk/
+`https://192.168.1.110/desk/  
 joints unlock  
 activate FCI    
 

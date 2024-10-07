@@ -1,4 +1,20 @@
 ## Usage  
+### V4  
+`$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
+__initial pose to grasp:__  
+joints: [90, -50, 0, -150, 0, 100, 45] degree  
+ee pose: p = [0.001, 0.288, 0.399], q = [0.710, 0.705, -0.004, 0.007]   
+__test pose target:__   
+joints: [66, -41, 19, -143, 13, 103, 50] 
+ee_pose: p = [0.001, 0.344, 0.398], q = [0.806, 0.592, -0.003, 0.008]   
+__initial pose to handover:__  
+joints: [0, -50, 0, -150, 0, 100, 45] degree  
+ee pose: p = [0.289, 0.000, 0.400], q = [1.000, -0.002, -0.006, 0.002]   
+
+k solver:  
+trac_ik_kinematics_plugin/TRAC_IKKinematicsPlugin
+
+
 ### V3  
 (to be improved)  
 revise self.grasp\_pix and self.handle\_pix in detect_table.py   

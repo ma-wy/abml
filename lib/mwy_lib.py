@@ -13,6 +13,42 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+def rotation_between_2v(v1, v2):
+  vec1 = v1
+  vec2 = v2
+  angle = np.arccos(np.dot(vec1,vec2)/(np.linalg.norm(vec1)*np.linalg.norm(vec2)))
+  axis = np.cross(vec1,vec2)
+  q = tf.transformations.quaternion_about_axis(angle, axis)
+  return q
+  
+def deg_to_rad(joints):
+  print(type(joints) is list or array)
+  if type(joints) is list or array:
+    for i in range(len(joints)):
+      joints[i] = float(joints[i])/180.0 * pi
+    return joints   
+  else:
+    return float(joints)/180.0 * pi  
+
+def angle_axis_to_q_complex(axis = "z", angle = 5, angle_type = "degree"):
+  if axis == "x":
+    r = [1,0,0]
+  elif axis == "y":
+    r = [0,1,0]
+  elif axis == "z":
+    r = [0,0,1]
+  else:
+    print("Please input x, y, z to select a rotation axis.")
+    
+  if angle_type == "degree":
+    a = float(angle)/180.0 * pi
+  elif not angle_type == "rad":
+    print("Please set angle_type as degree or rad.")
+    
+  R = tf.transformations.rotation_matrix(a, r)      
+  q = tf.transformations.quaternion_from_matrix(R) 
+  return q
+
 def generate_ur_cmd(p,q):
   ra = q_to_angle_axis(array(q))
   cmd = np.concatenate((array(p),ra)) 
