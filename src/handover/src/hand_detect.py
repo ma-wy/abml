@@ -12,8 +12,9 @@ class hand_detect:
     self.rgb_sub = message_filters.Subscriber('/camera_top/color/image_raw', Image)
     self.rgb_sub.registerCallback(self.callback_rgb) 
 #=======output==================================================================================
-    self.hand_track_pub = rospy.Publisher("/hand_track",Image,queue_size=10)
-    self.hand_msg_pub = rospy.Publisher("/hand_msg",hand_mp,queue_size=1)
+    self.hand_track_pub = rospy.Publisher("/hand_track", Image, queue_size=1)
+    self.hand_msg_pub = rospy.Publisher("/hand_msg", hand_mp, queue_size=1)
+    self.if_hand_pub = rospy.Publisher("/if_hand", Bool, queue_size=1)
 #===============================================================================================
 # members
     self.blank_image = np.zeros((720,1280,3), np.uint8)
@@ -26,7 +27,9 @@ class hand_detect:
     self.hand_list.header.frame_id = "base"
     self.hand_list.header.stamp = rospy.Time.now() 
     self.hand_list_pre = self.hand_list
-
+    self.if_hand = Bool()
+    self.if_hand.data = False
+    
   def callback_rgb(self, data):
     self.hand_list.header.stamp = rospy.Time.now() 
     mark1 = time.time()
@@ -46,10 +49,12 @@ class hand_detect:
         results = hands.process(image)
     # Draw the hand annotations on the image.
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-          
      # if there is a hand, pub if_hand
-     # if the angle is between ...     
         if results.multi_hand_landmarks:
+          self.if_hand.data = True
+          print("#############")
+          print("hand detected")
+          print("#############")
           print(results.multi_handedness[0].classification[0].label)
           if results.multi_handedness[0].classification[0].label == 'Left':
             self.hand_list.handedness.data = 'right'
@@ -116,7 +121,11 @@ class hand_detect:
               self.mp_drawing_styles.get_default_hand_landmarks_style(),
               self.mp_drawing_styles.get_default_hand_connections_style())
         else:
-            self.hand_list = self.hand_list_pre
+          print("****************")
+          print("no hand detected")
+          print("****************")
+          self.if_hand.data = False
+          self.hand_list = self.hand_list_pre
         
         mark2 = time.time()
         print((mark2-mark1)*1000.0)
@@ -126,6 +135,7 @@ class hand_detect:
 #        cv2.imshow('MediaPipe Hands', cv2.flip(image, 1))
         self.hand_msg_pub.publish(self.hand_list)
         self.hand_track_pub.publish(self.bridge.cv2_to_imgmsg(self.hand, "passthrough"))
+        self.if_hand_pub.publish(self.if_hand)
     mark2 = time.time()
     print((mark2-mark1)*1000.0)
     

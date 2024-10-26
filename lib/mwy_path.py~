@@ -25,7 +25,7 @@ from decimal import *
 #f
 #from franka_interface import ArmInterface, GripperInterface
 #g
-import getch
+#import getch
 from geometry_msgs.msg import TransformStamped, Transform, PoseStamped, PointStamped, Vector3Stamped, PoseArray, Pose, Polygon, Point32, PolygonStamped
 import glob
 #h
@@ -48,10 +48,8 @@ from numpy.linalg import *
 #o
 import os
 #p
-#from pose_transform_functions import  *
-#from panda import Panda
-import pygame
-import pyrealsense2
+#import pygame
+#import pyrealsense2
 #import pandas
 #import plotly
 #import plotly.graph_objects as go

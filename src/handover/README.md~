@@ -1,3 +1,10 @@
+# Vision Servoing  
+`$ roslaunch handover launch_cam_and_rob.launch`  
+
+
+
+# Note  
+For data collection, a UR5 is used instead. Revise the launch file to load a different robot.   
 # Dataset 1   
 ## Launch devices and rviz  
 __step 1:__ launch UR robot, camera, tfs, and rviz    
@@ -68,7 +75,7 @@ revise parameters
 
 # Visualize Data  
 `$ roslaunch handover launch_visualize_data.launch`  
-`$ rosrun handover visualize_hand.py`
+`$ rosrun handover visualize_data.py`
 
 
 

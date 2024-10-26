@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<launch>
+<!--<node
+	pkg="tf" 
+	type="static_transform_publisher" 
+	name="tf_ur_base_broadcaster" 
+	args=" 0 -0.2 1.34 0.0 -0.7071 0.7071 0.0 world base 10" 
+/>
+-->
+
+<node
+	pkg="tf" 
+	type="static_transform_publisher" 
+	name="tf_rob_cam_broadcaster" 
+
+    args="0.06685089106806423 -0.03649616150397786 -0.06697017372171901 0.0780142414801871 0.0891312140808147 0.6934796956376047 0.7106724396943548 panda_EE camera_color_optical_frame 10"
+/>
+translation: 
+  x: 0.06685089106806423
+  y: -0.03649616150397786
+  z: -0.06697017372171901
+rotation: 
+  x: 0.0780142414801871
+  y: 0.0891312140808147
+  z: 0.6934796956376047
+  w: 0.7106724396943548
+
+</launch>
+

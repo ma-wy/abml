@@ -4,15 +4,14 @@
 __initial pose to grasp:__  
 joints: [90, -50, 0, -150, 0, 100, 45] degree  
 ee pose: p = [0.001, 0.288, 0.399], q = [0.710, 0.705, -0.004, 0.007]   
-__test pose target:__   
-joints: [66, -41, 19, -143, 13, 103, 50] 
-ee_pose: p = [0.001, 0.344, 0.398], q = [0.806, 0.592, -0.003, 0.008]   
+
 __initial pose to handover:__  
 joints: [0, -50, 0, -150, 0, 100, 45] degree  
 ee pose: p = [0.289, 0.000, 0.400], q = [1.000, -0.002, -0.006, 0.002]   
 
-k solver:  
-trac_ik_kinematics_plugin/TRAC_IKKinematicsPlugin
+`$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
+`$ roslaunch grasping launch_tfs.launch`  
+`$ roslaunch grasping launch_tf_subs.launch`  
 
 
 ### V3  
@@ -65,28 +64,4 @@ __Move franka given an assistant finger's pose__
 `$ rosrun grasping move_franka.py`  
 `$ rostopic pub /camera_goal std_msgs/Float64MultiArray "data: [0.40, 0.0, 0.50, 0.707, -0.707, 0.0, 0.0]"`  
 
-##  
 
-/home/abml/zoe_ws/src/franka_ros_interface/franka_interface/src/franka_interface/arm.py  
-from franka_moveit import PandaMoveGroupInterface  
-
-
-/home/abml/zoe_ws/src/franka_ros_interface/franka_moveit/src/franka_moveit/movegroup_interface.py  
-1. import moveit_commander  
-2. from franka_moveit import ExtendedPlanningSceneInterface  
-class PandaMoveGroupInterface:  
-  self._robot = moveit_commander.RobotCommander()
-  self._scene = ExtendedPlanningSceneInterface()
-  self._arm_group = moveit_commander.MoveGroupCommander("panda_arm")
-  try:
-    rospy.get_param("/franka_gripper/robot_ip")
-    self._gripper_group = moveit_commander.MoveGroupCommander("panda_hand")
-
-  def robot_state_interface(self):  return self._robot  
-  def scene(self):  return self._scene  
-  def arm_group(self):  return self._arm_group  
-  def gripper_group(self):  return self._gripper_group
-
-/opt/ros/noetic/lib/python3/dist-packages/moveit_commander/move_group.py
-/home/abml/zoe_ws/src/franka_ros_interface/franka_moveit/src/franka_moveit/extended_planning_scene_interface.py  
-class ExtendedPlanningSceneInterface(moveit_commander.PlanningSceneInterface):

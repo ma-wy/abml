@@ -48,10 +48,8 @@ from numpy.linalg import *
 #o
 import os
 #p
-#from pose_transform_functions import  *
-#from panda import Panda
-import pygame
-import pyrealsense2
+#import pygame
+#import pyrealsense2
 #import pandas
 #import plotly
 #import plotly.graph_objects as go
@@ -71,6 +69,7 @@ from sensor_msgs import point_cloud2
 from sensor_msgs.msg import JointState
 from sensor_msgs.msg import Image, PointCloud2, PointField
 from scipy.spatial import distance as dist
+from scipy.optimize import curve_fit
 #t
 import time
 import tf

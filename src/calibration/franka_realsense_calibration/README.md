@@ -4,7 +4,8 @@ https://github.com/IFL-CAMP/easy_handeye/tree/master
 https://www.guyuehome.com/35290  
 ### usage of the launch files in this folder  
 `$ roslaunch franka_realsense_calibration step-1.launch`  
-`$ rosrun franka_realsense_calibration reset_rob.py`  
+~~`$ rosrun franka_realsense_calibration reset_rob.py`~~  
+`$ rosrun franka_basic_motion grasping_init.py grasping`  
 `$ roslaunch franka_realsense_calibration step-2.launch`  
 1. The first launch file should open an rviz GUI. The second launch file should open 2 rqt GUI.  
 2. Pay attention to the camera resolution included in the first launch file.

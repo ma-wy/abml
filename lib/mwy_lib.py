@@ -13,6 +13,43 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+def closest(mylist, Number):
+    answer = []
+    for i in mylist:
+        answer.append(abs(Number-i))
+    return answer.index(min(answer))
+
+def bias_2d_to_3d(pt_2d, param_path = '/home/abml/zoe_ws/src/calibration/calibration_table_pc/result/bias.txt'):
+  # pt_2d is 3d point from rgb, not pix
+  x_bias = loadtxt(param_path)[0]
+  y_bias = loadtxt(param_path)[1]
+  x = pt_2d[0] - x_bias 
+  y = y_bias - pt_2d[1]
+  return [x,y]
+
+def func(x,a,b):
+  return a*np.exp(b/x)
+          
+def polyfit_2d_to_3d(pt_2d, param_path = '/home/abml/zoe_ws/src/calibration/calibration_table_pc/result/'):
+  x_param = loadtxt(param_path + 'x_param.txt')
+  y_param = loadtxt(param_path + 'y_param.txt')
+  x = 0
+  y = 0
+  for i in range(len(x_param)):
+    x += x_param[i] * float(pt_2d[0]) ** (len(x_param) - i - 1)
+  for i in range(len(y_param)):
+    y += y_param[i] * float(pt_2d[1]) ** (len(y_param) - i - 1)  
+  return [x,y]  
+
+def get_argv(value=None, index=1):
+  if len(sys.argv) > 1:
+    return sys.argv[index]
+  else:
+    return value
+
+def p3_to_line_p12(p1,p2,p3):
+  return norm(cross(p2-p1, p1-p3))/norm(p2-p1)
+  
 def rotation_between_2v(v1, v2):
   vec1 = v1
   vec2 = v2
@@ -21,14 +58,7 @@ def rotation_between_2v(v1, v2):
   q = tf.transformations.quaternion_about_axis(angle, axis)
   return q
   
-def deg_to_rad(joints):
-  print(type(joints) is list or array)
-  if type(joints) is list or array:
-    for i in range(len(joints)):
-      joints[i] = float(joints[i])/180.0 * pi
-    return joints   
-  else:
-    return float(joints)/180.0 * pi  
+
 
 def angle_axis_to_q_complex(axis = "z", angle = 5, angle_type = "degree"):
   if axis == "x":
@@ -42,9 +72,10 @@ def angle_axis_to_q_complex(axis = "z", angle = 5, angle_type = "degree"):
     
   if angle_type == "degree":
     a = float(angle)/180.0 * pi
-  elif not angle_type == "rad":
+  elif angle_type == "rad":
+    a = float(angle)
+  else:
     print("Please set angle_type as degree or rad.")
-    
   R = tf.transformations.rotation_matrix(a, r)      
   q = tf.transformations.quaternion_from_matrix(R) 
   return q
@@ -63,13 +94,23 @@ def load_str_lines(file_path):
   with open(file_path, 'r') as file:
     data = file.read().replace('\n', '')  
   return data
-
-def degree_to_rad(degree):
-  return float(degree)/180.0*pi
-
-def rad_to_degree(rad):
-  return float(rad)/pi*180.0
-
+  
+def deg_to_rad(joints):
+  if type(joints) is list or array:
+    for i in range(len(joints)):
+      joints[i] = float(joints[i])/180.0 * pi
+    return joints   
+  else:
+    return float(joints)/180.0 * pi  
+    
+def rad_to_deg(joints):
+  if type(joints) is list or array:
+    for i in range(len(joints)):
+      joints[i] = float(joints[i])/pi * 180.0
+    return joints   
+  else:
+    return float(joints)/180.0 * pi      
+    
 def check_make_clear_folder(path):
   if not os.path.exists(path):
     print('No such folder. Now create one.')
@@ -114,10 +155,12 @@ def clean_data(data):
     data_str = data_str.replace(i, "")
   return data_str
 
-def saveDataStep(data, file_path):
+def saveDataStep(data, file_path, if_clear = False):
   data_list = shorten_data(list(data))
   data_str = clean_data(data_list)
   f = open(file_path, "a")
+  if if_clear:
+    f.seek(0)
   f.truncate()
   f.write(data_str)
   f.write('\n')
@@ -156,9 +199,15 @@ def q_w_trans(q):
   q_w[1:4] = q[0:3]
   return q_w 
 
+def p_cam_2_base(p_cam, frame_p = '/panda_link0', frame_ch = 'camera_color_optical_frame'): # trans p from camera frame to base frame 
+  trans, q_rot = get_tf(frame_p, frame_ch)
+  v_old = p_cam
+  p_ee = transformation_P(v_old,trans,q_rot)
+  return p_ee
+  
 def cam_2_ee_pose(pose_cam):# input the desired camera pose, return the ee pose
   frame_p = '/camera_color_optical_frame'
-  frame_ch = '/panda_EE'
+  frame_ch = '/panda_hand_tcp'
   trans = pose_cam[0:3]
   q_rot = pose_cam[3:7]
   v_old, q_orig = get_tf(frame_p, frame_ch)

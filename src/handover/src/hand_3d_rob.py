@@ -20,7 +20,8 @@ class hand_detect:
     self.cam_to_base_q = zeros(4)
     self.hand_average_xy = zeros(3)
     self.handedness = 'right'
-    
+    self.if_hand = Bool()
+    self.if_hand.data = False
 #===============================================================================================
 # members
   def callback_camera_to_base(self, data):

@@ -20,7 +20,7 @@ class hand_detect:
     self.cam_to_base_q = zeros(4)
     self.hand_average_xy = zeros(3)
     self.handedness = 'right'
-    
+    self.if_hand = False
 #===============================================================================================
 # members
   def callback_camera_to_base(self, data):
@@ -67,23 +67,6 @@ class hand_detect:
     self.hand_ad = give_PointStamped("base", hand_pc[-1][0:3])
     self.hand_average_depth_pub.publish(self.hand_ad)  
 
-    # hand frame
-    # Y axis 
-    # 1:thumb_tip + 2:index_tip - 0:wrist
-    y_axis = array(hand_pc[0][0:3]) - (array(hand_pc[1][0:3]) + array(hand_pc[2][0:3]))
-    # palm: 0:wrist 6:index_mcp 9:pinky_mcp
-    z_axis = cross(array(hand_pc[9][0:3]) - array(hand_pc[0][0:3]), array(hand_pc[6][0:3]) - array(hand_pc[0][0:3]))
-    if self.handedness == 'left':
-      z_axis = -z_axis
-    # X axis
-    x_axis = cross(y_axis, z_axis)
-    y_axis = cross(z_axis, x_axis)
-    x_axis = x_axis/norm(x_axis)
-    y_axis = y_axis/norm(y_axis)
-    z_axis = z_axis/norm(z_axis)
-    q = xyz_axis_to_q(x_axis,y_axis,z_axis)
-    hand_frame = give_PoseStamped('base', q, hand_pc[-1][0:3])
-    self.hand_frame_pub.publish(hand_frame) 
 
 def main(args):
   rospy.init_node('hand_3d_rob', anonymous=True)

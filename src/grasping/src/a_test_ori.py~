@@ -74,7 +74,9 @@ def angle_axis_to_q_complex(axis = "z", angle = 5, angle_type = "degree"):
     
   if angle_type == "degree":
     a = float(angle)/180.0 * pi
-  elif not angle_type == "rad":
+  elif angle_type == "rad":
+    a = angle
+  else:
     print("Please set angle_type as degree or rad.")
     
   R = tf.transformations.rotation_matrix(a, r)      
@@ -94,8 +96,8 @@ rospy.init_node("test_moveit_orientation", anonymous=True)
 rob = MoveGroupCommander('panda_arm')
 rob.set_end_effector_link("panda_hand")
 frame = "panda_link0"
-rob.set_max_velocity_scaling_factor(0.3)
-rob.set_max_acceleration_scaling_factor(0.3)
+rob.set_max_velocity_scaling_factor(0.1)
+rob.set_max_acceleration_scaling_factor(0.1)
 
 init_pose = get_PoseStamped(rob.get_current_pose())
 print(init_pose)
@@ -111,7 +113,8 @@ p = [0.001, 0.288, 0.399]
 q = [0.710, 0.705, -0.004, 0.007] 
 joints = [90, -50, 0, -150, 0, 100, 45]
 joints = deg_to_rad(joints)
-rob.go(joints)
+joints = [1.6547185198089531, -0.8348417273989895, 0.16307713018628733, -2.5923274556544786, 0.12237122779495671, 1.7578194697076062, 0.955733376322521]
+#rob.go(joints)
 
 # ee z-vertical pose ######################
 pose = rob.get_current_pose()
@@ -134,19 +137,27 @@ q_crr = pose_crr[3:7]
 q_rot = angle_axis_to_q_complex(axis = "z", angle = -35, angle_type = "degree")
 q_new = transformation_Q(q_crr,q_rot)
 target = give_PoseStamped(frame, q_new, p_crr)
-rob.go(target)
-final_pose = get_PoseStamped(rob.get_current_pose())
+#rob.go(target)
+#final_pose = get_PoseStamped(rob.get_current_pose())
 #print(final_pose[3:7])
 #print(q_new)
 #print(linalg.norm(array(final_pose[3:7])-array(q_new)))
 # orientation error = 0.0012722568794945137 0.0013044281767996774
 
 # move position with consistant orientation ########################
-d = -0.05
+d = -0.02
+axis = 'x'
+
 pose = rob.get_current_pose()
 target = pose.pose
-target.position.z += d
+if axis == 'x':
+  target.position.x += d
+elif axis == 'y':
+  target.position.y += d
+elif axis == 'z':
+  target.position.z += d
 #rob.go(pose)
+print(rob.get_current_joint_values())
 #final_pose = get_PoseStamped(rob.get_current_pose())
 #print(abs(linalg.norm(array(final_pose[0:3])-array(init_pose[0:3]))-abs(d)))
 # position error = 0.0011246125396957157 0.000892771064345925
