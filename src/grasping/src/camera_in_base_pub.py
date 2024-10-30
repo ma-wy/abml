@@ -4,14 +4,14 @@ sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 from mwy_lib import *
 
-rospy.init_node("ee_in_ee3_pub", anonymous=True)
-frame_p = "new_EE_3"
-frame_ch = "panda_EE"
+rospy.init_node("camera_in_base_pub", anonymous=True)
+frame_p = "panda_link0"
+frame_ch = "camera_color_optical_frame"
 listener = tf.TransformListener() 
 listener.waitForTransform(frame_p, frame_ch, rospy.Time(), rospy.Duration(40.0))
-ee_to_ee3_pub = rospy.Publisher("/ee_to_ee3_tf",Pose,queue_size=1)
+camera_to_base_pub = rospy.Publisher("/cam_in_base_tf",Pose,queue_size=1)
 
 while not rospy.is_shutdown():
   (trans, q_rot) = listener.lookupTransform(frame_p, frame_ch, rospy.Time(0))
   pose = give_Pose(trans,q_rot)
-  ee_to_ee3_pub.publish(pose)
+  camera_to_base_pub.publish(pose)

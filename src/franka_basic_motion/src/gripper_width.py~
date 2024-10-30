@@ -19,7 +19,6 @@ gripper = MoveGroupCommander('panda_hand')
 
 print('before moving the gripper')
 print(gripper.get_current_joint_values())
-gripper.go([0.01, 0.01])
 #gripper.go([width/2, width/2])
 print('after moving the gripper')
 print(gripper.get_current_joint_values())

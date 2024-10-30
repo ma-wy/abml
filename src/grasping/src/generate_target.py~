@@ -3,106 +3,90 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 from mwy_lib import *
-from pose_transform_functions import  array_quat_2_pose, list_2_quaternion, position_2_array, transform_pose
-from panda import Panda
 
-
-
-class move_franka(Panda):
-    def __init__(self):
-      super(move_franka, self).__init__()
-#input==============================================================================================      
-      self.tool_poses_sub = rospy.Subscriber("/tool_poses",PoseArray,self.callback_tool_poses)
-      self.cam_to_base_sub = rospy.Subscriber("/cam_to_base_tf",Pose,self.callback_cam_to_base_tf)
-      self.ee_to_ee3_sub = rospy.Subscriber("/ee_to_ee3_tf",Pose,self.callback_ee_to_ee3_tf)
-#      self.set_goal_ee3_sub = rospy.Subscriber('/set_goal_ee3', Bool, self.callback_set_goal_ee3)
-# rostopic pub /set_goal_ee3 std_msgs/Bool "data: False" 
-# rostopic pub /set_goal_ee3 std_msgs/Bool "data: True" 
-      #self.set_goal_ee3_sub = rospy.Subscriber('/set_goal_ee3', Float64MultiArray, self.callback_set_goal_ee3)
-# rostopic pub /set_goal_ee3 std_msgs/Float64MultiArray "data: [0.48, 0.0, 0.51, 0.707, -0.707, 0.0, 0.0]" 
+class generate_target():
+  def __init__(self):
+#input==============================================================================================  
+    self.grasping_point_sub = rospy.Subscriber("/grasping_point", Point32, self.callback_grasping_point)
+    self.handle_point_sub = rospy.Subscriber("/handle_point", Point32, self.callback_handle_point)
+    self.ee_in_ee3_tf_sub = rospy.Subscriber("/ee_in_ee3_tf", Pose, self.callback_ee_in_ee3)
+    self.cam_in_base_tf_sub = rospy.Subscriber("/cam_in_base_tf", Pose, self.callback_cam_in_base)
 #output=======================================================================================      
-      self.ee_goal_in_base_pub = rospy.Publisher("/ee_target_in_base",PoseStamped,queue_size=1)   
-      self.ee3_goal_in_base_pub = rospy.Publisher("/ee3_target_in_base",PoseStamped,queue_size=1)
+    self.ee_goal_in_base_pub = rospy.Publisher("/ee_target_in_base", PoseStamped, queue_size=1)   
+    self.ee3_goal_in_base_pub = rospy.Publisher("/ee3_target_in_base", PoseStamped, queue_size=1)
+    #self.grasping_point_pub = rospy.Publisher("/grasping", PointStamped, queue_size=1)
+    #self.handle_point_pub = rospy.Publisher("/handle", PointStamped, queue_size=1)
+    
 #member===========================================================================================      
-      self.p_ee = zeros(3)
-      self.q_ee = zeros(4)
-      self.cam_to_base_p = zeros(3)
-      self.cam_to_base_q = zeros(4)
-      self.ee_to_ee3_p = zeros(3)
-      self.ee_to_ee3_q = zeros(4)
-      self.ee_target_p = array([0.5099142496021676, 0.02734649539007098, -0.05672846357120662])
-      self.ee_target_q = array([0.9537368990280114, 0.300166052659884, 0.009790833410695619, -0.009901618751409422)
-      #current q = [0.9919463499189227, -0.0009561534711263993, -0.1260761803175022, -0.011895718022736947]
+    self.grasping_point = zeros(3)
+    self.handle_point = zeros(3)
 
-
-    def callback_cam_to_base_tf(self, data):
-      self.cam_to_base_p = [data.position.x, data.position.y, data.position.z]
-      self.cam_to_base_q = [data.orientation.x, data.orientation.y, data.orientation.z, data.orientation.w]
-
-    def callback_ee_to_ee3_tf(self, data):
-      self.ee_to_ee3_p = [data.position.x, data.position.y, data.position.z]
-      self.ee_to_ee3_q = [data.orientation.x, data.orientation.y, data.orientation.z, data.orientation.w]
-
-    def callback_tool_poses(self, data):
-      p_list = []
-      q_list = []
-      for pose in data.poses:
-        p_list.append([pose.position.x, pose.position.y, pose.position.z])
-        q_list.append([pose.orientation.x, pose.orientation.y, pose.orientation.z, pose.orientation.w])#xyzw
-
-      p = p_list[0]
-      q = q_list[0] #xyzw
-      #p = self.ee3_target_p 
-      #q = self.ee3_target_q
-      
-      # ee3 target in camera frame
-      # trans to ee3 target in base frame
-      trans = array(self.cam_to_base_p)
-      q_rot = array(self.cam_to_base_q) #xyzw
-     
-      v_old = p
-      p_ee3 = transformation_P(v_old,trans,q_rot)
-      
-      q_orig = q
-      q_ee3_xyzw = transformation_Q(q_orig,q_rot)
-      q_ee3_wxyz = q_xyzw_to_wxyz(q_ee3_xyzw)  # return a list
-      q_ee3 = list_2_quaternion(q_ee3_wxyz) # input q = [w, x, y, z]
-      
-      frame = "panda_link0"
-      ee3_target_in_base = give_PoseStamped(frame, q_ee3_xyzw, p_ee3)
-      self.ee3_goal_in_base_pub.publish(ee3_target_in_base)
-      
-      # trans to ee target in base frame
-# base_T_ee = base_T_ee3 dot inv(ee_T_ee3)
-# transformation = base_T_ee3 (taraget)
-# origin = inv(ee_T_ee3) = ee3_T_ee
-      trans = p_ee3
-      q_rot = q_ee3_xyzw #xyzw
-     
-      v_old = array(self.ee_to_ee3_p)
-      p_ee = transformation_P(v_old,trans,q_rot)
-
-      q_orig = array(self.ee_to_ee3_q)
-      q_ee_xyzw = transformation_Q(q_orig,q_rot)
-      q_ee_wxyz = q_xyzw_to_wxyz(q_ee_xyzw)  # return a list
-      q_ee = list_2_quaternion(q_ee_wxyz) # input q = [w, x, y, z]
-      
-      frame = "panda_link0"
-      ee_target_in_base = give_PoseStamped(frame, q_ee_xyzw, p_ee)
-      self.ee_goal_in_base_pub.publish(ee_target_in_base)      
-      
-      # for control
-      self.p_ee = p_ee
-      self.q_ee = q_ee
-
-
+    self.rob = MoveGroupCommander('panda_arm')
+    self.rob.set_end_effector_link('panda_hand_tcp')
+    #os.system("rosrun franka_basic_motion grasping_init.py grasping")
+    self.ee_in_ee3_tf = []
+    self.cam_in_base_tf = []
+    self.bias = array([0, 0, -0.017])
+    self.if_recieved_handle = False
+    self.if_recieved_grasping = False
+    
+  def callback_ee_in_ee3(self, data):
+    self.ee_in_ee3_tf = get_Pose(data)
+    #print('self.ee_in_ee3_tf')
+    #print(self.ee_in_ee3_tf)
+    
+  def callback_cam_in_base(self, data):
+    self.cam_in_base_tf = get_Pose(data)
+    #print('self.cam_in_base_tf')
+    #print(self.cam_in_base_tf)
+    
+  def callback_handle_point(self, data):
+    handle_point_cam = array(get_Point(data))   
+    self.handle_point = transformation_P(handle_point_cam, self.cam_in_base_tf[:3], self.cam_in_base_tf[3:]) + self.bias
+    self.if_recieved_handle = True
+    print('handle')
+    print(self.handle_point)
+    
+  def callback_grasping_point(self, data):
+    grasping_point_cam = array(get_Point(data))
+    self.grasping_point = transformation_P(grasping_point_cam, self.cam_in_base_tf[:3], self.cam_in_base_tf[3:]) + self.bias
+    self.if_recieved_grasping = True
+    print('grasping')
+    print(self.grasping_point)
+    print()
+    print(self.if_recieved_handle)
+    print(self.if_recieved_grasping)
+    if self.if_recieved_handle and self.if_recieved_grasping:
+      # align x axis with the instrument
+      x_axis_new = (self.handle_point - self.grasping_point)/norm(self.handle_point - self.grasping_point)
+      posestamped_crr = self.rob.get_current_pose()
+      pose_crr = get_PoseStamped(posestamped_crr)
+      p_crr = pose_crr[:3]
+      q_crr = pose_crr[3:]
+      T = tf.transformations.quaternion_matrix(q_crr).T
+      x_axis_old = T[0,0:3]
+      q_rot = rotation_between_2v(x_axis_old, x_axis_new)
+      q_new = transformation_Q(q_crr, q_rot)  
+      # ee3 target
+      ee3_target_pose = give_PoseStamped(posestamped_crr.header.frame_id, q_new, self.grasping_point)
+      self.ee3_goal_in_base_pub.publish(ee3_target_pose)
+      # ee target
+      # trans the target position of the third finger to the ee's
+      p_new = transformation_P(self.ee_in_ee3_tf[:3], self.grasping_point, q_new)
+      ee_target_pose = give_PoseStamped(posestamped_crr.header.frame_id, q_new, p_new)
+      print(ee_target_pose)
+      self.ee_goal_in_base_pub.publish(ee_target_pose)
+      self.if_recieved_handle = False
+      self.if_recieved_grasping = False
+    
+    
 
 
 
 
 def main(args):
   rospy.init_node("generate_target", anonymous=True)
-  mf = move_franka()
+  gt = generate_target()
 
   try:
     rospy.spin()    

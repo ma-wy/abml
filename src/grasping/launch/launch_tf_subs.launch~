@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <node pkg="move_franka" type="camera_to_base_pub.py" name="camera_to_base_pub" output="screen"/> 
-    <node pkg="move_franka" type="ee_to_ee3_pub.py" name="ee_to_ee3_pub" output="screen"/> 
+    <node pkg="grasping" type="camera_in_base_pub.py" name="camera_in_base_pub" output="screen"/> 
+    <node pkg="grasping" type="ee_in_ee_pub.py" name="ee_in_ee3_pub" output="screen"/> 
 </launch>
 

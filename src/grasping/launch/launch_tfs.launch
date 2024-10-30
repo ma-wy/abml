@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <include file="$(dirname)/launch_cam.launch">   </include> 
+    <!--<include file="$(dirname)/launch_cam.launch">   </include> -->
     <include file="$(dirname)/tf_new_ee.launch">   </include> 
     <include file="$(dirname)/tf_ee_cam.launch">   </include> 
     <!--<node pkg="rviz" type="rviz" output="screen" name="rviz" args="-d $(find grasping)/rviz/franka_description_with_marker.rviz"/>-->

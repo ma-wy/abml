@@ -62,17 +62,21 @@ class detect_table:
     B = loadtxt(self.file_path + 'corner_points.txt')[1] # RD
     C = loadtxt(self.file_path + 'corner_points.txt')[2] # RU
 
-    x_axis = (A-B)/norm(A-B) * 0.567/norm(A-B)
-    y_axis = (B-C)/norm(B-C) * 0.367/norm(B-C) 
+
+    
     self.A = A
     self.B = B
     self.C = C
     self.d = -0.06   
     rgb = struct.unpack('I', struct.pack('BBBB', 255, 0, 0, 255))[0]
     self.corners = [list(A) + [self.d, rgb], list(B) + [self.d, rgb], list(C) + [self.d, rgb]]        
-    #P0 = C + 0.0365 * x_axis + 0.0715 * y_axis # RU
-    #P0 = C + 0.027 * x_axis + 0.062 * y_axis # RU
-    P0 = C + 0.0435 * x_axis + 0.0785 * y_axis # RU
+    #x_axis = (A-B)/norm(A-B) * 0.567/norm(A-B)
+    #y_axis = (B-C)/norm(B-C) * 0.367/norm(B-C) 
+    #P0 = C + 0.0435 * x_axis + 0.0785 * y_axis # RU
+    x_axis = (B-A)/norm(A-B) * 0.567/norm(A-B)
+    y_axis = (C-B)/norm(B-C) * 0.367/norm(B-C) 
+    P0 = A + 0.0435 * x_axis + 0.0785 * y_axis # RU
+    
     P_3d_list = []
     x_3d_list = []
     y_3d_list = []
@@ -161,7 +165,7 @@ class detect_table:
       target_polyfit.pose.orientation.w = 0.0021110209394748225
       self.pose_polyfit_pub.publish(target_polyfit)
       # bias
-      pt_bias = bias_2d_to_3d(pt_image)
+      pt_bias = bias_2d_to_3d(pt[0:2])
       target_bias = deepcopy(pose)
       target_bias.pose.position.x = pt_bias[0]
       target_bias.pose.position.y = pt_bias[1]
@@ -178,7 +182,7 @@ class detect_table:
       saveDataStep(get_PoseStamped(target_bias), self.file_path + 'result_bias.txt', if_clear = True)
     
     if self.TRACK_PT == True:
-      
+      '''
       print('press enter to start test')
       print(get_PoseStamped(target_image))
       input()    
@@ -220,7 +224,7 @@ class detect_table:
       
       print('reset robot')
       os.system("rosrun franka_basic_motion grasping_init.py grasping")
-      
+      '''
       self.TRACK_PT = False      
       
     
@@ -283,21 +287,31 @@ class detect_table:
           # image
           d = self.depth_image[y][x]
           r = 255 
-          g = 0
+          g = i
           b = 0
           rgb = struct.unpack('I', struct.pack('BBBB', int(b), int(g), int(r), a))[0]
-          pt1 = [(x-Cx)*d/fx/scale,(y-Cy)*d/fy/scale,float(d)/scale,rgb]
+          pt1 = [(x-Cx)*d/fx/scale,(y-Cy)*d/fy/scale,float(d)/scale, rgb]
+          # trans to the base frame
+          B_P_C = [-0.160, 0.458, 0.518]
+          B_Q_C = [1.000, -0.004, -0.000, 0.002]
+          tempt = [(x-Cx)*d/fx/scale,(y-Cy)*d/fy/scale,float(d)/scale]
+          pt1 = list(transformation_P(tempt,B_P_C,B_Q_C)) + [rgb]
           p_image.append(pt1)
- 
+          print()
+          print(i)
+          print(pt1)
           # real 3d
-          r = 0
+          r = i
           g = 200
           b = 100
           rgb = struct.unpack('I', struct.pack('BBBB', int(b), int(g), int(r), a))[0]
           pt2 = [self.x_3d_list[i], self.y_3d_list[i], self.d, rgb]  
           if i > 0:  
-            self.bias_x.append(pt1[0]-pt2[0])
-            self.bias_y.append(pt1[1]+pt2[1])
+            #self.bias_x.append(pt1[0]-pt2[0])
+            #self.bias_y.append(pt1[1]-pt2[1])
+            self.bias_x.append(pt2[0]-pt1[0])
+            self.bias_y.append(pt2[1]-pt1[1])
+            
           p_3d.append(pt2)  
                     
           # fit
@@ -310,7 +324,7 @@ class detect_table:
           
         # pc from image
         HEADER = Header()
-        HEADER.frame_id = 'camera_color_optical_frame'
+        HEADER.frame_id = 'panda_link0'# 'camera_color_optical_frame' # 
         FIELDS = [
           PointField('x', 0, PointField.FLOAT32, 1),
           PointField('y', 4, PointField.FLOAT32, 1),

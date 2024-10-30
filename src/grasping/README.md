@@ -12,7 +12,10 @@ ee pose: p = [0.289, 0.000, 0.400], q = [1.000, -0.002, -0.006, 0.002]
 `$ roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110`  
 `$ roslaunch grasping launch_tfs.launch`  
 `$ roslaunch grasping launch_tf_subs.launch`  
-
+`$ rosrun grasping generate_target.py`  
+`$ rosrun rosserial_python serial_node.py _port:=/dev/ttyACM0 _baud:=57600`  
+`$ rostopic pub /control_magnet std_msgs/Int32 "data: 1"`  
+`$ rostopic pub /control_pump std_msgs/Float64 "data: 3.8"`  
 
 ### V3  
 (to be improved)  

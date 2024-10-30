@@ -13,6 +13,10 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+def print_param(param):
+  print(str(eval(param)))
+  print(param)
+
 def closest(mylist, Number):
     answer = []
     for i in mylist:
@@ -23,8 +27,8 @@ def bias_2d_to_3d(pt_2d, param_path = '/home/abml/zoe_ws/src/calibration/calibra
   # pt_2d is 3d point from rgb, not pix
   x_bias = loadtxt(param_path)[0]
   y_bias = loadtxt(param_path)[1]
-  x = pt_2d[0] - x_bias 
-  y = y_bias - pt_2d[1]
+  x = pt_2d[0] + x_bias 
+  y = pt_2d[1] + y_bias  
   return [x,y]
 
 def func(x,a,b):
@@ -50,15 +54,13 @@ def get_argv(value=None, index=1):
 def p3_to_line_p12(p1,p2,p3):
   return norm(cross(p2-p1, p1-p3))/norm(p2-p1)
   
-def rotation_between_2v(v1, v2):
-  vec1 = v1
-  vec2 = v2
+def rotation_between_2v(v_old, v_new):
+  vec1 = v_old
+  vec2 = v_new
   angle = np.arccos(np.dot(vec1,vec2)/(np.linalg.norm(vec1)*np.linalg.norm(vec2)))
   axis = np.cross(vec1,vec2)
   q = tf.transformations.quaternion_about_axis(angle, axis)
   return q
-  
-
 
 def angle_axis_to_q_complex(axis = "z", angle = 5, angle_type = "degree"):
   if axis == "x":
@@ -200,8 +202,6 @@ def q_w_trans(q):
   return q_w 
 
 def p_cam_2_base(p_cam, frame_p = '/panda_link0', frame_ch = 'camera_color_optical_frame'): # trans p from camera frame to base frame 
-  print('p_cam')
-  print(p_cam)
   trans, q_rot = get_tf(frame_p, frame_ch)
   v_old = p_cam
   p_ee = transformation_P(v_old,trans,q_rot)
@@ -416,6 +416,10 @@ def get_PoseArray(posearray):
 
 def get_PointStamped(pointstamped):
   p = [pointstamped.point.x, pointstamped.point.y, pointstamped.point.z]
+  return p
+
+def get_Point(point32):
+  p = [point32.x, point32.y, point32.z]
   return p
   
 def get_control_degree(input_button):

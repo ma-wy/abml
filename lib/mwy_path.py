@@ -63,7 +63,7 @@ import rospy
 #import ros_numpy
 #s
 import struct
-from std_msgs.msg import Int32, Float32, Bool, Header, String, Int64, Float64MultiArray
+from std_msgs.msg import Int32, Float32, Float64, Bool, Header, String, Int64, Float64MultiArray, UInt16MultiArray
 import sensor_msgs.msg
 from sensor_msgs import point_cloud2
 from sensor_msgs.msg import JointState
