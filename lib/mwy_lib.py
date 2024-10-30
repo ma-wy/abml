@@ -13,7 +13,99 @@ import sys
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_path import *
 
+'''
+# a
+def angle_axis_to_q(r):
+def angle_axis_to_q_complex(axis = "z", angle = 5, angle_type = "degree"):
+# b
+def bias_2d_to_3d(pt_2d, param_path = '/home/abml/zoe_ws/src/calibration/calibration_table_pc/result/bias.txt'):
+# c
+def cam_2_ee_pose(pose_cam):
+def check_file(file_path, remove_file = False):
+def check_make_clear_folder(path):
+def clean_data(data):
+def clear_folder(folder_path):
+def closest(mylist, Number):
+# d
+def d_time_ms(t1, t2):
+def deg_to_rad(joints):
+def detect_qrcode(frame, h, w, intrinsics = [317.494, 246.239, 607.652, 607.507]):
+# e
+def ee_pose_link8_to_ee(pose):
+# f
+def file_num_in_dir(path):
+def filter3(data, k):
+def func(x,a,b):  
+# g
+def generate_ur_cmd(p,q):
+def get_argv(value=None, index=1):
+def get_control_degree(input_button):
+def get_control_direction(input_button):
+def get_Point(point32):
+def get_PointStamped(pointstamped):
+def get_Pose(pose):
+def get_PoseArray(posearray):
+def get_PoseStamped(posestamped):
+def get_tf(frame_p, frame_ch):
+def give_Path(frame, poses):
+def give_Point(p):
+def give_PointStamped(frame, p):
+def give_Pose(p,q):
+def give_PoseArray(frame, poses):
+def give_PoseStamped(frame, q, p):
+# h
+# i
+# j
+def judge_decimal(data):
+# k
+# l
+def load_str(file_path):
+def load_str_lines(file_path): 
+# m
+# n
+# o
+# p
+def p_cam_2_base(p_cam, frame_p = '/panda_link0', frame_ch = 'camera_color_optical_frame'): 
+def p3_to_line_p12(p1,p2,p3):
+def polyfit_2d_to_3d(pt_2d, param_path = '/home/abml/zoe_ws/src/calibration/calibration_table_pc/result/'):
+def pose_2D_to_3D(x_axis, y_axis, z_axis = 'down'):
+def pq_to_T(p,q):
+# q
+def q_to_angle_axis(q):
+def q_w_trans(q): 
+def q_wxyz_to_xyzw(q_wxyz):
+def q_xyzw_to_wxyz(q_xyzw):
+# r
+def rad_to_deg(joints):
+def recorder_corners(corners, mode):
+def rot_Q(q_old, q_new):
+def rotation_between_2v(v_old, v_new):
+# s
+def saveDataStep(data, file_path, if_clear = False):
+def shorten_data(data):
+# t
+def trans_2D_to_3D(p_2D, p_list = [[659, 361], [371, 167], [0.005,-0.005], [-0.195,-0.305]], mode = 'point'):
+def trans_v_to_q(v):
+def transformation_P(v_old,trans,q_rot):
+def transformation_Q(q_orig,q_rot):
+# u
+# v
+# w
+# x
+def xyz_axis_to_q(x_axis, y_axis, z_axis):
+# y
+# z
+'''
 
+def file_num_in_dir(path):
+  return len(os.listdir(path))
+
+def check_file(file_path, remove_file = False):
+  if remove_file:
+    if os.path.isfile(file_path):
+      os.remove(file_path)
+    print('Delete: ' + file_path)
+  return os.path.isfile(file_path)
 
 def closest(mylist, Number):
     answer = []
