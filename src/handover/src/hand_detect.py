@@ -9,7 +9,7 @@ class hand_detect:
   def __init__(self):
 #=======input==================================================================================
     self.bridge = CvBridge()
-    self.rgb_sub = message_filters.Subscriber('/camera_top/color/image_raw', Image)
+    self.rgb_sub = message_filters.Subscriber('/camera/color/image_raw', Image)
     self.rgb_sub.registerCallback(self.callback_rgb) 
 #=======output==================================================================================
     self.hand_track_pub = rospy.Publisher("/hand_track", Image, queue_size=1)
@@ -17,9 +17,11 @@ class hand_detect:
     self.if_hand_pub = rospy.Publisher("/if_hand", Bool, queue_size=1)
 #===============================================================================================
 # members
-    self.blank_image = np.zeros((720,1280,3), np.uint8)
-    self.hand = np.zeros((720,1280,3), np.uint8)
-    self.interest_area = np.zeros((720,1280,3), np.uint8)
+    self.row = 480
+    self.col = 640
+    self.blank_image = np.zeros((self.row,self.col,3), np.uint8)
+    self.hand = np.zeros((self.row,self.col,3), np.uint8)
+    self.interest_area = np.zeros((self.row,self.col,3), np.uint8)
     self.mp_drawing = mp.solutions.drawing_utils
     self.mp_drawing_styles = mp.solutions.drawing_styles
     self.mp_hands = mp.solutions.hands
@@ -30,11 +32,13 @@ class hand_detect:
     self.if_hand = Bool()
     self.if_hand.data = False
     
+    print('ready to detect hand')
+    
   def callback_rgb(self, data):
     self.hand_list.header.stamp = rospy.Time.now() 
     mark1 = time.time()
-    image_width = 1280
-    image_height = 720
+    image_width = self.col
+    image_height = self.row
     print()
     print('hand_detect.py is running')
     self.blank_image = self.bridge.imgmsg_to_cv2(data, "bgr8")

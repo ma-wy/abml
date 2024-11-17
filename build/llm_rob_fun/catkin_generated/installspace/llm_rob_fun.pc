@@ -1,0 +1,8 @@
+prefix=/home/abml/zoe_ws/install
+
+Name: llm_rob_fun
+Description: Description of llm_rob_fun
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

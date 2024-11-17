@@ -12,8 +12,13 @@ rob = MoveGroupCommander('panda_arm')
 rob.set_end_effector_link('panda_hand_tcp')
 print('ee_pose')
 print(rob.get_current_pose())
-print('joints')
-print(rob.get_current_joint_values())
+print('joints in rad')
+joints = rob.get_current_joint_values()
+print(joints)
+print('joints in degree')
+print(rad_to_deg(joints))
+print('get_current_state_bounded')
+#print(rob.get_current_state_bounded())?
     
     
     

@@ -8,32 +8,39 @@ class rob_move:
   def __init__(self):
 #=======input==================================================================================
     self.service = rospy.Service('/llm_rob_fun_server', SetRobFun, self.callback_response_rob_fun)
-    self.target_sub = rospy.Subscriber("/rob_target_pose", Pose, self.callback_rob_target_pose)
+    self.target_sub = rospy.Subscriber("/ee_target_in_base", PoseStamped, self.callback_rob_target_pose)
 #=======output==================================================================================
-    #self.if_move_stop_pub = rospy.Publisher("/if_move_stop", Bool, queue_size=10)
+    self.magnet_pub = rospy.Publisher("/control_magnet", Int32, queue_size=1)
+    self.bellow_pub = rospy.Publisher("/control_pump", Float64, queue_size=1)
+    self.spare_place_pub = rospy.Publisher("/spare_place", PoseStamped, queue_size=1)
 #=================================================================================
 # members
-    print('creat the class')
+    self.rob = MoveGroupCommander('panda_arm')
+    self.rob.set_end_effector_link('panda_hand_tcp')
+    self.gripper = MoveGroupCommander('panda_hand')
+
     rob_fun = ['shelve', 'handover', 'idle']
-    #self.rob_ref_p = zeros(3)
-    #self.rob_ref_q = zeros(4)
-    self.rob_ref_p = array([-0.08, -0.7, -0.24])
-    self.rob_ref_q = angle_axis_to_q(array([1.138, -2.948, -0.0265]))
     self.rob_fun = 'idle'
-    self.rob = urx.Robot("169.254.162.54")
-    self.a = 0.2
-    self.v = 0.3
-    self.r = 0.01
-    self.pose_init = array([-0.08, -0.44, -0.14, 1.138, -2.948, -0.0265]) # tbc
-    #self.pose_spare_p = zeros(3)
-    #self.pose_spare_q = zeros(4)
-    self.pose_spare_p = array([-0.0211, -0.822, -0.235])
-    self.pose_spare_q = angle_axis_to_q(array(([1.27, -2.89, -0.025])))
-    self.dh = array([0,0,0.1]) # 10cm
-    self.dx = array([-0.2,0,0]) # 10cm
-    self.table_h = -0.24
-    print('server is ready')
+
+    self.init_joints = [1.575267887668587, -0.4352075831555483, 0.26885588875151517, -2.2980965634335013, 0.15372256857881975, 1.6601492852899764, 1.0014479012643849]
+    self.target_pose = []
+
+    self.magnet_trigger = Int32()
+    self.bellow_trigger = Float64()
+    self.spare_p = array([-0.6, 0.5, -0.07])
+    self.spare_q = array([0.707, 0.707, 0.0, 0.0])
+    self.frame = 'panda_link0'
+    self.count = 0
+    self.spare_place = give_PoseStamped(self.frame, self.spare_q, self.spare_p)
+    #self.spare_bias = array([-0.1, 0, 0])
+    self.if_recieved_target = False
+    print('###################')
+    print('ready to move robot')
+    print('###################')
+    
 #===============================================================================================
+
+
   def callback_response_rob_fun(self,request):
     rob_ref_p = array(self.rob_ref_p)
     rob_ref_q = array(self.rob_ref_q)
@@ -57,7 +64,7 @@ class rob_move:
       # gripper close #
       #################
       #time.sleep(3)
-      print('enter to close gripper')
+      print('press enter to close gripper')
       input()
       pose3 = pose1# pick up to hover
       pose4 = generate_ur_cmd(rob_ref_p + self.dx + self.dh, rob_ref_q)# hand over
@@ -67,7 +74,7 @@ class rob_move:
       # gripper open #
       ################
       #time.sleep(3)
-      print('enter to open gripper')
+      print('press enter to open gripper')
       input()
       self.rob.movel(self.pose_init, acc=self.a, vel=self.v, wait=True, relative=False, threshold=None)
       # return signal
@@ -87,7 +94,7 @@ class rob_move:
       # gripper close #
       #################
       #time.sleep(3)
-      print('enter to close gripper')
+      print('press enter to close gripper')
       input()
       pose3 = pose1# pick up
       pose4 = generate_ur_cmd(self.pose_spare_p + self.dh, self.pose_spare_q)# hover to a spare place
@@ -98,7 +105,7 @@ class rob_move:
       # gripper open #
       ################
       #time.sleep(3)
-      print('enter to open gripper')
+      print('press enter to open gripper')
       input()
       pose_list = [pose4, self.pose_init] # leave and reset
       self.rob.movels(pose_list, acc=self.a, vel=self.v, radius=self.r, wait=True, threshold=None)

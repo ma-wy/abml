@@ -63,7 +63,7 @@ CATKIN_SKIP_TESTING:BOOL=OFF
 CATKIN_SYMLINK_INSTALL:BOOL=OFF
 
 //List of ';' separated packages to build
-CATKIN_WHITELIST_PACKAGES:STRING=onrobot, onrobot_rg_control, onrobot_rg_description
+CATKIN_WHITELIST_PACKAGES:STRING=xf_mic_asr_offline_line
 
 //Path to a file.
 CCD_INCLUDE_DIRS:PATH=/usr/include
@@ -1234,13 +1234,19 @@ kdl_conversions_DIR:PATH=/opt/ros/noetic/share/kdl_conversions/cmake
 kdl_parser_DIR:PATH=/opt/ros/noetic/share/kdl_parser/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/noetic/lib/libxmlrpcpp.so
+lib:FILEPATH=/opt/ros/noetic/lib/libtf2.so
 
 //Value Computed by CMake
 llm_grasping_BINARY_DIR:STATIC=/home/abml/zoe_ws/build/llm_grasping
 
 //Value Computed by CMake
 llm_grasping_SOURCE_DIR:STATIC=/home/abml/zoe_ws/src/llm_grasping
+
+//Value Computed by CMake
+llm_rob_fun_BINARY_DIR:STATIC=/home/abml/zoe_ws/build/llm_rob_fun
+
+//Value Computed by CMake
+llm_rob_fun_SOURCE_DIR:STATIC=/home/abml/zoe_ws/src/llm_rob_fun
 
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/noetic/share/message_filters/cmake
@@ -1809,6 +1815,12 @@ visualize_data_BINARY_DIR:STATIC=/home/abml/zoe_ws/build/visualize_data
 //Value Computed by CMake
 visualize_data_SOURCE_DIR:STATIC=/home/abml/zoe_ws/src/visualize_data
 
+//Value Computed by CMake
+xf_mic_asr_offline_line_BINARY_DIR:STATIC=/home/abml/zoe_ws/build/xf_mic_asr_offline_line
+
+//Value Computed by CMake
+xf_mic_asr_offline_line_SOURCE_DIR:STATIC=/home/abml/zoe_ws/src/xf_mic_asr_offline_line
+
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/noetic/share/xmlrpcpp/cmake
 
@@ -1914,6 +1926,8 @@ CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
+//Path to cache edit program executable.
+CMAKE_EDIT_COMMAND:INTERNAL=/usr/bin/ccmake
 //Executable file format
 CMAKE_EXECUTABLE_FORMAT:INTERNAL=ELF
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
@@ -2000,7 +2014,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

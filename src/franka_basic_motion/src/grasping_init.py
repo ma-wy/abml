@@ -10,8 +10,9 @@ rob = MoveGroupCommander('panda_arm')
 print(rob.set_end_effector_link('panda_hand_tcp'))
 rob.set_max_velocity_scaling_factor(0.1)
 rob.set_max_acceleration_scaling_factor(0.1)
+gripper = MoveGroupCommander('panda_hand')
 
-
+gripper.go([0.025, 0.025])
 if sys.argv[1] == 'handover':
 # handover init pose #########################
   p = [0.289, 0.000, 0.400]

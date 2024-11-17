@@ -115,8 +115,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -284,6 +284,929 @@ gtest/fast:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+#=============================================================================
+# Target rules for targets named detect_voice_direction
+
+# Build rule for target.
+detect_voice_direction: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 detect_voice_direction
+.PHONY : detect_voice_direction
+
+# fast build rule for target.
+detect_voice_direction/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/detect_voice_direction.dir/build.make xf_mic_asr_offline_line/CMakeFiles/detect_voice_direction.dir/build
+.PHONY : detect_voice_direction/fast
+
+#=============================================================================
+# Target rules for targets named wheeltec_mic
+
+# Build rule for target.
+wheeltec_mic: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 wheeltec_mic
+.PHONY : wheeltec_mic
+
+# fast build rule for target.
+wheeltec_mic/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/wheeltec_mic.dir/build.make xf_mic_asr_offline_line/CMakeFiles/wheeltec_mic.dir/build
+.PHONY : wheeltec_mic/fast
+
+#=============================================================================
+# Target rules for targets named node_feedback
+
+# Build rule for target.
+node_feedback: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 node_feedback
+.PHONY : node_feedback
+
+# fast build rule for target.
+node_feedback/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/node_feedback.dir/build.make xf_mic_asr_offline_line/CMakeFiles/node_feedback.dir/build
+.PHONY : node_feedback/fast
+
+#=============================================================================
+# Target rules for targets named call_recognition
+
+# Build rule for target.
+call_recognition: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 call_recognition
+.PHONY : call_recognition
+
+# fast build rule for target.
+call_recognition/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/call_recognition.dir/build.make xf_mic_asr_offline_line/CMakeFiles/call_recognition.dir/build
+.PHONY : call_recognition/fast
+
+#=============================================================================
+# Target rules for targets named voice_control
+
+# Build rule for target.
+voice_control: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 voice_control
+.PHONY : voice_control
+
+# fast build rule for target.
+voice_control/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/voice_control.dir/build.make xf_mic_asr_offline_line/CMakeFiles/voice_control.dir/build
+.PHONY : voice_control/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_genpy
+
+# Build rule for target.
+xf_mic_asr_offline_line_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_genpy
+.PHONY : xf_mic_asr_offline_line_genpy
+
+# fast build rule for target.
+xf_mic_asr_offline_line_genpy/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_genpy.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_genpy.dir/build
+.PHONY : xf_mic_asr_offline_line_genpy/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_generate_messages_py
+
+# Build rule for target.
+xf_mic_asr_offline_line_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_generate_messages_py
+.PHONY : xf_mic_asr_offline_line_generate_messages_py
+
+# fast build rule for target.
+xf_mic_asr_offline_line_generate_messages_py/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages_py.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages_py.dir/build
+.PHONY : xf_mic_asr_offline_line_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_gennodejs
+
+# Build rule for target.
+xf_mic_asr_offline_line_gennodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_gennodejs
+.PHONY : xf_mic_asr_offline_line_gennodejs
+
+# fast build rule for target.
+xf_mic_asr_offline_line_gennodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_gennodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_gennodejs.dir/build
+.PHONY : xf_mic_asr_offline_line_gennodejs/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_generate_messages_nodejs
+
+# Build rule for target.
+xf_mic_asr_offline_line_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_generate_messages_nodejs
+.PHONY : xf_mic_asr_offline_line_generate_messages_nodejs
+
+# fast build rule for target.
+xf_mic_asr_offline_line_generate_messages_nodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages_nodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages_nodejs.dir/build
+.PHONY : xf_mic_asr_offline_line_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_genlisp
+
+# Build rule for target.
+xf_mic_asr_offline_line_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_genlisp
+.PHONY : xf_mic_asr_offline_line_genlisp
+
+# fast build rule for target.
+xf_mic_asr_offline_line_genlisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_genlisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_genlisp.dir/build
+.PHONY : xf_mic_asr_offline_line_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named geometry_msgs_generate_messages_eus
+
+# Build rule for target.
+geometry_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_eus
+.PHONY : geometry_msgs_generate_messages_eus
+
+# fast build rule for target.
+geometry_msgs_generate_messages_eus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+.PHONY : geometry_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_nodejs
+
+# Build rule for target.
+std_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_nodejs
+.PHONY : std_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+std_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+.PHONY : std_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_nodejs
+
+# Build rule for target.
+tf_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_nodejs
+.PHONY : tf_generate_messages_nodejs
+
+# fast build rule for target.
+tf_generate_messages_nodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/tf_generate_messages_nodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/tf_generate_messages_nodejs.dir/build
+.PHONY : tf_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_py
+
+# Build rule for target.
+std_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_py
+.PHONY : std_msgs_generate_messages_py
+
+# fast build rule for target.
+std_msgs_generate_messages_py/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/std_msgs_generate_messages_py.dir/build.make xf_mic_asr_offline_line/CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_nodejs
+
+# Build rule for target.
+sensor_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_nodejs
+.PHONY : sensor_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+sensor_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named geometry_msgs_generate_messages_py
+
+# Build rule for target.
+geometry_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_py
+.PHONY : geometry_msgs_generate_messages_py
+
+# fast build rule for target.
+geometry_msgs_generate_messages_py/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make xf_mic_asr_offline_line/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+.PHONY : geometry_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_lisp
+
+# Build rule for target.
+sensor_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_lisp
+.PHONY : sensor_msgs_generate_messages_lisp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_eus
+
+# Build rule for target.
+sensor_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_eus
+.PHONY : sensor_msgs_generate_messages_eus
+
+# fast build rule for target.
+sensor_msgs_generate_messages_eus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Major_Mic_srv
+
+# Build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Major_Mic_srv: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Major_Mic_srv
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Major_Mic_srv
+
+# fast build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Major_Mic_srv/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Major_Mic_srv.dir/build.make xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Major_Mic_srv.dir/build
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Major_Mic_srv/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_generate_messages_lisp
+
+# Build rule for target.
+xf_mic_asr_offline_line_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_generate_messages_lisp
+.PHONY : xf_mic_asr_offline_line_generate_messages_lisp
+
+# fast build rule for target.
+xf_mic_asr_offline_line_generate_messages_lisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages_lisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages_lisp.dir/build
+.PHONY : xf_mic_asr_offline_line_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_eus
+
+# Build rule for target.
+roscpp_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_eus
+.PHONY : roscpp_generate_messages_eus
+
+# fast build rule for target.
+roscpp_generate_messages_eus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/roscpp_generate_messages_eus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_py
+
+# Build rule for target.
+sensor_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_py
+.PHONY : sensor_msgs_generate_messages_py
+
+# fast build rule for target.
+sensor_msgs_generate_messages_py/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make xf_mic_asr_offline_line/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_eus
+
+# Build rule for target.
+tf2_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_eus
+.PHONY : tf2_msgs_generate_messages_eus
+
+# fast build rule for target.
+tf2_msgs_generate_messages_eus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build
+.PHONY : tf2_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named rosgraph_msgs_generate_messages_nodejs
+
+# Build rule for target.
+rosgraph_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_nodejs
+.PHONY : rosgraph_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_generate_messages_cpp
+
+# Build rule for target.
+actionlib_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_generate_messages_cpp
+.PHONY : actionlib_generate_messages_cpp
+
+# fast build rule for target.
+actionlib_generate_messages_cpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/actionlib_generate_messages_cpp.dir/build
+.PHONY : actionlib_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_msgs_generate_messages_py
+
+# Build rule for target.
+actionlib_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_msgs_generate_messages_py
+.PHONY : actionlib_msgs_generate_messages_py
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_py/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make xf_mic_asr_offline_line/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+.PHONY : actionlib_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named _xf_mic_asr_offline_line_generate_messages_check_deps_position
+
+# Build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_position: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _xf_mic_asr_offline_line_generate_messages_check_deps_position
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_position
+
+# fast build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_position/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_position.dir/build.make xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_position.dir/build
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_position/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_lisp
+
+# Build rule for target.
+std_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_lisp
+.PHONY : std_msgs_generate_messages_lisp
+
+# fast build rule for target.
+std_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_py
+
+# Build rule for target.
+roscpp_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_py
+.PHONY : roscpp_generate_messages_py
+
+# fast build rule for target.
+roscpp_generate_messages_py/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/roscpp_generate_messages_py.dir/build.make xf_mic_asr_offline_line/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named geometry_msgs_generate_messages_lisp
+
+# Build rule for target.
+geometry_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_lisp
+.PHONY : geometry_msgs_generate_messages_lisp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+.PHONY : geometry_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_cpp
+
+# Build rule for target.
+tf_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_cpp
+.PHONY : tf_generate_messages_cpp
+
+# fast build rule for target.
+tf_generate_messages_cpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/tf_generate_messages_cpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/tf_generate_messages_cpp.dir/build
+.PHONY : tf_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_nodejs
+
+# Build rule for target.
+roscpp_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_nodejs
+.PHONY : roscpp_generate_messages_nodejs
+
+# fast build rule for target.
+roscpp_generate_messages_nodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+.PHONY : roscpp_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Major_Mic_srv
+
+# Build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Major_Mic_srv: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Major_Mic_srv
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Major_Mic_srv
+
+# fast build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Major_Mic_srv/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Major_Mic_srv.dir/build.make xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Major_Mic_srv.dir/build
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Major_Mic_srv/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_cpp
+
+# Build rule for target.
+std_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_cpp
+.PHONY : std_msgs_generate_messages_cpp
+
+# fast build rule for target.
+std_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_cpp
+
+# Build rule for target.
+tf2_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_cpp
+.PHONY : tf2_msgs_generate_messages_cpp
+
+# fast build rule for target.
+tf2_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
+.PHONY : tf2_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named rosgraph_msgs_generate_messages_eus
+
+# Build rule for target.
+rosgraph_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_eus
+.PHONY : rosgraph_msgs_generate_messages_eus
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_eus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_eus
+
+# Build rule for target.
+tf_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_eus
+.PHONY : tf_generate_messages_eus
+
+# fast build rule for target.
+tf_generate_messages_eus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/tf_generate_messages_eus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/tf_generate_messages_eus.dir/build
+.PHONY : tf_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named rosgraph_msgs_generate_messages_lisp
+
+# Build rule for target.
+rosgraph_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_lisp
+.PHONY : rosgraph_msgs_generate_messages_lisp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_msgs_generate_messages_eus
+
+# Build rule for target.
+actionlib_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_msgs_generate_messages_eus
+.PHONY : actionlib_msgs_generate_messages_eus
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_eus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+.PHONY : actionlib_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named command_recognition
+
+# Build rule for target.
+command_recognition: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 command_recognition
+.PHONY : command_recognition
+
+# fast build rule for target.
+command_recognition/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/command_recognition.dir/build.make xf_mic_asr_offline_line/CMakeFiles/command_recognition.dir/build
+.PHONY : command_recognition/fast
+
+#=============================================================================
+# Target rules for targets named geometry_msgs_generate_messages_nodejs
+
+# Build rule for target.
+geometry_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_nodejs
+.PHONY : geometry_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+geometry_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+.PHONY : geometry_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named geometry_msgs_generate_messages_cpp
+
+# Build rule for target.
+geometry_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geometry_msgs_generate_messages_cpp
+.PHONY : geometry_msgs_generate_messages_cpp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_py
+
+# Build rule for target.
+tf2_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_py
+.PHONY : tf2_msgs_generate_messages_py
+
+# fast build rule for target.
+tf2_msgs_generate_messages_py/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make xf_mic_asr_offline_line/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
+.PHONY : tf2_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_lisp
+
+# Build rule for target.
+tf_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_lisp
+.PHONY : tf_generate_messages_lisp
+
+# fast build rule for target.
+tf_generate_messages_lisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/tf_generate_messages_lisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/tf_generate_messages_lisp.dir/build
+.PHONY : tf_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_lisp
+
+# Build rule for target.
+roscpp_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_lisp
+.PHONY : roscpp_generate_messages_lisp
+
+# fast build rule for target.
+roscpp_generate_messages_lisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_generate_messages_lisp
+
+# Build rule for target.
+actionlib_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_generate_messages_lisp
+.PHONY : actionlib_generate_messages_lisp
+
+# fast build rule for target.
+actionlib_generate_messages_lisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/actionlib_generate_messages_lisp.dir/build
+.PHONY : actionlib_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named rosgraph_msgs_generate_messages_py
+
+# Build rule for target.
+rosgraph_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_py
+.PHONY : rosgraph_msgs_generate_messages_py
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_py/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make xf_mic_asr_offline_line/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+.PHONY : rosgraph_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_msgs_generate_messages_cpp
+
+# Build rule for target.
+actionlib_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_msgs_generate_messages_cpp
+.PHONY : actionlib_msgs_generate_messages_cpp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+.PHONY : actionlib_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Awake_Angle_srv
+
+# Build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Awake_Angle_srv: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Awake_Angle_srv
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Awake_Angle_srv
+
+# fast build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Awake_Angle_srv/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Awake_Angle_srv.dir/build.make xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Awake_Angle_srv.dir/build
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Awake_Angle_srv/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_generate_messages_nodejs
+
+# Build rule for target.
+actionlib_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_generate_messages_nodejs
+.PHONY : actionlib_generate_messages_nodejs
+
+# fast build rule for target.
+actionlib_generate_messages_nodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
+.PHONY : actionlib_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_generate_messages_py
+
+# Build rule for target.
+actionlib_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_generate_messages_py
+.PHONY : actionlib_generate_messages_py
+
+# fast build rule for target.
+actionlib_generate_messages_py/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/actionlib_generate_messages_py.dir/build.make xf_mic_asr_offline_line/CMakeFiles/actionlib_generate_messages_py.dir/build
+.PHONY : actionlib_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named tf_generate_messages_py
+
+# Build rule for target.
+tf_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf_generate_messages_py
+.PHONY : tf_generate_messages_py
+
+# fast build rule for target.
+tf_generate_messages_py/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/tf_generate_messages_py.dir/build.make xf_mic_asr_offline_line/CMakeFiles/tf_generate_messages_py.dir/build
+.PHONY : tf_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_eus
+
+# Build rule for target.
+std_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_eus
+.PHONY : std_msgs_generate_messages_eus
+
+# fast build rule for target.
+std_msgs_generate_messages_eus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_msgs_generate_messages_nodejs
+
+# Build rule for target.
+actionlib_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_msgs_generate_messages_nodejs
+.PHONY : actionlib_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
+.PHONY : actionlib_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_msgs_generate_messages_lisp
+
+# Build rule for target.
+actionlib_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_msgs_generate_messages_lisp
+.PHONY : actionlib_msgs_generate_messages_lisp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+.PHONY : actionlib_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_lisp
+
+# Build rule for target.
+tf2_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_lisp
+.PHONY : tf2_msgs_generate_messages_lisp
+
+# fast build rule for target.
+tf2_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
+.PHONY : tf2_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named tf2_msgs_generate_messages_nodejs
+
+# Build rule for target.
+tf2_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tf2_msgs_generate_messages_nodejs
+.PHONY : tf2_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+tf2_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make xf_mic_asr_offline_line/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
+.PHONY : tf2_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_generate_messages
+
+# Build rule for target.
+xf_mic_asr_offline_line_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_generate_messages
+.PHONY : xf_mic_asr_offline_line_generate_messages
+
+# fast build rule for target.
+xf_mic_asr_offline_line_generate_messages/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages.dir/build
+.PHONY : xf_mic_asr_offline_line_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Led_On_srv
+
+# Build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Led_On_srv: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Led_On_srv
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Led_On_srv
+
+# fast build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Led_On_srv/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Led_On_srv.dir/build.make xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Led_On_srv.dir/build
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Led_On_srv/fast
+
+#=============================================================================
+# Target rules for targets named _xf_mic_asr_offline_line_generate_messages_check_deps_Pcm_Msg
+
+# Build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Pcm_Msg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _xf_mic_asr_offline_line_generate_messages_check_deps_Pcm_Msg
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Pcm_Msg
+
+# fast build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Pcm_Msg/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Pcm_Msg.dir/build.make xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Pcm_Msg.dir/build
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Pcm_Msg/fast
+
+#=============================================================================
+# Target rules for targets named _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Offline_Result_srv
+
+# Build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Offline_Result_srv: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Offline_Result_srv
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Offline_Result_srv
+
+# fast build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Offline_Result_srv/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Offline_Result_srv.dir/build.make xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Get_Offline_Result_srv.dir/build
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Offline_Result_srv/fast
+
+#=============================================================================
+# Target rules for targets named _xf_mic_asr_offline_line_generate_messages_check_deps_Start_Record_srv
+
+# Build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Start_Record_srv: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _xf_mic_asr_offline_line_generate_messages_check_deps_Start_Record_srv
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Start_Record_srv
+
+# fast build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Start_Record_srv/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Start_Record_srv.dir/build.make xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Start_Record_srv.dir/build
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Start_Record_srv/fast
+
+#=============================================================================
+# Target rules for targets named _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Awake_Word_srv
+
+# Build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Awake_Word_srv: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Awake_Word_srv
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Awake_Word_srv
+
+# fast build rule for target.
+_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Awake_Word_srv/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Awake_Word_srv.dir/build.make xf_mic_asr_offline_line/CMakeFiles/_xf_mic_asr_offline_line_generate_messages_check_deps_Set_Awake_Word_srv.dir/build
+.PHONY : _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Awake_Word_srv/fast
+
+#=============================================================================
+# Target rules for targets named rosgraph_msgs_generate_messages_cpp
+
+# Build rule for target.
+rosgraph_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_cpp
+.PHONY : rosgraph_msgs_generate_messages_cpp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named actionlib_generate_messages_eus
+
+# Build rule for target.
+actionlib_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actionlib_generate_messages_eus
+.PHONY : actionlib_generate_messages_eus
+
+# fast build rule for target.
+actionlib_generate_messages_eus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/actionlib_generate_messages_eus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/actionlib_generate_messages_eus.dir/build
+.PHONY : actionlib_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_generate_messages_cpp
+
+# Build rule for target.
+xf_mic_asr_offline_line_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_generate_messages_cpp
+.PHONY : xf_mic_asr_offline_line_generate_messages_cpp
+
+# fast build rule for target.
+xf_mic_asr_offline_line_generate_messages_cpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages_cpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages_cpp.dir/build
+.PHONY : xf_mic_asr_offline_line_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_cpp
+
+# Build rule for target.
+roscpp_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_cpp
+.PHONY : roscpp_generate_messages_cpp
+
+# fast build rule for target.
+roscpp_generate_messages_cpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_gencpp
+
+# Build rule for target.
+xf_mic_asr_offline_line_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_gencpp
+.PHONY : xf_mic_asr_offline_line_gencpp
+
+# fast build rule for target.
+xf_mic_asr_offline_line_gencpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_gencpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_gencpp.dir/build
+.PHONY : xf_mic_asr_offline_line_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_generate_messages_eus
+
+# Build rule for target.
+xf_mic_asr_offline_line_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_generate_messages_eus
+.PHONY : xf_mic_asr_offline_line_generate_messages_eus
+
+# fast build rule for target.
+xf_mic_asr_offline_line_generate_messages_eus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages_eus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_generate_messages_eus.dir/build
+.PHONY : xf_mic_asr_offline_line_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named sensor_msgs_generate_messages_cpp
+
+# Build rule for target.
+sensor_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sensor_msgs_generate_messages_cpp
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make xf_mic_asr_offline_line/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named xf_mic_asr_offline_line_geneus
+
+# Build rule for target.
+xf_mic_asr_offline_line_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xf_mic_asr_offline_line_geneus
+.PHONY : xf_mic_asr_offline_line_geneus
+
+# fast build rule for target.
+xf_mic_asr_offline_line_geneus/fast:
+	$(MAKE) -f xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_geneus.dir/build.make xf_mic_asr_offline_line/CMakeFiles/xf_mic_asr_offline_line_geneus.dir/build
+.PHONY : xf_mic_asr_offline_line_geneus/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -306,6 +1229,77 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... detect_voice_direction"
+	@echo "... wheeltec_mic"
+	@echo "... node_feedback"
+	@echo "... call_recognition"
+	@echo "... voice_control"
+	@echo "... xf_mic_asr_offline_line_genpy"
+	@echo "... xf_mic_asr_offline_line_generate_messages_py"
+	@echo "... xf_mic_asr_offline_line_gennodejs"
+	@echo "... xf_mic_asr_offline_line_generate_messages_nodejs"
+	@echo "... xf_mic_asr_offline_line_genlisp"
+	@echo "... geometry_msgs_generate_messages_eus"
+	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... tf_generate_messages_nodejs"
+	@echo "... std_msgs_generate_messages_py"
+	@echo "... sensor_msgs_generate_messages_nodejs"
+	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... sensor_msgs_generate_messages_lisp"
+	@echo "... sensor_msgs_generate_messages_eus"
+	@echo "... _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Major_Mic_srv"
+	@echo "... xf_mic_asr_offline_line_generate_messages_lisp"
+	@echo "... roscpp_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_py"
+	@echo "... tf2_msgs_generate_messages_eus"
+	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... actionlib_generate_messages_cpp"
+	@echo "... actionlib_msgs_generate_messages_py"
+	@echo "... _xf_mic_asr_offline_line_generate_messages_check_deps_position"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... geometry_msgs_generate_messages_lisp"
+	@echo "... tf_generate_messages_cpp"
+	@echo "... roscpp_generate_messages_nodejs"
+	@echo "... _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Major_Mic_srv"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... tf2_msgs_generate_messages_cpp"
+	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... tf_generate_messages_eus"
+	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... actionlib_msgs_generate_messages_eus"
+	@echo "... command_recognition"
+	@echo "... geometry_msgs_generate_messages_nodejs"
+	@echo "... geometry_msgs_generate_messages_cpp"
+	@echo "... tf2_msgs_generate_messages_py"
+	@echo "... tf_generate_messages_lisp"
+	@echo "... roscpp_generate_messages_lisp"
+	@echo "... actionlib_generate_messages_lisp"
+	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... actionlib_msgs_generate_messages_cpp"
+	@echo "... _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Awake_Angle_srv"
+	@echo "... actionlib_generate_messages_nodejs"
+	@echo "... actionlib_generate_messages_py"
+	@echo "... tf_generate_messages_py"
+	@echo "... std_msgs_generate_messages_eus"
+	@echo "... actionlib_msgs_generate_messages_nodejs"
+	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... tf2_msgs_generate_messages_lisp"
+	@echo "... tf2_msgs_generate_messages_nodejs"
+	@echo "... xf_mic_asr_offline_line_generate_messages"
+	@echo "... _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Led_On_srv"
+	@echo "... _xf_mic_asr_offline_line_generate_messages_check_deps_Pcm_Msg"
+	@echo "... _xf_mic_asr_offline_line_generate_messages_check_deps_Get_Offline_Result_srv"
+	@echo "... _xf_mic_asr_offline_line_generate_messages_check_deps_Start_Record_srv"
+	@echo "... _xf_mic_asr_offline_line_generate_messages_check_deps_Set_Awake_Word_srv"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... actionlib_generate_messages_eus"
+	@echo "... xf_mic_asr_offline_line_generate_messages_cpp"
+	@echo "... roscpp_generate_messages_cpp"
+	@echo "... xf_mic_asr_offline_line_gencpp"
+	@echo "... xf_mic_asr_offline_line_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... xf_mic_asr_offline_line_geneus"
 .PHONY : help
 
 

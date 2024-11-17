@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find panda_moveit_config)/launch/franka_control.launch">   
+    <arg name="robot_ip"              	   default="192.168.1.110"/>	
+    </include>
+    <include file="$(dirname)/launch_tf_subs.launch">   </include> 
+    <node pkg="franka_basic_motion" type="gripper_width.py" output="screen" name="gripper_width" args="0.025"/>
+</launch>
+

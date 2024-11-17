@@ -62,6 +62,7 @@ def judge_decimal(data):
 def load_str(file_path):
 def load_str_lines(file_path): 
 # m
+def mic_to_rob(mic_angle, rob_joints):
 # n
 # o
 # p
@@ -92,11 +93,46 @@ def transformation_Q(q_orig,q_rot):
 # v
 # w
 # x
+def xy_to_theta(x,y):
 def xyz_axis_to_q(x_axis, y_axis, z_axis):
 # y
 # z
 '''
 
+def xy_to_theta(x,y): #theta in [-pi, pi]
+  sin = y/(x**2 + y**2 )**0.5
+  cos = x/(x**2 + y**2 )**0.5
+  arcsin = asin(sin)
+  arccos = acos(cos)
+  
+  if sin > 0 and cos > 0:
+    area = 1
+    theta = arcsin
+  elif sin < 0 and cos > 0:
+    area = 4
+    theta = arcsin
+  elif sin > 0 and cos < 0:
+    area = 2
+    theta = arccos
+  elif sin < 0 and cos < 0:
+    area = 3
+    theta = -arccos
+  return theta
+
+def mic_to_rob(mic_angle, rob_joints):
+  print(1)
+  print(mic_angle)
+  rob_base_angle = abs(195 - mic_angle)
+  print(2)
+  print(rob_base_angle)
+  rob_joints_target = deepcopy(rob_joints)
+  print(3)
+  print(rob_joints_target)
+  rob_joints_target[0] = rob_base_angle
+  print(4)
+  print(rob_joints_target)
+  return rob_joints_target
+  
 def file_num_in_dir(path):
   return len(os.listdir(path))
 

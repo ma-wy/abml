@@ -10,8 +10,9 @@ rob = MoveGroupCommander('panda_arm')
 print(rob.set_end_effector_link('panda_hand_tcp'))
 rob.set_max_velocity_scaling_factor(0.1)
 rob.set_max_acceleration_scaling_factor(0.1)
+gripper = MoveGroupCommander('panda_hand')
 
-
+gripper.go([0.0025, 0.0025])
 if sys.argv[1] == 'handover':
 # handover init pose #########################
   p = [0.289, 0.000, 0.400]
@@ -21,7 +22,7 @@ if sys.argv[1] == 'handover':
   rob.go(joints)
 elif sys.argv[1] == 'grasping':
 # grasp init pose ###############################
-  joints = [1.6011481284718763, -0.40178913811583605, 0.2436625710082368, -2.285786937741197, 0.1891488218435272, 1.7121408211125266, 0.8576715186449095]
+  joints = [1.575267887668587, -0.4352075831555483, 0.26885588875151517, -2.2980965634335013, 0.15372256857881975, 1.6601492852899764, 1.0014479012643849]
   rob.go(joints)
 else:
   print('No such action. Please try again.')

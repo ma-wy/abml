@@ -17,9 +17,11 @@ class hand_detect:
     self.if_hand_pub = rospy.Publisher("/if_hand", Bool, queue_size=1)
 #===============================================================================================
 # members
-    self.blank_image = np.zeros((720,1280,3), np.uint8)
-    self.hand = np.zeros((720,1280,3), np.uint8)
-    self.interest_area = np.zeros((720,1280,3), np.uint8)
+    self.row = 480
+    self.col = 640
+    self.blank_image = np.zeros((self.row,self.col,3), np.uint8)
+    self.hand = np.zeros((self.row,self.col,3), np.uint8)
+    self.interest_area = np.zeros((self.row,self.col,3), np.uint8)
     self.mp_drawing = mp.solutions.drawing_utils
     self.mp_drawing_styles = mp.solutions.drawing_styles
     self.mp_hands = mp.solutions.hands
@@ -30,11 +32,13 @@ class hand_detect:
     self.if_hand = Bool()
     self.if_hand.data = False
     
+    print('ready to detect hand')
+    
   def callback_rgb(self, data):
     self.hand_list.header.stamp = rospy.Time.now() 
     mark1 = time.time()
-    image_width = 1280
-    image_height = 720
+    image_width = self.col
+    image_height = self.row
     print()
     print('hand_detect.py is running')
     self.blank_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
@@ -135,6 +139,7 @@ class hand_detect:
 #        cv2.imshow('MediaPipe Hands', cv2.flip(image, 1))
         self.hand_msg_pub.publish(self.hand_list)
         self.hand_track_pub.publish(self.bridge.cv2_to_imgmsg(self.hand, "passthrough"))
+        self.if_hand_pub.publish(self.if_hand)
     mark2 = time.time()
     print((mark2-mark1)*1000.0)
     

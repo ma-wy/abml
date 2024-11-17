@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/abml/zoe_ws/build/gtest/cmake_install.cmake")
+  include("/home/abml/zoe_ws/build/xf_mic_asr_offline_line/cmake_install.cmake")
 
 endif()
 
