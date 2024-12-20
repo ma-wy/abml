@@ -6,10 +6,16 @@ from mwy_lib import *
 
 rospy.init_node("trans_axis", anonymous=True)
 rob = MoveGroupCommander('panda_arm')
-rob.set_end_effector_link('panda_hand')
+rob.set_end_effector_link('panda_hand_tcp')
 # move position with consistant orientation ########################
-axis = sys.argv[1]
-d = float(sys.argv[2])
+if len(sys.argv) == 3:
+  axis = sys.argv[1]
+  d = float(sys.argv[2])
+elif len(sys.argv) == 4:
+  axis = sys.argv[1]
+  d = float(sys.argv[2])
+  speed = float(sys.argv[3])
+
 
 pose = rob.get_current_pose()
 target = pose.pose

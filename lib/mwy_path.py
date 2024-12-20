@@ -12,6 +12,7 @@ sys.path.append("/home/abml/zoe_ws/lib")
 @author: mwy
 '''
 #a
+import actionlib
 #from actionlib_msgs.msg import GoalStatusArray
 #b
 #c
@@ -23,6 +24,7 @@ import cv2.aruco as aruco
 from decimal import *
 #e
 #f
+import franka_gripper.msg
 #from franka_interface import ArmInterface, GripperInterface
 #g
 #import getch

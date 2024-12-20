@@ -1,0 +1,65 @@
+#!/usr/bin/env python3.8
+
+import sys
+import rospy
+from moveit_commander import MoveGroupCommander
+sys.path.append("/home/abml/zoe_ws/lib")
+from mwy_path import *
+from mwy_lib import *
+
+# Initialize ROS node
+rospy.init_node("move_to_pose_with_constraints", anonymous=True)
+
+# Set up MoveGroup for the Panda arm
+rob = MoveGroupCommander('panda_arm')
+rob.set_end_effector_link('panda_hand_tcp')
+frame = "panda_link0"
+rob.set_max_velocity_scaling_factor(0.1)
+rob.set_max_acceleration_scaling_factor(0.1)
+rob.set_planning_time(10.0)
+
+# Get input arguments (position and quaternion)
+x = float(sys.argv[1])
+y = float(sys.argv[2])
+z = float(sys.argv[3])
+qx = float(sys.argv[4])
+qy = float(sys.argv[5])
+qz = float(sys.argv[6])
+qw = float(sys.argv[7])
+
+# Construct the target pose
+target_position = [x, y, z]
+target_orientation = [qx, qy, qz, qw]
+target_pose = give_PoseStamped(frame, target_orientation, target_position)
+
+# Get the current pose
+current_pose = rob.get_current_pose().pose
+
+# Calculate the difference and adjust the current pose
+adjusted_pose = current_pose
+adjusted_pose.position.x += (target_pose.pose.position.x - current_pose.position.x)
+adjusted_pose.position.y += (target_pose.pose.position.y - current_pose.position.y)
+adjusted_pose.position.z += (target_pose.pose.position.z - current_pose.position.z)
+
+adjusted_pose.orientation = target_pose.pose.orientation  # Match orientation exactly
+
+# Debug: Print the adjusted pose
+print("Adjusted Pose:", adjusted_pose)
+
+# Set the adjusted pose as the target
+rob.set_pose_target(adjusted_pose)
+
+# Plan and execute the movement
+success = rob.go(wait=True)
+
+# Stop the robot to ensure no residual motion
+rob.stop()
+
+# Clear the pose target to avoid issues with subsequent commands
+rob.clear_pose_targets()
+
+if success:
+    print("Robot successfully moved to the adjusted pose.")
+else:
+    print("Failed to move the robot to the adjusted pose.")
+

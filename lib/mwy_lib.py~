@@ -36,7 +36,11 @@ def ee_pose_link8_to_ee(pose):
 def file_num_in_dir(path):
 def filter3(data, k):
 def func(x,a,b):  
+def franka_open_gripper():
+def franka_close_gripper():
+def franka_homing_gripper():
 # g
+def generate_folder(path):
 def generate_ur_cmd(p,q):
 def get_argv(value=None, index=1):
 def get_control_degree(input_button):
@@ -98,8 +102,46 @@ def xyz_axis_to_q(x_axis, y_axis, z_axis):
 # y
 # z
 '''
+def generate_folder(path):
+  if os.path.exists(path):
+    print('the folder exists')
+  else:
+    os.system('mkdir ' + path)
 
-def xy_to_theta(x,y): #[-pi, pi]
+def franka_open_gripper(client=actionlib.SimpleActionClient('/franka_gripper/move', franka_gripper.msg.MoveAction), width=0.025, speed=0.1):
+  gripper_move_client = client
+#  gripper_move_client.wait_for_server()  
+  gripper_open = franka_gripper.msg.MoveGoal()
+  gripper_open.width = width
+  gripper_open.speed = speed
+  gripper_move_client.send_goal(gripper_open)
+  gripper_move_client.wait_for_result()
+  return gripper_move_client.get_result().success
+
+def franka_close_gripper(client = actionlib.SimpleActionClient('/franka_gripper/grasp', franka_gripper.msg.GraspAction), speed=0.1):
+  gripper_grasp_client = client
+#  gripper_grasp_client.wait_for_server()  
+  gripper_close = franka_gripper.msg.GraspGoal()
+  gripper_close.width = 0.0
+  gripper_close.epsilon.inner = 0.1
+  gripper_close.epsilon.outer = 0.1
+  gripper_close.speed = 0.1
+  gripper_close.force = 10
+  gripper_grasp_client.send_goal(gripper_close)
+  gripper_grasp_client.wait_for_result()
+  return gripper_grasp_client.get_result().success
+
+def franka_homing_gripper(client = actionlib.SimpleActionClient('/franka_gripper/homing', franka_gripper.msg.HomingAction)):
+  gripper_homing_client = client
+#  gripper_homing_client.wait_for_server()  
+  gripper_homing = franka_gripper.msg.HomingGoal()
+  gripper_homing_client.send_goal(gripper_homing)
+  gripper_homing_client.wait_for_result()
+  return gripper_homing_client.get_result().success  
+
+
+
+def xy_to_theta(x,y): #theta in [-pi, pi]
   sin = y/(x**2 + y**2 )**0.5
   cos = x/(x**2 + y**2 )**0.5
   arcsin = asin(sin)
@@ -244,7 +286,8 @@ def check_make_clear_folder(path):
     print('No such folder. Now create one.')
     os.makedirs(path)
   else:
-    print('The folder exists. Now clear it.')
+    print('The folder exists. Press Enter if you want to clear it.')
+    input()
     clear_folder(path)
 
 def clear_folder(folder_path):

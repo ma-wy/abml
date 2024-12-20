@@ -6,4 +6,4 @@
 select an axis of the gripper as an rotation axis  
 `rosrun franka_basic_motion rot_axis.py axis angle_degree`  
 `rosrun franka_basic_motion rot_joint.py joint_index absolut_angle_degree`  
-`rosrun franka_basic_motion trans_axis.py axis displacement_meter`  
+`rosrun franka_basic_motion trans_axis.py axis displacement_meter (speed)`  

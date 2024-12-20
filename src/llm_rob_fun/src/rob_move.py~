@@ -14,13 +14,16 @@ class rob_move:
     self.bellow_pub = rospy.Publisher("/control_pump", Float64, queue_size=1)
     self.power_pub = rospy.Publisher("/control_power", Int32, queue_size=1)
     self.spare_place_pub = rospy.Publisher("/spare_place", PoseStamped, queue_size=1)
-    self.raise_target_pub = rospy.Publisher("/raise_target", PoseStamped, queue_size=1)
+    self.raise_target_pub = rospy.Publisher("/raise_target", PoseStamped, queue_size=1)    
+    self.gripper_grasp_client = actionlib.SimpleActionClient('/franka_gripper/grasp', franka_gripper.msg.GraspAction)    
+    self.gripper_grasp_client.wait_for_server()
+    self.gripper_open_client = actionlib.SimpleActionClient('/franka_gripper/move', franka_gripper.msg.MoveAction)    
+    self.gripper_open_client.wait_for_server()
+    
 #=================================================================================
 # members
     self.rob = MoveGroupCommander('panda_arm')
     self.rob.set_end_effector_link('panda_hand_tcp')
-    self.gripper = MoveGroupCommander('panda_hand')
-    self.gripper.set_joint_tolerance(0.002)
     rob_fun = ['shelve', 'handover', 'idle']
     self.rob_fun = 'idle'
 
@@ -108,13 +111,7 @@ class rob_move:
         # close the gripper
         print('close the gripper')
         close_width = 0.001
-        self.gripper.go([close_width, close_width])
-        self.gripper = MoveGroupCommander('panda_hand')
-        self.gripper.set_start_state_to_current_state()
-        self.gripper.set_joint_tolerance(0.002)
-        print('press enter')
-        input()
-        
+        if_gripper_grasp = franka_close_gripper(client = self.gripper_grasp_client, speed=0.1)
         
         # raise up
         print('raise up')
@@ -131,7 +128,7 @@ class rob_move:
         self.magnet_pub.publish(self.magnet_trigger)
         # open the gripper
         print('open the gripper')
-        self.gripper.go([0.025, 0.025]) # width = 0.05 
+        if_gripper_open = franka_open_gripper(client = self.gripper_open_client, speed=0.1)
         # switch off the bellow
         print('switch off the bellow')
         #self.bellow_trigger.data = 0
@@ -140,19 +137,7 @@ class rob_move:
         self.power_pub.publish(self.power_trigger)
         # reset the robot
         print('reset the robot')
-        '''
-        width = self.gripper.get_current_joint_values()
-        print(width)
-        if width[0] > 0.02:
-          self.rob.go(self.init_joints)
-        else:
-          self.gripper.go([0.025, 0.025])
-        '''
-        self.gripper.go([0.025, 0.025])
-        print('press enter')
-        input()       
-        #os.system('roslaunch panda_moveit_config franka_control.launch robot_ip:=192.168.1.110')
-        #os.system('roslaunch grasping launch_tf_subs.launch')
+        if_gripper_open = franka_open_gripper(client = self.gripper_open_client, speed=0.1)
         self.rob.go(self.init_joints)
         # return signal
         res.success = True
