@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "controller_interface;franka_hw;franka_msgs;geometry_ms
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "-lfranka_state_controller;/home/abml/libfranka/build/libfranka.so.0.9.2".split(';') if "-lfranka_state_controller;/home/abml/libfranka/build/libfranka.so.0.9.2" != "" else []
 PROJECT_NAME = "franka_control"
 PROJECT_SPACE_DIR = "/home/abml/zoe_ws/install"
-PROJECT_VERSION = "0.10.1"
+PROJECT_VERSION = "0.9.0"

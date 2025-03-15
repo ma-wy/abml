@@ -110,6 +110,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/franka_gazebo" TYPE PROGRAM FILES "/home/abml/zoe_ws/build/Franka/franka_ros/franka_gazebo/catkin_generated/installspace/delayed_controller_spawner.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/franka_gazebo" TYPE DIRECTORY FILES "/home/abml/zoe_ws/src/Franka/franka_ros/franka_gazebo/launch")
 endif()
 

@@ -1,5 +1,5 @@
 set(_CATKIN_CURRENT_PACKAGE "franka_hw")
-set(franka_hw_VERSION "0.10.1")
+set(franka_hw_VERSION "0.9.0")
 set(franka_hw_MAINTAINER "Franka Emika GmbH <support@franka.de>")
 set(franka_hw_PACKAGE_FORMAT "2")
 set(franka_hw_BUILD_DEPENDS "message_generation" "actionlib_msgs" "actionlib" "controller_interface" "combined_robot_hw" "hardware_interface" "joint_limits_interface" "libfranka" "roscpp" "std_srvs" "urdf" "pluginlib" "franka_msgs")

@@ -1,5 +1,5 @@
 set(_CATKIN_CURRENT_PACKAGE "franka_msgs")
-set(franka_msgs_VERSION "0.10.1")
+set(franka_msgs_VERSION "0.9.0")
 set(franka_msgs_MAINTAINER "Franka Emika GmbH <support@franka.de>")
 set(franka_msgs_PACKAGE_FORMAT "2")
 set(franka_msgs_BUILD_DEPENDS "message_generation" "std_msgs" "actionlib_msgs")

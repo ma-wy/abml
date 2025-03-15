@@ -1,5 +1,5 @@
 set(_CATKIN_CURRENT_PACKAGE "franka_gripper")
-set(franka_gripper_VERSION "0.10.1")
+set(franka_gripper_VERSION "0.9.0")
 set(franka_gripper_MAINTAINER "Franka Emika GmbH <support@franka.de>")
 set(franka_gripper_PACKAGE_FORMAT "2")
 set(franka_gripper_BUILD_DEPENDS "roscpp" "message_generation" "libfranka" "control_msgs" "actionlib" "sensor_msgs" "xmlrpcpp" "actionlib_msgs")

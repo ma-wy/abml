@@ -1,5 +1,5 @@
 set(_CATKIN_CURRENT_PACKAGE "franka_control")
-set(franka_control_VERSION "0.10.1")
+set(franka_control_VERSION "0.9.0")
 set(franka_control_MAINTAINER "Franka Emika GmbH <support@franka.de>")
 set(franka_control_PACKAGE_FORMAT "2")
 set(franka_control_BUILD_DEPENDS "libfranka" "controller_interface" "controller_manager" "franka_hw" "franka_msgs" "geometry_msgs" "pluginlib" "realtime_tools" "roscpp" "sensor_msgs" "tf2_msgs" "tf" "std_srvs")

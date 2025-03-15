@@ -1,4 +1,6 @@
 # useful command:  
+## franka UDP timeout  
+`$ sudo iptables -I INPUT -p udp -j ACCEPT`  
 ## make packages isolatedly  
 `$ catkin_make_isolated`  
 * some packages (e.g. ur_client_library) is not a catkin pacakge  

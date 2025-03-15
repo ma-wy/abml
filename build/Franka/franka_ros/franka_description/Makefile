@@ -56,18 +56,6 @@ CMAKE_BINARY_DIR = /home/abml/zoe_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -79,16 +67,6 @@ install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -102,16 +80,27 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
-.PHONY : test/fast
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -126,14 +115,25 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,169 +168,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/rule
+Franka/franka_ros/franka_description/CMakeFiles/_catkin_empty_exported_target.dir/rule:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/_catkin_empty_exported_target.dir/rule
+.PHONY : Franka/franka_ros/franka_description/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
 # Convenience name for target.
-_run_tests_franka_description_nosetests_test.franka_robot_urdf.py: Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/rule
+_catkin_empty_exported_target: Franka/franka_ros/franka_description/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
-.PHONY : _run_tests_franka_description_nosetests_test.franka_robot_urdf.py
+.PHONY : _catkin_empty_exported_target
 
 # fast build rule for target.
-_run_tests_franka_description_nosetests_test.franka_robot_urdf.py/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/build
-.PHONY : _run_tests_franka_description_nosetests_test.franka_robot_urdf.py/fast
-
-# Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description.dir/rule
-
-# Convenience name for target.
-_run_tests_franka_description: Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description.dir/rule
-
-.PHONY : _run_tests_franka_description
-
-# fast build rule for target.
-_run_tests_franka_description/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description.dir/build
-.PHONY : _run_tests_franka_description/fast
-
-# Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests.dir/rule
-
-# Convenience name for target.
-run_tests_franka_description_nosetests: Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests.dir/rule
-
-.PHONY : run_tests_franka_description_nosetests
-
-# fast build rule for target.
-run_tests_franka_description_nosetests/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests.dir/build
-.PHONY : run_tests_franka_description_nosetests/fast
-
-# Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/clean_test_results_franka_description.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/clean_test_results_franka_description.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/clean_test_results_franka_description.dir/rule
-
-# Convenience name for target.
-clean_test_results_franka_description: Franka/franka_ros/franka_description/CMakeFiles/clean_test_results_franka_description.dir/rule
-
-.PHONY : clean_test_results_franka_description
-
-# fast build rule for target.
-clean_test_results_franka_description/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/clean_test_results_franka_description.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/clean_test_results_franka_description.dir/build
-.PHONY : clean_test_results_franka_description/fast
-
-# Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests.dir/rule
-
-# Convenience name for target.
-_run_tests_franka_description_nosetests: Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests.dir/rule
-
-.PHONY : _run_tests_franka_description_nosetests
-
-# fast build rule for target.
-_run_tests_franka_description_nosetests/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests.dir/build
-.PHONY : _run_tests_franka_description_nosetests/fast
-
-# Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description.dir/rule
-
-# Convenience name for target.
-run_tests_franka_description: Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description.dir/rule
-
-.PHONY : run_tests_franka_description
-
-# fast build rule for target.
-run_tests_franka_description/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description.dir/build
-.PHONY : run_tests_franka_description/fast
-
-# Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/rule
-
-# Convenience name for target.
-run_tests_franka_description_nosetests_test.franka_robot_urdf.py: Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/rule
-
-.PHONY : run_tests_franka_description_nosetests_test.franka_robot_urdf.py
-
-# fast build rule for target.
-run_tests_franka_description_nosetests_test.franka_robot_urdf.py/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.franka_robot_urdf.py.dir/build
-.PHONY : run_tests_franka_description_nosetests_test.franka_robot_urdf.py/fast
-
-# Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.hand_urdf.py.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.hand_urdf.py.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.hand_urdf.py.dir/rule
-
-# Convenience name for target.
-run_tests_franka_description_nosetests_test.hand_urdf.py: Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.hand_urdf.py.dir/rule
-
-.PHONY : run_tests_franka_description_nosetests_test.hand_urdf.py
-
-# fast build rule for target.
-run_tests_franka_description_nosetests_test.hand_urdf.py/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.hand_urdf.py.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.hand_urdf.py.dir/build
-.PHONY : run_tests_franka_description_nosetests_test.hand_urdf.py/fast
-
-# Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/rule
-
-# Convenience name for target.
-run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py: Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/rule
-
-.PHONY : run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py
-
-# fast build rule for target.
-run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/build
-.PHONY : run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py/fast
-
-# Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.hand_urdf.py.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.hand_urdf.py.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.hand_urdf.py.dir/rule
-
-# Convenience name for target.
-_run_tests_franka_description_nosetests_test.hand_urdf.py: Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.hand_urdf.py.dir/rule
-
-.PHONY : _run_tests_franka_description_nosetests_test.hand_urdf.py
-
-# fast build rule for target.
-_run_tests_franka_description_nosetests_test.hand_urdf.py/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.hand_urdf.py.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.hand_urdf.py.dir/build
-.PHONY : _run_tests_franka_description_nosetests_test.hand_urdf.py/fast
-
-# Convenience name for target.
-Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/rule:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/rule
-.PHONY : Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/rule
-
-# Convenience name for target.
-_run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py: Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/rule
-
-.PHONY : _run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py
-
-# fast build rule for target.
-_run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py/fast:
-	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/_run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py.dir/build
-.PHONY : _run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py/fast
+_catkin_empty_exported_target/fast:
+	cd /home/abml/zoe_ws/build && $(MAKE) -f Franka/franka_ros/franka_description/CMakeFiles/_catkin_empty_exported_target.dir/build.make Franka/franka_ros/franka_description/CMakeFiles/_catkin_empty_exported_target.dir/build
+.PHONY : _catkin_empty_exported_target/fast
 
 # Help Target
 help:
@@ -338,24 +188,14 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install"
-	@echo "... _run_tests_franka_description_nosetests_test.franka_robot_urdf.py"
 	@echo "... install/strip"
-	@echo "... _run_tests_franka_description"
-	@echo "... run_tests_franka_description_nosetests"
-	@echo "... clean_test_results_franka_description"
-	@echo "... _run_tests_franka_description_nosetests"
-	@echo "... list_install_components"
-	@echo "... run_tests_franka_description"
-	@echo "... run_tests_franka_description_nosetests_test.franka_robot_urdf.py"
 	@echo "... install/local"
-	@echo "... run_tests_franka_description_nosetests_test.hand_urdf.py"
-	@echo "... run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py"
-	@echo "... _run_tests_franka_description_nosetests_test.hand_urdf.py"
-	@echo "... test"
+	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... _run_tests_franka_description_nosetests_test.dual_panda_example_urdf.py"
+	@echo "... test"
+	@echo "... _catkin_empty_exported_target"
 .PHONY : help
 
 

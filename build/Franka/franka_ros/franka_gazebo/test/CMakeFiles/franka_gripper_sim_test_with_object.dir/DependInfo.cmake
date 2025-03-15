@@ -21,7 +21,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "BOOST_SYSTEM_DYN_LINK"
   "BOOST_TEST_DYN_LINK"
   "BOOST_THREAD_DYN_LINK"
-  "ENABLE_BASE_ACCELERATION"
   "LIBBULLET_VERSION=2.88"
   "LIBBULLET_VERSION_GT_282"
   "ROSCONSOLE_BACKEND_LOG4CXX"
@@ -63,10 +62,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/abml/zoe_ws/build/gtest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
   "/home/abml/zoe_ws/build/Franka/franka_ros/franka_gazebo/CMakeFiles/franka_gripper_sim.dir/DependInfo.cmake"
-  "/home/abml/zoe_ws/build/Franka/franka_ros/franka_example_controllers/CMakeFiles/franka_example_controllers.dir/DependInfo.cmake"
-  "/home/abml/zoe_ws/build/Franka/franka_ros/franka_hw/CMakeFiles/franka_hw.dir/DependInfo.cmake"
-  "/home/abml/zoe_ws/build/Franka/franka_ros/franka_hw/CMakeFiles/franka_control_services.dir/DependInfo.cmake"
-  "/home/abml/zoe_ws/build/Franka/franka_ros/franka_gripper/CMakeFiles/franka_gripper.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

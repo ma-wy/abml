@@ -123,7 +123,6 @@ franka_state_controller_EXTERNAL_OBJECTS =
 /home/abml/zoe_ws/devel/lib/libfranka_state_controller.so: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
 /home/abml/zoe_ws/devel/lib/libfranka_state_controller.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 /home/abml/zoe_ws/devel/lib/libfranka_state_controller.so: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/abml/zoe_ws/devel/lib/libfranka_state_controller.so: /home/abml/libfranka/build/libfranka.so.0.9.2
 /home/abml/zoe_ws/devel/lib/libfranka_state_controller.so: Franka/franka_ros/franka_control/CMakeFiles/franka_state_controller.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/abml/zoe_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library /home/abml/zoe_ws/devel/lib/libfranka_state_controller.so"
 	cd /home/abml/zoe_ws/build/Franka/franka_ros/franka_control && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/franka_state_controller.dir/link.txt --verbose=$(VERBOSE)

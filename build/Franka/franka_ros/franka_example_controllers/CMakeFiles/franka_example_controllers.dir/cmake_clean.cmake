@@ -10,7 +10,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/franka_example_controllers.dir/src/joint_impedance_example_controller.cpp.o"
   "CMakeFiles/franka_example_controllers.dir/src/joint_position_example_controller.cpp.o"
   "CMakeFiles/franka_example_controllers.dir/src/joint_velocity_example_controller.cpp.o"
-  "CMakeFiles/franka_example_controllers.dir/src/joint_wall.cpp.o"
   "CMakeFiles/franka_example_controllers.dir/src/model_example_controller.cpp.o"
   "CMakeFiles/franka_example_controllers.dir/src/teleop_joint_pd_example_controller.cpp.o"
 )

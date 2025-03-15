@@ -1,5 +1,5 @@
 set(_CATKIN_CURRENT_PACKAGE "franka_visualization")
-set(franka_visualization_VERSION "0.10.1")
+set(franka_visualization_VERSION "0.9.0")
 set(franka_visualization_MAINTAINER "Franka Emika GmbH <support@franka.de>")
 set(franka_visualization_PACKAGE_FORMAT "2")
 set(franka_visualization_BUILD_DEPENDS "sensor_msgs" "roscpp" "libfranka")

@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "roscpp;message_runtime;control_msgs;actionlib;sensor_m
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "-lfranka_gripper;/home/abml/libfranka/build/libfranka.so.0.9.2".split(';') if "-lfranka_gripper;/home/abml/libfranka/build/libfranka.so.0.9.2" != "" else []
 PROJECT_NAME = "franka_gripper"
 PROJECT_SPACE_DIR = "/home/abml/zoe_ws/devel"
-PROJECT_VERSION = "0.10.1"
+PROJECT_VERSION = "0.9.0"

@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "sensor_msgs;roscpp".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "franka_visualization"
 PROJECT_SPACE_DIR = "/home/abml/zoe_ws/devel"
-PROJECT_VERSION = "0.10.1"
+PROJECT_VERSION = "0.9.0"

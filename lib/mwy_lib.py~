@@ -126,7 +126,7 @@ def franka_close_gripper(client = actionlib.SimpleActionClient('/franka_gripper/
   gripper_close.epsilon.inner = 0.1
   gripper_close.epsilon.outer = 0.1
   gripper_close.speed = 0.1
-  gripper_close.force = 10
+  gripper_close.force = 5
   gripper_grasp_client.send_goal(gripper_close)
   gripper_grasp_client.wait_for_result()
   return gripper_grasp_client.get_result().success

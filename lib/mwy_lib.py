@@ -107,7 +107,7 @@ def generate_folder(path):
     print('the folder exists')
   else:
     os.system('mkdir ' + path)
-
+'''
 def franka_open_gripper(client=actionlib.SimpleActionClient('/franka_gripper/move', franka_gripper.msg.MoveAction), width=0.025, speed=0.1):
   gripper_move_client = client
 #  gripper_move_client.wait_for_server()  
@@ -138,7 +138,7 @@ def franka_homing_gripper(client = actionlib.SimpleActionClient('/franka_gripper
   gripper_homing_client.send_goal(gripper_homing)
   gripper_homing_client.wait_for_result()
   return gripper_homing_client.get_result().success  
-
+'''
 
 
 def xy_to_theta(x,y): #theta in [-pi, pi]
