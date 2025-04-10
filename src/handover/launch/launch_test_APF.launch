@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find cam)/launch/launch_any_cam.launch"> </include>
+  <node pkg="rviz" type="rviz" output="screen" name="rviz" args="-d $(find handover)/rviz/test_APF.rviz"/>
+</launch>
+

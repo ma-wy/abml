@@ -26,7 +26,7 @@ class generate_target():
     #os.system("rosrun franka_basic_motion grasping_init.py grasping")
     self.ee_in_ee3_tf = []
     self.cam_in_base_tf = []
-    self.bias = array([0, 0, -0.017])
+    self.bias = array([0., 0, 0.01])
     self.if_recieved_handle = False
     self.if_recieved_grasping = False
     
@@ -44,21 +44,16 @@ class generate_target():
     handle_point_cam = array(get_Point(data))   
     self.handle_point = transformation_P(handle_point_cam, self.cam_in_base_tf[:3], self.cam_in_base_tf[3:]) + self.bias
     self.if_recieved_handle = True
-    print('handle')
-    print(self.handle_point)
     
   def callback_grasping_point(self, data):
     grasping_point_cam = array(get_Point(data))
     self.grasping_point = transformation_P(grasping_point_cam, self.cam_in_base_tf[:3], self.cam_in_base_tf[3:]) + self.bias
     self.if_recieved_grasping = True
-    print('grasping')
-    print(self.grasping_point)
-    print()
-    print(self.if_recieved_handle)
-    print(self.if_recieved_grasping)
     if self.if_recieved_handle == True and self.if_recieved_grasping == True:
       # align x axis with the instrument
-      x_axis_new = (self.handle_point - self.grasping_point)/norm(self.handle_point - self.grasping_point)
+      handle_point = deepcopy(self.handle_point)
+      handle_point[-1] = self.grasping_point[-1]
+      x_axis_new = -(handle_point - self.grasping_point)/norm(handle_point - self.grasping_point)
       posestamped_crr = self.rob.get_current_pose()
       pose_crr = get_PoseStamped(posestamped_crr)
       p_crr = pose_crr[:3]
@@ -74,7 +69,7 @@ class generate_target():
       # trans the target position of the third finger to the ee's
       p_new = transformation_P(self.ee_in_ee3_tf[:3], self.grasping_point, q_new)
       ee_target_pose = give_PoseStamped(posestamped_crr.header.frame_id, q_new, p_new)
-      print(ee_target_pose)
+
       self.ee_goal_in_base_pub.publish(ee_target_pose)
       self.if_recieved_handle = False
       self.if_recieved_grasping = False

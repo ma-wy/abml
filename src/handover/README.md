@@ -2,6 +2,9 @@
 `$ roslaunch handover launch_cam_and_rob.launch`  
 `$ rosrun handover hand_detect.py`  
 
+# test APF  
+`$ roslaunch handover launch_test_APF.launch`  
+`$ rosrun handover hand_pc.py`  
 
 
 # Note  

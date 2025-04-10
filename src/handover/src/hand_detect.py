@@ -44,8 +44,8 @@ class hand_detect:
     self.blank_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
     with self.mp_hands.Hands(
       model_complexity=0,
-      min_detection_confidence=0.5,
-      min_tracking_confidence=0.5) as hands:
+      min_detection_confidence=0.4,
+      min_tracking_confidence=0.4) as hands:
     # To improve performance, optionally mark the image as not writeable to
     # pass by reference.
         image = self.blank_image

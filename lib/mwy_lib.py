@@ -20,15 +20,19 @@ def angle_axis_to_q_complex(axis = "z", angle = 5, angle_type = "degree"):
 # b
 def bias_2d_to_3d(pt_2d, param_path = '/home/abml/zoe_ws/src/calibration/calibration_table_pc/result/bias.txt'):
 # c
+def calculate_swept_area_with_end_circles(line, radius, resolution=32):
 def cam_2_ee_pose(pose_cam):
 def check_file(file_path, remove_file = False):
 def check_make_clear_folder(path):
 def clean_data(data):
 def clear_folder(folder_path):
 def closest(mylist, Number):
+def create_circle(center, radius, resolution=32):
+def create_ring(center, inner_radius, outer_radius, resolution=32):
 # d
 def d_time_ms(t1, t2):
 def deg_to_rad(joints):
+def detect_outliers(data, threshold=3):
 def detect_qrcode(frame, h, w, intrinsics = [317.494, 246.239, 607.652, 607.507]):
 # e
 def ee_pose_link8_to_ee(pose):
@@ -45,8 +49,10 @@ def generate_ur_cmd(p,q):
 def get_argv(value=None, index=1):
 def get_control_degree(input_button):
 def get_control_direction(input_button):
+def get_overlapping_segments(line, ring):
 def get_Point(point32):
 def get_PointStamped(pointstamped):
+def get_polygon_corners(polygon):
 def get_Pose(pose):
 def get_PoseArray(posearray):
 def get_PoseStamped(posestamped):
@@ -82,6 +88,7 @@ def q_wxyz_to_xyzw(q_wxyz):
 def q_xyzw_to_wxyz(q_xyzw):
 # r
 def rad_to_deg(joints):
+def ray_from_point_slope(start_point, slope, vector_v, length=1000):
 def recorder_corners(corners, mode):
 def rot_Q(q_old, q_new):
 def rotation_between_2v(v_old, v_new):
@@ -95,6 +102,7 @@ def transformation_P(v_old,trans,q_rot):
 def transformation_Q(q_orig,q_rot):
 # u
 # v
+def vector_clockwise_angle(x, y):
 # w
 # x
 def xy_to_theta(x,y):
@@ -102,6 +110,201 @@ def xyz_axis_to_q(x_axis, y_axis, z_axis):
 # y
 # z
 '''
+# do not delet
+grasping_pose_init = loadtxt(os.path.join(os.path.dirname(__file__), 'init_joints_grasp.txt'))
+counting_pose_init = loadtxt(os.path.join(os.path.dirname(__file__), 'init_joints_count.txt'))
+tempt_pose_init = loadtxt(os.path.join(os.path.dirname(__file__), 'init_joints_tempt.txt'))
+
+#handover_pose_init = loadtxt(os.path.join(os.path.dirname(__file__), 'init_joints_handover.txt'))
+
+
+
+def name_time():
+  name = '%.7f' % time.time() 
+  return name
+
+
+def get_polygon_corners(polygon):
+  """
+  获取多边形(包括可能的内环)的所有角点坐标
+  
+  参数:
+      polygon: Shapely Polygon对象
+      
+  返回:
+      包含所有角点坐标的列表[(x1,y1), (x2,y2), ...]
+  """
+  if polygon is None or polygon.is_empty:
+      return []
+      
+  corners = []
+  
+  # 获取外环坐标
+  if hasattr(polygon, 'exterior'):
+      exterior_coords = list(polygon.exterior.coords)
+      corners.extend(exterior_coords)
+  
+  # 获取所有内环坐标
+  if hasattr(polygon, 'interiors'):
+      for interior in polygon.interiors:
+          interior_coords = list(interior.coords)
+          corners.extend(interior_coords)
+  
+  return corners
+def get_overlapping_segments(line, ring):
+  """
+  计算LineString与圆环的重叠部分线段
+  
+  参数:
+      line: LineString对象
+      ring: 圆环(Polygon对象)
+      
+  返回:
+      包含所有重叠线段的MultiLineString
+  """
+  # 计算交集
+  intersection = line.intersection(ring)
+  
+  # 如果交集是LineString或MultiLineString，直接返回
+  if intersection.is_empty:
+      return None
+  elif intersection.geom_type == 'LineString':
+      return [intersection]
+  elif intersection.geom_type == 'MultiLineString':
+      return list(intersection.geoms)
+  else:
+      return None
+      
+def calculate_swept_area_with_end_circles(line, radius, resolution=32):
+  """
+  计算圆沿线段滑动所覆盖的范围，包含端点完整半圆
+  
+  参数:
+      line: LineString对象，表示滑动路径
+      radius: 圆的半径
+      resolution: 圆形的近似精度（边数）
+      
+  返回:
+      Polygon对象，表示覆盖的范围
+  """
+  # 1. 创建线段的缓冲区域（自动包含端点半圆）
+  line_buffer = line.buffer(
+      radius, 
+      resolution=resolution,
+      cap_style=2,  # 圆形端点
+      join_style=2  # 圆形连接
+  )
+  
+  # 2. 在端点添加完整圆（确保端点覆盖完整圆而非半圆）
+  start_circle = Point(line.coords[0]).buffer(radius, resolution=resolution)
+  end_circle = Point(line.coords[-1]).buffer(radius, resolution=resolution)
+  
+  # 3. 合并所有几何图形
+  full_area = unary_union([line_buffer, start_circle, end_circle])
+  
+  return full_area
+  
+def create_ring(center, inner_radius, outer_radius, resolution=32):
+  """创建圆环(环形)"""
+  outer_circle = create_circle(center, outer_radius, resolution)
+  inner_circle = create_circle(center, inner_radius, resolution)
+  return outer_circle.difference(inner_circle)
+    
+def create_circle(center, radius, resolution=32):
+  """
+  使用buffer方法创建圆形
+  
+  参数:
+      center: 圆心坐标(x,y)或Point对象
+      radius: 半径
+      resolution: 近似圆的多边形边数(默认32)
+      
+  返回:
+      Shapely Polygon对象表示圆形
+  """
+  if not isinstance(center, Point):
+      center = Point(center)
+  return center.buffer(radius, resolution=resolution)
+  
+def vector_clockwise_angle(x, y):
+  """
+  计算原点指向点(x,y)的向量与x轴正向的顺时针角度(0-360度)
+  
+  参数:
+      x: 点的x坐标
+      y: 点的y坐标
+      
+  返回:
+      顺时针角度(0-360度)
+  """
+  # 计算反正切值(弧度)，范围在(-π, π]
+  angle_rad = math.atan2(y, x)
+  
+  # 转换为度数(-180到180度)
+  angle_deg = math.degrees(angle_rad)
+  
+  # 将角度转换为顺时针方向(数学坐标系中atan2是逆时针方向)
+  clockwise_angle = -angle_deg
+  
+  # 调整到0-360度范围
+  if clockwise_angle < 0:
+      clockwise_angle += 360
+  elif clockwise_angle >= 360:
+      clockwise_angle -= 360
+  
+  return clockwise_angle
+  
+def ray_from_point_slope(start_point, slope, vector_v, length=1000):
+  """
+  创建从起点出发，具有给定斜率，且与向量v成锐角的射线
+  
+  参数:
+      start_point: 射线起点，可以是(x,y)元组或Shapely Point对象
+      slope: 射线斜率
+      vector_v: 参考向量(x,y)
+      length: 射线的延伸长度(默认1000单位)
+      
+  返回:
+      Shapely LineString对象表示的射线
+  """
+  if not isinstance(start_point, Point):
+      start_point = Point(start_point)
+  
+  x0, y0 = start_point.x, start_point.y
+  
+  # 计算射线的两个可能方向
+  dx = length / (1 + slope**2)**0.5
+  dy = slope * dx
+  
+  # 两个可能的终点
+  end_point1 = Point(x0 + dx, y0 + dy)
+  end_point2 = Point(x0 - dx, y0 - dy)
+  
+  # 计算两个方向与向量v的点积
+  vx, vy = vector_v
+  dot1 = dx * vx + dy * vy
+  dot2 = (-dx) * vx + (-dy) * vy
+  
+  # 选择点积为正的方向(锐角)
+  if dot1 > dot2:
+      end_point = end_point1
+  else:
+      end_point = end_point2
+  
+  return LineString([start_point, end_point])
+
+def detect_hand_outliers(data, threshold=3):
+  """离群点检测"""
+  mean_d = np.mean(data)
+  std_d = np.std(data)
+  outliers = []
+
+  for y in data:
+      z_score = (y - mean_d) / std_d
+      if np.abs(z_score) > threshold:
+          outliers.append(y)
+  return outliers
+
 def generate_folder(path):
   if os.path.exists(path):
     print('the folder exists')
@@ -140,7 +343,26 @@ def franka_homing_gripper(client = actionlib.SimpleActionClient('/franka_gripper
   return gripper_homing_client.get_result().success  
 '''
 
+def generate_pt(p, Cx, Cy, fx, fy):
+  scale = 1000.0
+  d = float(p[2])
+  pt = [(float(p[0])-Cx)*d/fx/scale,(float(p[1])-Cy)*d/fy/scale,d/scale]
+  return pt
 
+def realsense_intrinsics(cam_type, height, width):
+  if cam_type == "l515" or cam_type == "L515":
+    if height == 540 and width == 960:
+      P = [677.20751953125, 0.0, 490.4091491699219, 0.0, 0.0, 677.1104125976562, 273.6672058105469, 0.0, 0.0, 0.0, 1.0, 0.0]
+    if height == 720 and width == 1280:
+      P = [902.943359375, 0.0, 653.8788452148438, 0.0, 0.0, 902.8138427734375, 364.88958740234375, 0.0, 0.0, 0.0, 1.0, 0.0]
+    if height ==1080 and width == 1920:
+      P = [1354.4150390625, 0.0, 980.8182983398438, 0.0, 0.0, 1354.2208251953125, 547.3344116210938, 0.0, 0.0, 0.0, 1.0, 0.0]
+  if cam_type == "d435" or cam_type == "D435":
+    if height == 480 and width == 640:
+      P = [614.5758056640625, 0.0, 326.93829345703125, 0.0, 0.0, 615.0447998046875, 238.32223510742188, 0.0, 0.0, 0.0, 1.0, 0.0]    
+  Cx, Cy, fx, fy = P[2], P[6], P[0], P[5]
+  return Cx, Cy, fx, fy
+  
 def xy_to_theta(x,y): #theta in [-pi, pi]
   sin = y/(x**2 + y**2 )**0.5
   cos = x/(x**2 + y**2 )**0.5
@@ -291,9 +513,9 @@ def check_make_clear_folder(path):
     clear_folder(path)
 
 def clear_folder(folder_path):
-  files = glob.glob(folder_path+'*')
+  files = os.listdir(folder_path)#+'*'
   for f in files:
-    os.remove(f)
+    os.remove(os.path.join(folder_path, f))
   print('folder: ' + str(folder_path))
   print('files: ' + str(len(files)))
   print('the folder has been emptied.')

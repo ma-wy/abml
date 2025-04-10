@@ -2,7 +2,7 @@
 import sys 
 sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_lib import *
-
+from franka_utils import *
 
 def main(args):
   rospy.init_node('test_gripper', anonymous=True)
@@ -17,7 +17,7 @@ def main(args):
   while True:
     print('close the gripper')
     input()
-    a = franka_close_gripper(client = gripper_grasp_client, speed=0.1)
+    a = franka_close_gripper_black(client = gripper_grasp_client, speed=0.1)
     print(a)
     print('open the gripper')
     input()

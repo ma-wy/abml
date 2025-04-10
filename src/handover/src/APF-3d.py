@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.8
 # -*- coding: utf-8 -*-
 import sys 
-sys.path.append("/home/shunlei/zoe_ws/lib")
+sys.path.append("/home/abml/zoe_ws/lib")
 from mwy_lib import *
 
 from collections import deque
@@ -20,6 +20,45 @@ AREA_WIDTH = 10.0  # potential area width [m]
 # the number of previous positions used to check oscillations
 OSCILLATIONS_DETECTION_LENGTH = 3
 
+
+def generate_heatmap_3d(data, X, Y, Z, ug_max, ug_min):
+    data = np.array(data).flatten()
+    fig = go.Volume(
+        x=X.flatten(),
+        y=Y.flatten(),
+        z=Z.flatten(),
+        value=array(data),
+        isomin=ug_min,  # 设置最小值
+        isomax=ug_max,#np.max(data)/500.0,  # 设置最大值
+        opacity=0.1,  # 设置透明度
+        surface_count=30,  # 表面数量
+        colorscale = 'piyg',
+    )
+    return fig
+
+def load_hand_info(path, config = 1):
+  p_list = loadtxt(path)[config-1]*100.0
+  p = []
+  for i in range(int(len(p_list)/3)):
+    p.append([p_list[3*i], p_list[3*i+1],100.0-p_list[3*i+2]])
+  hand_links = [[p[0],p[1]],[p[0],p[5]],[p[5],p[9]],[p[9],p[13]],[p[13],p[17]],[p[1],p[2]],[p[2],p[3]],[p[3],p[4]],[p[5],p[6]],[p[6],p[7]],[p[7],p[8]],[p[9],p[10]],[p[10],p[11]],[p[11],p[12]],[p[13],p[14]],[p[14],p[15]],[p[15],p[16]],[p[17],p[18]],[p[18],p[19]],[p[19],p[20]],[p[0],p[17]]]
+  palm = (array(p[0]) +array(p[5])+array(p[17]))/3  
+#  return p, palm 
+  return hand_links, palm
+    
+def generate_hand_p(path, config = 1):    
+  p_list = loadtxt(path)[config-1]*100.0
+  p_x = []
+  p_y = []
+  p_z = []
+  for i in range(int(len(p_list)/3)):
+    p_x.append(p_list[3*i])
+    p_y.append(p_list[3*i+1])
+    p_z.append(100.0-p_list[3*i+2])
+    
+  hand_p = go.Scatter3d(x=p_x, y=p_y, z=p_z, mode='markers', marker_symbol = 'circle', marker=dict(size=15,))
+  return hand_p  
+        
 def generate_hand_info(config=1):
   p0 = [12.0,3.0]
   p1 = [7.0,7.0]
@@ -48,7 +87,6 @@ def generate_hand_info(config=1):
   hand_depth_3 = [0.0, 0,1,2,4,0,3,5,6,0,3,5,6,0,3,5,6,0,3,5,6]
   
   
-  
   p = []
   if config == 1:
     for point in hand_list:
@@ -73,28 +111,11 @@ def generate_hand_info(config=1):
     for i in range(len(hand_list)):
       p.append(hand_list[i]+[hand_depth_1[0] + hand_depth_3[i]])
       
-      
-      
   hand_links = [[p[0],p[1]],[p[0],p[5]],[p[5],p[9]],[p[9],p[13]],[p[13],p[17]],[p[1],p[2]],[p[2],p[3]],[p[3],p[4]],[p[5],p[6]],[p[6],p[7]],[p[7],p[8]],[p[9],p[10]],[p[10],p[11]],[p[11],p[12]],[p[13],p[14]],[p[14],p[15]],[p[15],p[16]],[p[17],p[18]],[p[18],p[19]],[p[19],p[20]],[p[0],p[17]]]
   palm = (array(p[0]) +array(p[5])+array(p[17]))/3
   return hand_links, palm
 
 
-def generate_heatmap_3d(data, X, Y, Z, ug_max, ug_min):
-    data = np.array(data).flatten()
-   
-    fig = go.Volume(
-        x=X.flatten(),
-        y=Y.flatten(),
-        z=Z.flatten(),
-        value=data,
-        isomin=ug_min,  # 设置最小值
-        isomax=ug_max,#np.max(data)/500.0,  # 设置最大值
-        opacity=0.1,  # 设置透明度
-        surface_count=30,  # 表面数量
-        colorscale = 'piyg',
-    )
-    return fig
 
 def generate_two_ends(sx,sy,sz, gx,gy,gz):
     start = go.Scatter3d(x=[sx], y=[sy], z=[sz], mode='markers', marker_symbol = 'x', marker=dict(size=5,))
@@ -143,16 +164,17 @@ def calc_potential_field(gx, gy, gz, ox, oy, oz, ox_line, oy_line, oz_line, reso
     maxz = max(sz, max_hand_z) + AREA_WIDTH / 2.0
     
     # 根据范围和分辨率确定格数：
-    xw = int(round((maxx - minx) / reso))
-    yw = int(round((maxy - miny) / reso))
-    zw = int(round((maxz - minz) / reso))
-
     X, Y, Z = np.mgrid[minx:maxx:reso, miny:maxy:reso, minz:maxz:reso]
+    xw = X.shape[0]
+    yw = X.shape[1]
+    zw = X.shape[2]
+        
     print('field size')
     print(len(X.flatten()))
  
     # calc each potential
     pmap = [[[0.0 for _ in range(zw)] for _ in range(yw)] for _ in range(xw)]
+ 
     ug_list = []
     uo_list = []
     for ix in range(xw):
@@ -168,9 +190,11 @@ def calc_potential_field(gx, gy, gz, ox, oy, oz, ox_line, oy_line, oz_line, reso
                 uo_list.append(uo)
                 uf = ug + uo
                 pmap[ix][iy][iz] = uf
+
     ug_max = max(ug_list)
     ug_min = min(ug_list)
-    
+    uo_max = max(uo_list)
+    uo_min = min(uo_list)    
     return pmap, minx, miny, minz, X, Y, Z, ug_max, ug_min
 
 def calc_attractive_potential(x, y, z, gx, gy, gz):
@@ -324,7 +348,16 @@ def potential_field_planning(sx, sy, sz, gx, gy, gz, ox, oy, oz, ox_line, oy_lin
         minp = float("inf")
         minix, miniy, miniz = -1, -1, -1
         # 寻找27个运动方向中势场最小的方向
-        if any([p_x > min(gx,rx[-1]) and p_x < max(gx,rx[-1]) for p_x in hand_x]) or any([p_y > min(gy,ry[-1]) and p_y < max(gy,ry[-1]) for p_y in hand_y]):
+        '''
+        print(rx[-1])
+        print(ry[-1])
+        print('px')
+        for p_x in hand_x: 
+            if p_x > min(gx,rx[-1]) and p_x < max(gx,rx[-1]):
+               print(p_x)
+        '''       
+        if any([p_x > min(gx,rx[-1]) and p_x < max(gx,rx[-1]) for p_x in hand_x]) and any([p_y > min(gy,ry[-1]) and p_y < max(gy,ry[-1]) for p_y in hand_y]):# or rz[-1]<gz:
+            print('up')
             motion = get_motion_model(config=2)
             for i, _ in enumerate(motion):
                 inx = int(ix + motion[i][0])
@@ -341,6 +374,7 @@ def potential_field_planning(sx, sy, sz, gx, gy, gz, ox, oy, oz, ox_line, oy_lin
                     miniy = iny
                     miniz = inz
         else:
+            print('down')
             motion = get_motion_model(config=1)
             for i, _ in enumerate(motion):
                 inx = int(ix + motion[i][0])
@@ -380,6 +414,7 @@ def potential_field_planning(sx, sy, sz, gx, gy, gz, ox, oy, oz, ox_line, oy_lin
 def main():
     t1 = time.time()
     print("potential_field_planning start")
+    '''
     start = [[0.0, 10.0, 20],[10.0, 30.0, 20], [10.0, -10.0, 10], [10.0, -10.0, 20]]
     sx = 10.0  # start x position [m]
     sy = -10.0  # start y positon [m]
@@ -387,8 +422,9 @@ def main():
     gx = 30.0  # goal x position [m]
     gy = 30.0  # goal y position [m]
     gz = 15.0  # goal z position [m]
+    '''
     grid_size = 0.5  # potential grid size [m]
-    robot_radius = 5.0  # robot radius [m]
+    robot_radius = 1.5  # robot radius [m]
     ox = [15.0, 32.0]  # obstacle x position list [m]
     oy = [25.0, 27.0]  # obstacle y position list [m]
     oz = [5.0, 10.0]  # obstacle z position list [m]
@@ -399,10 +435,16 @@ def main():
     oy_line = [[25.0, 15.0],[26.0, 25.0]]
     oz_line = [[5.0, 10.0],[15.0, 10.0]]
     hand_links, palm = generate_hand_info(config=3)
-    gx = palm[0]  # goal x position [m]
-    gy = palm[1]  # goal y position [m]
-    gz = palm[2]  # goal z position [m]
-
+    file_path = '/home/abml/zoe_ws/src/handover/src/hand_p_21_APF_sim.txt'
+    hand_links, palm = load_hand_info(file_path, config = 6)
+    gx = palm[0]  # goal x position [cm]
+    gy = palm[1]  # goal y position [cm]
+    gz = palm[2]  # goal z position [cm]
+    print(palm)
+    start=[[-10,-18, palm[2] - 5.0],[0, 10, palm[2] + 5.0], [-10, 0.0, palm[2] + 3.0], [15, -15, palm[2]+5.0], [5,-5, palm[2]+5.0] ]
+    sx = 5.0 # start x position [cm]
+    sy = -5.0  # start y positon [cm]
+    sz = palm[2]+5.0#40.0  # start z position [cm]
     ox = []
     oy = []
     oz = []
@@ -427,10 +469,11 @@ def main():
 
     # 使用 plotly 绘制势场图
     
-    #save pmap, X.flatten(), rx
+    #save pmap, X.flatten(), rx 
     ''' 
     for i in array(pmap).flatten():
-      saveDataStep([i], '/home/shunlei/zoe_ws/src/test_code/pmap.txt')
+      saveDataStep([i], '/home/abml/zoe_ws/src/handover/src/pmap.txt')   
+
  
     for i in X.flatten():
       saveDataStep([i], '/home/shunlei/zoe_ws/src/test_code/X.txt')
@@ -456,6 +499,7 @@ def main():
     fig.add_trace(path)
     fig.add_trace(p_s)
     fig.add_trace(p_e)
+#    fig.add_trace(generate_hand_p(file_path))
     fig.show()
 
     

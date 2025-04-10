@@ -84,8 +84,11 @@ class grasping_point:
 def main(args):
   
   rospy.init_node('grasping_point', anonymous=True)
+  cv2.namedWindow('raw_image')
+  print('Left: grasping point')
+  print('Middle: handle point')
   gp = grasping_point()
-
+  
   while not rospy.is_shutdown():
     cv2.imshow("raw_image", gp.blank_image)    
     if cv2.waitKey(1) == ord('q'):

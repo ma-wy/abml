@@ -13,13 +13,27 @@ rob.set_max_acceleration_scaling_factor(0.1)
 
 joint_index = int(sys.argv[1])
 joint_value = deg_to_rad([float(sys.argv[2])])[0]
+if len(sys.argv) == 4:
+  if sys.argv[3] == 'r':
+    if_relative = True
+    print('relative motion')
+  else:
+    print('input r to indicate relative motion')
+else:
+  if_relative = False
+  print('absolut motion')
+      
 print(joint_index)
 print(joint_value)
+
 if joint_index < 8 and joint_index > 0:
   joints = rob.get_current_joint_values()
   print('current joint values:')
   print(joints)
-  joints[joint_index-1] = joint_value
+  if if_relative == True:
+    joints[joint_index-1] += joint_value
+  else:
+    joints[joint_index-1] = joint_value
   print('target joint values:')
   print(joints)
   rob.go(joints)
